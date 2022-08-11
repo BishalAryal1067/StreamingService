@@ -1,0 +1,44 @@
+$primary-color:#672BDF;
+$secondary-color: #16A6F1;
+$tertiary-color: #B52666;
+$input-background:rgb(240, 240, 240);
+$font-color-primary: grey;
+$font-color-secondary: black;
+$font-color:white;
+
+$font-weights:(
+ "light" :400,
+ "medium": 600,
+ "bold":800 
+);
+
+@mixin flexDisplay($direction, $justify, $align){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin postionElement($px, $py, $tx, $ty){
+    position: absolute;
+    left: $px;
+    top: $py;
+    transform: translate(-$tx,-$ty);
+}
+
+@mixin defineSize($width, $height, $margin, $padding){
+    box-sizing: border-box;
+    width: $width;
+    height: $height;
+    margin: $margin;
+    padding: $padding;
+}
+
+@mixin buttonDesign($background, $color, $border, $border-radius){
+    background-color: $background;
+    color: $color;
+    border: $border;
+    border-radius: $border-radius;
+    cursor: pointer;
+}
+
