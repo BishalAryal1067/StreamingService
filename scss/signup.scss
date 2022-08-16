@@ -1,6 +1,6 @@
 @import "./variables";
 
-*{
+* {
     font-family: $font-type;
 }
 
@@ -10,7 +10,7 @@ body {
 
 .container {
     @include defineSize(45%, 60vh, 0, 0);
-    @include postionElement(relative,50%, 50%, 50%, 50%);
+    @include postionElement(relative, 50%, 50%, 50%, 50%);
     background-color: $primary-color;
     border-radius: 0.75em;
     box-shadow: 0.1em 0.1em 2.5em grey;
@@ -21,19 +21,19 @@ body {
     .right-section {
         @include defineSize(50%, 100%, 0, 0);
     }
-    .left-section{
+    .left-section {
         position: relative;
-        @include flexDisplay(column, center,center)
+        @include flexDisplay(column, center, center);
     }
     .left-section > img {
         width: 20em;
         height: 20em;
-        border-radius: 50%;        
+        border-radius: 50%;
     }
     .right-section {
         @include flexDisplay(column, center, center);
         background-color: white;
-        @include postionElement(relative, 0,0,0,0);
+        @include postionElement(relative, 0, 0, 0, 0);
 
         h3{
             color: $secondary-color;
@@ -61,8 +61,8 @@ body {
                 font-weight: map-get($font-weights, medium);
             }
         }
-         
-        a{
+
+        a {
             position: absolute;
             bottom: 5%;
             left: 50%;
@@ -71,7 +71,7 @@ body {
             color: $tertiary-color;
             font-weight: map-get($map: $font-weights, $key: bold);
 
-            &:hover{
+            &:hover {
                 color: $secondary-color;
                 text-decoration: underline;
             }

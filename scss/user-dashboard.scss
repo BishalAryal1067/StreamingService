@@ -1,0 +1,9 @@
+@import './variables';
+
+*{
+  font-family: $font-type;
+}
+
+.side-nav{
+    @include flexDisplay(column, center, center)
+}
