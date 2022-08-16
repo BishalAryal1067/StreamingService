@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@all&display=swap');
+$font-type: 'Rubik', sans-serif;
 $primary-color:#672BDF;
 $secondary-color: #16A6F1;
 $tertiary-color: #B52666;
@@ -19,8 +21,8 @@ $font-weights:(
     align-items: $align;
 }
 
-@mixin postionElement($px, $py, $tx, $ty){
-    position: absolute;
+@mixin postionElement($position,$px, $py, $tx, $ty){
+    position: $position;
     left: $px;
     top: $py;
     transform: translate(-$tx,-$ty);

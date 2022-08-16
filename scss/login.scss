@@ -1,0 +1,60 @@
+@import "./variables";
+
+*{
+    font-family: $font-type;
+}
+
+body {
+    @include defineSize(100%, 100vh, 0, 0);
+}
+
+.container {
+    @include defineSize(45%, 60vh, 0, 0);
+    @include postionElement(relative,50%, 50%, 50%, 50%);
+    background-color: $primary-color;
+    border-radius: 0.75em;
+    box-shadow: 0.1em 0.1em 2.5em grey;
+    overflow: hidden;
+    display: flex;
+
+    .left-section,
+    .right-section {
+        @include defineSize(50%, 100%, 0, 0);
+    }
+    .left-section{
+        position: relative;
+        @include flexDisplay(column, center,center)
+    }
+    .left-section > img {
+        width: 20em;
+        height: 20em;
+        border-radius: 50%;        
+    }
+    .right-section {
+        @include flexDisplay(column, center, center);
+        background-color: white;
+
+        form {
+            @include flexDisplay(column, center, center);
+            @include defineSize(100%, auto, 0, 0);
+
+            input {
+                @include defineSize(75%, 2.75em, 0.75em 0, 0 1.75em);
+                border: none;
+                border-radius: 1.75em;
+                font-size: 1em;
+                background-color: $input-background;
+                outline: none;
+            }
+            &:hover,
+            &:active {
+                outline: none;
+            }
+            input:nth-child(3) {
+                @include defineSize(35%, 2.75em, 0.75em 0, 0);
+                @include buttonDesign($secondary-color, white, none, 1.75em);
+                font-weight: map-get($font-weights, medium);
+            }
+        }
+    }
+}
