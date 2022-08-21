@@ -72,22 +72,26 @@ body {
   margin: 0;
   padding: 0;
 }
-.container .right-section form input {
+.container .right-section form input,
+.container .right-section form select {
   box-sizing: border-box;
   width: 75%;
   height: 2.75em;
   margin: 0.75em 0;
-  padding: 0 1.75em;
+  padding: 0 1.25em;
   border: none;
   border-radius: 1.75em;
   font-size: 1em;
   background-color: rgb(240, 240, 240);
   outline: none;
 }
+.container .right-section form select {
+  cursor: pointer;
+}
 .container .right-section form:hover, .container .right-section form:active {
   outline: none;
 }
-.container .right-section form input:nth-child(3) {
+.container .right-section form input:nth-child(4) {
   box-sizing: border-box;
   width: 35%;
   height: 2.75em;

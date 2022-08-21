@@ -42,20 +42,23 @@ body {
         form {
             @include flexDisplay(column, center, center);
             @include defineSize(100%, auto, 0, 0);
-
-            input {
-                @include defineSize(75%, 2.75em, 0.75em 0, 0 1.75em);
+            input, 
+            select {
+                @include defineSize(75%, 2.75em, 0.75em 0,0 1.25em);
                 border: none;
                 border-radius: 1.75em;
                 font-size: 1em;
                 background-color: $input-background;
                 outline: none;
             }
+            select{
+                cursor: pointer;
+            }
             &:hover,
             &:active {
                 outline: none;
             }
-            input:nth-child(3) {
+            input:nth-child(4) {
                 @include defineSize(35%, 2.75em, 0.75em 0, 0);
                 @include buttonDesign($secondary-color, white, none, 1.75em);
                 font-weight: map-get($font-weights, medium);

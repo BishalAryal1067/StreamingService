@@ -1,0 +1,57 @@
+@import "./variables";
+
+* {
+    font-family: $font-type;
+}
+
+body {
+    @include defineSize(100%, 100vh, 0, 0);
+}
+
+form {
+    @include postionElement(absolute, 50%, 50%, 50%, 50%);
+    @include flexDisplay(column, center, flex-start);
+    @include defineSize(auto, auto, 0, 3em 5em);
+    border-radius: 1.25em;
+    // box-shadow: 1em 1em 2.5em grey;
+
+    h2{
+        margin: .5em .25em;
+        color: $primary-color;
+    }
+
+    p{
+        margin: .25em 0 0 .5em;
+        color: $font-color-primary;
+        font-weight: map-get($map: $font-weights, $key: medium);
+        font-size: .85em;
+    }
+
+    input:not([type="submit"]) {
+        @include defineSize(20em, 2.75em, 0.75em 0, 0 1.25em);
+        border: none;
+        border-radius: 1.75em;
+        font-size: 1em;
+        background-color: $input-background;
+        outline: none;
+    }
+
+    #resend-confirmation{
+        color: $tertiary-color;
+        margin: .75em 0 1em .5em;
+        font-size: .75em;
+
+        &:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    input[type="submit"] {
+        @include defineSize(35%, 2.75em, 0.5em 0, 0);
+        @include buttonDesign($secondary-color, white, none, 1.75em);
+        font-weight: map-get($font-weights, medium);
+    }
+
+
+}

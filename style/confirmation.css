@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@all&display=swap");
+* {
+  font-family: "Rubik", sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 3em 5em;
+  border-radius: 1.25em;
+}
+form h2 {
+  margin: 0.5em 0.25em;
+  color: #672BDF;
+}
+form p {
+  margin: 0.25em 0 0 0.5em;
+  color: grey;
+  font-weight: 600;
+  font-size: 0.85em;
+}
+form input:not([type=submit]) {
+  box-sizing: border-box;
+  width: 20em;
+  height: 2.75em;
+  margin: 0.75em 0;
+  padding: 0 1.25em;
+  border: none;
+  border-radius: 1.75em;
+  font-size: 1em;
+  background-color: rgb(240, 240, 240);
+  outline: none;
+}
+form #resend-confirmation {
+  color: #B52666;
+  margin: 0.75em 0 1em 0.5em;
+  font-size: 0.75em;
+}
+form #resend-confirmation:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+form input[type=submit] {
+  box-sizing: border-box;
+  width: 35%;
+  height: 2.75em;
+  margin: 0.5em 0;
+  padding: 0;
+  background-color: #16A6F1;
+  color: white;
+  border: none;
+  border-radius: 1.75em;
+  cursor: pointer;
+  font-weight: 600;
+}/*# sourceMappingURL=confirmation.css.map */
