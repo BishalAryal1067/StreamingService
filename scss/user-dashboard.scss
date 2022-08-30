@@ -1,9 +1,49 @@
-@import './variables';
+@import "./variables";
 
-*{
-  font-family: $font-type;
+* {
+    font-family: $font-type;
 }
 
-.side-nav{
-    @include flexDisplay(column, center, center)
+body {
+    @include defineSize(100%, 100vh, 0, 0);
 }
+
+.navbar {
+    @include defineSize(100%, 8vh, 0, 0);
+    @include flexDisplay(row, center, center);
+    position: relative;
+    .nav-link {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0.75em;
+        a {
+            font-weight: map-get($map: $font-weights, $key: medium);
+            color: $tertiary-color;
+            text-decoration: none;
+        }
+        &:hover{
+          transition:scale .35s ease-in-out;
+          scale: 1.15;
+          &:after{
+            content:'';
+            @include postionElement(absolute, 0,100%,0,0);
+            @include defineSize(100%, .1em,.15em 0,0);
+            background-color: $secondary-color;
+            opacity: .98;
+          }
+        }
+    }
+
+    i{
+      @include postionElement(absolute, 95%, 50%, 0%,50%);
+      color: $font-color;
+      font-size: 1.5em;
+      cursor: pointer;
+
+      &:hover{
+        transition: .65s;
+        scale: 1.25;
+      }
+    }
+}
+

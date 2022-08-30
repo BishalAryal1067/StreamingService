@@ -34,7 +34,7 @@ form h2 {
 form p {
   margin: 0.25em 0 0 0.5em;
   color: grey;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.85em;
 }
 form input:not([type=submit]) {
@@ -69,5 +69,5 @@ form input[type=submit] {
   border: none;
   border-radius: 1.75em;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
 }/*# sourceMappingURL=confirmation.css.map */

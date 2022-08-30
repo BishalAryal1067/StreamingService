@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <div class="left-section">
-            <img src="./images/medals.jpg" alt="">
+            <img src="../images/medals.jpg" alt="">
         </div>
         <div class="right-section">
             <h3>Sign in with your account</h3>

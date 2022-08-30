@@ -58,7 +58,7 @@ body {
             &:active {
                 outline: none;
             }
-            input:nth-child(4) {
+            input:nth-child(6) {
                 @include defineSize(35%, 2.75em, 0.75em 0, 0);
                 @include buttonDesign($secondary-color, white, none, 1.75em);
                 font-weight: map-get($font-weights, medium);

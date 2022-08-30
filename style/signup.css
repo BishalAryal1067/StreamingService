@@ -91,7 +91,7 @@ body {
 .container .right-section form:hover, .container .right-section form:active {
   outline: none;
 }
-.container .right-section form input:nth-child(4) {
+.container .right-section form input:nth-child(6) {
   box-sizing: border-box;
   width: 35%;
   height: 2.75em;
@@ -102,7 +102,7 @@ body {
   border: none;
   border-radius: 1.75em;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
 }
 .container .right-section a {
   position: absolute;

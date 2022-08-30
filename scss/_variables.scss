@@ -10,7 +10,7 @@ $font-color:white;
 
 $font-weights:(
  "light" :400,
- "medium": 600,
+ "medium": 500,
  "bold":800 
 );
 
@@ -19,6 +19,21 @@ $font-weights:(
     flex-direction: $direction;
     justify-content: $justify;
     align-items: $align;
+}
+
+@mixin gridDisplay($grid-template-columns, $grid-template-rows, $justify, $align){
+    display: grid;
+    grid-template-columns: $grid-template-columns;
+    grid-template-rows: $grid-template-rows;
+    justify-items: $justify;
+    align-items: $align;
+}
+
+@mixin gridItem($column-start, $column-end, $row-start, $row-end){
+  grid-column-start: $column-start;
+  grid-column-end: $column-end;
+  grid-row-start: $row-start;
+  grid-row-end: $row-end;
 }
 
 @mixin postionElement($position,$px, $py, $tx, $ty){

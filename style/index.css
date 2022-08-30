@@ -6,192 +6,106 @@
 body {
   box-sizing: border-box;
   width: 100%;
-  height: 100vh;
+  height: auto;
   margin: 0;
   padding: 0;
 }
 
 .navbar {
   box-sizing: border-box;
-  width: 100%;
-  height: 8vh;
-  margin: 0;
+  width: 90%;
+  height: 12.5vh;
+  margin: auto auto;
   padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: #672BDF;
-}
-.navbar .nav-link {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0.75em;
-}
-.navbar .nav-link a {
-  font-weight: 600;
-  color: white;
-  text-decoration: none;
-}
-
-.container {
-  box-sizing: border-box;
-  width: 85%;
-  height: 90vh;
-  margin: 0.75em auto;
-  padding: 0.75em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 100%;
+  justify-items: center;
   align-items: center;
 }
-.container .left-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-  box-sizing: border-box;
-  width: 80%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-.container .left-container div {
-  box-sizing: border-box;
+.navbar .logo {
   width: 100%;
-  height: 30%;
-  margin: 0;
-  padding: 0.75em;
-  border-radius: 0.5em;
-  overflow: hidden;
-}
-.container .left-container div h3 {
-  margin: 0 0 0.5em 0;
-  color: #B52666;
-}
-.container .left-container div .cards-container {
-  box-sizing: border-box;
-  width: 100%;
-  height: 12.5em;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.container .left-container div .cards-container .card {
-  box-sizing: border-box;
-  width: 10em;
-  height: 100%;
-  margin: 0.15em 0.75em 0 0;
-  padding: 0;
-  border: 0.1em solid rgb(240, 240, 240);
-  border-radius: 0.5em;
-  overflow: hidden;
-  background-color: rgb(240, 240, 240);
-}
-.container .left-container div .cards-container .card h5 {
-  margin: 0;
-}
-.container .left-container div .cards-container .card img {
-  width: 100%;
-  height: 80%;
-}
-.container .left-container div #news-card {
-  box-sizing: border-box;
-  width: 30%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.container .left-container div #news-card img {
-  width: 50%;
-  height: 100%;
-  display: inline-block;
-}
-.container .left-container div #news-card .news-info {
-  box-sizing: border-box;
-  width: 50%;
-  height: 100%;
-  margin: 0;
-  padding: 0.25em 0.35em;
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
-  text-overflow: ellipsis;
+  align-items: center;
 }
-.container .left-container div #news-card .news-info h4 {
-  margin: 0.25em 0;
-  font-size: 0.95em;
+.navbar .logo img {
+  height: 5em;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 1.5s;
 }
-.container .left-container div #news-card .news-info p {
-  margin: 0;
-  font-size: 0.65em;
-  color: grey;
-  font-weight: 800;
+.navbar .logo:hover {
+  transform: scale(1.05);
+}
+.navbar .nav-items {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
-.container .left-container div #news-card .news-info p:nth-child(3) {
-  font-size: 0.8em;
-  color: black;
-  font-weight: 400;
-  margin: 0.5em 0;
-  text-align: justify;
+.navbar .nav-items .nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1.5em;
 }
-.container .left-container div #news-card:hover {
+.navbar .nav-items .nav-link:hover {
   opacity: 0.85;
   cursor: pointer;
-  transform: scale(0.975);
 }
-.container .right-container {
-  box-sizing: border-box;
-  width: 18%;
-  height: 96.5%;
-  margin: 0;
-  padding: 0.15em;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  border-radius: 0.5em;
+.navbar .nav-items .nav-link:hover a, .navbar .nav-items .nav-link:hover i {
+  color: #16A6F1;
 }
-.container .right-container h3 {
-  margin: 0.5em 0;
+.navbar .nav-items .nav-link a {
+  font-size: 0.98em;
+  text-decoration: none;
   color: #B52666;
-  text-decoration: underline;
+  font-weight: 500;
 }
-.container .right-container .fixtures {
+.navbar .nav-items .nav-link i {
+  color: #B52666;
+  margin-bottom: 0.3em;
+}
+.navbar .nav-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
   width: 100%;
-  height: auto;
 }
-.container .right-container .fixtures .fixture-card {
+.navbar .nav-btns button {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0 1em;
+  padding: 0.75em 0;
+  background-color: white;
+  color: #16A6F1;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  font-size: 0.98em;
+  font-weight: 800;
+  outline: none;
+}
+
+.login-btn i {
+  transform: rotateX(360deg);
+}
+
+.landing-container {
   box-sizing: border-box;
   width: 100%;
-  height: 5em;
-  margin: 0.75em;
-  padding: 0.25em;
-  border-radius: 0.25em;
-  box-shadow: 2px 2px 5px grey;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: 87.5vh;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 25% 50% 25%;
+  justify-items: center;
   align-items: center;
-}
-.container .right-container .fixtures .fixture-card p {
-  margin: 0.25em;
-}
-.container .right-container .fixtures .fixture-card p:nth-child(1) {
-  color: black;
-  font-weight: 800;
-}
-.container .right-container .fixtures .fixture-card p:nth-child(2) {
-  color: grey;
-  font-size: 0.85em;
-  font-weight: 400;
+  background-color: rgb(238, 238, 238);
 }/*# sourceMappingURL=index.css.map */
