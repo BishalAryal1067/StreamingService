@@ -36,7 +36,7 @@ $font-weights:(
   grid-row-end: $row-end;
 }
 
-@mixin postionElement($position,$px, $py, $tx, $ty){
+@mixin positionElement($position,$px, $py, $tx, $ty){
     position: $position;
     left: $px;
     top: $py;

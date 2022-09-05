@@ -3,6 +3,14 @@
 include __DIR__.("../controllers/auth.php");
 
 try {
+    $confirmationCode = $_SESSION['code'];
+    $fullname = $_SESSION['fullname'];
+    $email = $_SESSION['email'];
+    $country = $_SESSION['country'];
+    $phoneNumber = $_SESSION['phone'];
+    $password = $_SESSION['password'];
+
+    echo($confirmationCode);
     
 } catch (Error $err) {
     echo $err;

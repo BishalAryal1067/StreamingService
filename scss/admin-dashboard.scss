@@ -1,0 +1,214 @@
+@import "./variables";
+
+* {
+    font-family: $font-type;
+}
+
+body {
+    @include defineSize(100%, 100vh, 0, 0);
+}
+
+.navbar {
+    @include defineSize(90%, 12.5vh, auto auto, 0);
+    @include gridDisplay(25% 50% 25%, 100%, center, center);
+
+    .logo {
+        width: 100%;
+        @include flexDisplay(row, flex-start, center);
+        img {
+            height: 5em;
+            border-radius: 50%;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .nav-items {
+        @include flexDisplay(row, center, center);
+
+        .nav-link {
+            @include flexDisplay(column, center, center);
+            margin: 0 1.5em;
+
+            &:hover {
+                a,
+                i {
+                    color: $secondary-color;
+                }
+
+                opacity: 0.85;
+                cursor: pointer;
+            }
+
+            a {
+                font-size: 0.98em;
+                text-decoration: none;
+                color: $tertiary-color;
+                font-weight: map-get($map: $font-weights, $key: medium);
+            }
+
+            i {
+                color: $tertiary-color;
+                margin-bottom: 0.3em;
+            }
+        }
+    }
+    .nav-btns {
+        @include flexDisplay(row, flex-end, center);
+        width: 100%;
+
+        button {
+            @include defineSize(auto, auto, 0 1em, 0.75em 0);
+            @include buttonDesign(white, $secondary-color, none, 0.25em);
+            font-size: 0.98em;
+            font-weight: map-get($map: $font-weights, $key: bold);
+            outline: none;
+        }
+    }
+}
+
+.login-btn {
+    i {
+        transform: rotateX(360deg);
+    }
+}
+
+.side-bar {
+    @include defineSize(100%, auto, 2.5em 0, 0.5em 0);
+    @include flexDisplay(row, center, center);
+
+    .user-icon,
+    .content-icon {
+        text-decoration: none;
+        @include flexDisplay(row, center, center);
+        margin: 0 3.75em;
+        padding: 0 2.75em;
+        color: $primary-color;
+        font-size: 1.25em;
+        cursor: pointer;
+        font-weight: map-get($map: $font-weights, $key: bold);
+        position: relative;
+        transition: after 1.25s;
+
+        i {
+            margin: 0 0.5em;
+        }
+    }
+
+    .user-icon-active,
+    .content-icon-active {
+        background: $secondary-color;
+        padding: 0.5em;
+        border-radius: 0.15em;
+        color: white;
+    }
+}
+
+.bottom-container {
+    width: 100%;
+    height: 73.5vh;
+    overflow: hidden;
+    position: relative;
+
+    .users-container,
+    .content-container {
+        @include defineSize(100%, 100%, 0, 0.75em);
+        @include positionElement(absolute, 0, 0, 0, 0);
+        display: none;
+    }
+
+    .user-info {
+        @include defineSize(100%, auto, 0, 0);
+        h3 {
+            text-align: center;
+            color: white;
+            font-size: 1.35em;
+        }
+    }
+
+    .information {
+        @include flexDisplay(row, center, center);
+
+        p {
+            margin: 0 0.75em 0 0;
+            color: white;
+            padding: 0.5em;
+            border-radius: 0.15em;
+            font-weight: map-get($map: $font-weights, $key: bold);
+        }
+        p:nth-child(1) {
+            background-color: white;
+            color: $tertiary-color;
+        }
+
+        p:nth-child(2) {
+            background-color: red;
+            color: $font-color;
+        }
+        p:nth-child(3) {
+            background-color: green;
+            color: $font-color;
+        }
+    }
+
+    .users-active {
+        display: block;
+        background: $secondary-color;
+    }
+
+    .content-active {
+        display: block;
+        background: $secondary-color;
+    }
+
+    .content-container{
+        .add-btn{
+            @include positionElement(absolute, 90%, 3.5%,0,0);
+            padding: .5em 1.25em;
+            font-size: 1.25em;
+            @include buttonDesign($primary-color, white, none, 1.15em);
+            box-shadow: .01em .01em .15em white;
+            font-weight: map-get($map: $font-weights, $key: bold);
+
+            i{
+                margin-right: .5em;
+            }
+        }
+    }
+}
+
+.modal{
+  display: none;
+  @include defineSize(100%,100vh, 0,0);
+  @include positionElement(absolute, 0,0,0,0);
+  background-color: rgba(48, 48, 48, 0.89);
+  transition: display .88s;
+
+  form{
+       background: $font-color;
+       @include flexDisplay(column, center,flex-start);
+       @include defineSize(auto, 45%, 0, 2.5em);
+       border-radius: 1.15em;
+
+       input:not(input[type='file']),select{
+        margin: .75em 0;
+        @include defineSize(25em, 2.5em, .75em 0, .15em);
+        font-size: 1.15em;
+        outline: none;
+        border-radius: .25em;
+        border: .1em solid grey;
+       }
+
+  }
+
+  i{
+    @include positionElement(absolute, 96%, 5%, 15%,0);
+    font-size: 2.5em;
+    color: $font-color;
+    cursor: pointer;
+  }
+}
+
+.modal-active{
+    @include flexDisplay(row, center,center);
+}

@@ -10,7 +10,7 @@ body {
 
 .container {
     @include defineSize(45%, 60vh, 0, 0);
-    @include postionElement(relative,50%, 50%, 50%, 50%);
+    @include positionElement(relative,50%, 50%, 50%, 50%);
     background-color: $primary-color;
     border-radius: 0.75em;
     box-shadow: 0.1em 0.1em 2.5em grey;
@@ -33,7 +33,7 @@ body {
     .right-section {
         @include flexDisplay(column, center, center);
         background-color: white;
-        @include postionElement(relative, 0,0,0,0);
+        @include positionElement(relative, 0,0,0,0);
 
         h3{
             color: $secondary-color;

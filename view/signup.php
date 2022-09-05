@@ -1,11 +1,23 @@
 <?php
 
-include __DIR__ . "../controllers/auth.php";
+include __DIR__ . ("../controllers/auth.php");
+
 
 try {
+    //generating confirmation code, setting up email body and subject
+    $confirmationCode = random_int(0, 10000);
     if (isset($_POST['signup'])) {
         $email = $_POST['email'];
-        signUpConfirmation($email);
+        $isSent = signUpConfirmation($email, $confirmationCode);
+
+        if ($isSent) {
+            $_SESSION['code'] =
+                $_SESSION['fullname'] = $_POST['fullname'];
+            $_SESSION['email'] = $email;
+            $_SESSION['country'] = $_POST['country'];
+            $_SESSION['phone'] = $_POST['phone-number'];
+            $_SESSION['password'] = $_POST['password'];
+        }
     }
 } catch (Error $err) {
     echo $err;
@@ -39,10 +51,10 @@ try {
                 <select name="country" id="country-dropdown">
                     <option value="default">Select a country</option>
                 </select>
-                <div class="phone-number">
-                    <span class="country-code"></span>
-                    <input type="text" name="phone-number" id="phone-number">
-                </div>
+                <!-- <div class="phone-number"> -->
+                <!-- <span class="country-code"></span> -->
+                <input type="text" name="phone-number" id="phone-number" placeholder="Phone Number">
+                <!-- </div> -->
                 <input type="password" name="password" id="password" placeholder="Password">
                 <input type="submit" name="signup" value="Sign In">
             </form>

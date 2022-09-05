@@ -26,7 +26,7 @@ body {
           scale: 1.15;
           &:after{
             content:'';
-            @include postionElement(absolute, 0,100%,0,0);
+            @include positionElement(absolute, 0,100%,0,0);
             @include defineSize(100%, .1em,.15em 0,0);
             background-color: $secondary-color;
             opacity: .98;
@@ -35,7 +35,7 @@ body {
     }
 
     i{
-      @include postionElement(absolute, 95%, 50%, 0%,50%);
+      @include positionElement(absolute, 95%, 50%, 0%,50%);
       color: $font-color;
       font-size: 1.5em;
       cursor: pointer;
