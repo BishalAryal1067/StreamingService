@@ -3,14 +3,11 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-//loading necessary files from phpmailer
-// require './PHPMailer/src/PHPMailer.php';
-// require './PHPMailer/src/Exception.php';
-// require './PHPMailer/src/SMTP.php';
+require('./PHPMailer/Exception.php');
+require('./PHPMailer/PHPMailer.php');
+require('./PHPMailer/SMTP.php');
 
-require './emailHandler/src/PHPMailer.php';
-require './emailHandler/src/Exception.php';
-require './emailHandler/src/SMTP.php';
+
 
 //function to send a mail
 function sendMail($email_address, $email_subject, $email_body)

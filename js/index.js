@@ -9,3 +9,13 @@ const slideImage = ()=>{
    
   }
 }
+
+
+const signUp = document.querySelector('.signup-btn');
+const signIn = document.querySelector('.login-btn');
+signUp.addEventListener('click',()=>{
+  console.log('Click');
+  document.location.href = 'signup.php'
+})
+
+console.log("hello");

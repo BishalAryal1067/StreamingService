@@ -1,6 +1,6 @@
 
 let dropdown = document.querySelector('#country-dropdown');
-fetch('../countries/countries.json').then(res => {
+fetch('./countries/countries.json').then(res => {
     return res.json();
 }).then(data => {
     let option = '';
@@ -13,6 +13,9 @@ fetch('../countries/countries.json').then(res => {
 }).catch(err => {
     console.log(err);
 });
+
+
+
 
 
 

@@ -1,9 +1,10 @@
 <?php
 
-include __DIR__.("../controllers/auth.php");
+include __DIR__.("./controllers/auth.php");
+include __DIR__.("./view/signup.php");
 
-try {
-    $confirmationCode = $_SESSION['code'];
+
+$confirmationCode = $_SESSION['code'];
     $fullname = $_SESSION['fullname'];
     $email = $_SESSION['email'];
     $country = $_SESSION['country'];
@@ -11,10 +12,14 @@ try {
     $password = $_SESSION['password'];
 
     echo($confirmationCode);
+
+
+// try {
     
-} catch (Error $err) {
-    echo $err;
-}
+    
+// } catch (Error $err) {
+//     echo $err;
+// }
 
 ?>
 
@@ -26,7 +31,7 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--css file-->
-    <link rel="stylesheet" href="../style/confirmation.css">
+    <link rel="stylesheet" href="./style/confirmation.css">
     <title>Confirm</title>
 </head>
 
@@ -41,16 +46,14 @@ try {
             <select name="" id="">
                 <option value="default">Select a security question</option>
                 <option value="">What is the nam of you favorite pet?</option>
-                <option value="">Is nabin bhandari a landari?</option>
-                <option value="">Does attey eat Kera?</option>
+                <option value="">Where do you live?</option>
+                <option value="">Where do you go for vacation?</option>
             </select>
             <input type="text" placeholder="secuiry answer">
         </div>
         <input type="text" placeholder="security pin">
         <input type="submit" value="Confirm">
     </form>
-
-    <?php echo $fullname ?>
 </body>
 
 </html>

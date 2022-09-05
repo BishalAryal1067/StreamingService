@@ -57,6 +57,11 @@ body {
         @include flexDisplay(row, flex-end, center);
         width: 100%;
 
+        a{
+            text-decoration: none;
+            color: $secondary-color;
+        }
+
         button {
             @include defineSize(auto, auto, 0 1em, 0.75em 0);
             @include buttonDesign(white, $secondary-color, none, 0.25em);
