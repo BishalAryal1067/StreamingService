@@ -89,6 +89,7 @@ body {
   font-size: 0.98em;
   font-weight: 800;
   outline: none;
+  text-decoration: none;
 }
 
 .login-btn i {

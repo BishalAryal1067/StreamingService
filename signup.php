@@ -7,13 +7,14 @@ if(isset($_POST['signup'])){
     $email = $_POST['email'];
     $code = '9986';
     if(signUpConfirmation($email,$code)){
+        $_SESSION['code'] = $code;
         $_SESSION['fullname'] = $_POST['fullname'];
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['country'] = $_POST['country'];
         $_SESSION['phone'] = $_POST['phone'];
         $_SESSION['password'] = $_POST['password']; 
 
-        header("Location:confirmation.php");
+        header('Location: confirmation.php', true);
     }
 }
 ?>

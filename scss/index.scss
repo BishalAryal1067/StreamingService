@@ -57,17 +57,15 @@ body {
         @include flexDisplay(row, flex-end, center);
         width: 100%;
 
-        a{
-            text-decoration: none;
-            color: $secondary-color;
-        }
-
         button {
             @include defineSize(auto, auto, 0 1em, 0.75em 0);
             @include buttonDesign(white, $secondary-color, none, 0.25em);
             font-size: 0.98em;
             font-weight: map-get($map: $font-weights, $key: bold);
             outline: none;
+            text-decoration: none;
+
+       
         }
     }
 }
@@ -138,7 +136,7 @@ body {
 
         &::before {
             content: "";
-            @include postionElement(absolute, 0, 0, 0, 0);
+            @include positionElement(absolute, 0, 0, 0, 0);
             @include defineSize(100%, 0.75em, 0, 0);
             background-color: $tertiary-color;
         }
@@ -325,22 +323,20 @@ body {
             }
         }
     }
-     
-    .copyright{
+
+    .copyright {
         font-size: 1.15em;
         color: $font-color;
     }
 
-    .contact-info{
+    .contact-info {
         @include defineSize(15%, auto, 0, 0.5em 0.75em);
         @include flexDisplay(row, space-around, center);
         font-size: 1.15em;
         color: $font-color;
 
-        i{
-            margin-right: .75em;
+        i {
+            margin-right: 0.75em;
         }
     }
 }
-
-
