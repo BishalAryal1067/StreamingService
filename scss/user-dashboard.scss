@@ -1,49 +1,115 @@
 @import "./variables";
 
 * {
-    font-family: $font-type;
+  font-family: $font-type;
 }
 
 body {
-    @include defineSize(100%, 100vh, 0, 0);
+  @include defineSize(100%, 100vh, 0, 0);
 }
 
 .navbar {
-    @include defineSize(100%, 8vh, 0, 0);
+  @include defineSize(90%, 12.5vh, auto auto, 0);
+  @include gridDisplay(25% 50% 25%, 100%, center, center);
+
+  .logo {
+    width: 100%;
+    @include flexDisplay(row, flex-start, center);
+    img {
+      height: 5em;
+      border-radius: 50%;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .nav-items {
     @include flexDisplay(row, center, center);
-    position: relative;
+
     .nav-link {
-        display: flex;
-        flex-direction: column;
-        margin: 0 0.75em;
-        a {
-            font-weight: map-get($map: $font-weights, $key: medium);
-            color: $tertiary-color;
-            text-decoration: none;
+      @include flexDisplay(column, center, center);
+      margin: 0 1.5em;
+
+      &:hover {
+        a,
+        i {
+          color: $secondary-color;
         }
-        &:hover{
-          transition:scale .35s ease-in-out;
-          scale: 1.15;
-          &:after{
-            content:'';
-            @include positionElement(absolute, 0,100%,0,0);
-            @include defineSize(100%, .1em,.15em 0,0);
-            background-color: $secondary-color;
-            opacity: .98;
-          }
-        }
+
+        opacity: 0.85;
+        cursor: pointer;
+      }
+
+      a {
+        font-size: 0.98em;
+        text-decoration: none;
+        color: $tertiary-color;
+        font-weight: map-get($map: $font-weights, $key: medium);
+      }
+
+      i {
+        color: $tertiary-color;
+        margin-bottom: 0.3em;
+      }
+    }
+  }
+
+  .profile {
+    @include defineSize(auto, auto, 0, 0.75em);
+    @include flexDisplay(row, center, center);
+    @include gridItem(3, 4, 1, 2);
+    justify-self: center;
+
+    a{
+      text-decoration: none;
+      cursor: pointer;
+      color: $secondary-color;
+      font-weight: map-get($map: $font-weights, $key: bold);
+      margin-right: .25em;
+      font-size: .95em;
+      
     }
 
     i{
-      @include positionElement(absolute, 95%, 50%, 0%,50%);
-      color: $font-color;
-      font-size: 1.5em;
-      cursor: pointer;
-
-      &:hover{
-        transition: .65s;
-        scale: 1.25;
-      }
+      color: rgb(41, 202, 41);
+      font-size: .95em;
     }
+
+  
+  }
+
+  .nav-btns {
+    @include flexDisplay(row, flex-end, center);
+    width: 100%;
+    @include gridItem(3, 4, 1, 2);
+
+    button {
+      @include defineSize(auto, auto, 0 1em, 0.75em 0);
+      @include buttonDesign(white, $secondary-color, none, 0.25em);
+      font-size: 0.98em;
+      font-weight: map-get($map: $font-weights, $key: bold);
+      outline: none;
+      text-decoration: none;
+    }
+  }
 }
 
+.login-btn {
+  i {
+    transform: rotateX(360deg);
+  }
+}
+
+.mid-section {
+  @include defineSize(100%, auto, 0, 2.5em 10em);
+  @include flexDisplay(row, center, center);
+
+  input[type="search"] {
+    @include defineSize(25em, 2.75em, 0.75em 0, 0 1.75em);
+    border: none;
+    border-radius: 1.75em;
+    font-size: 1em;
+    background-color: $input-background;
+    outline: none;
+  }
+}

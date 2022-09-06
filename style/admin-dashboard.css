@@ -192,29 +192,66 @@ body {
 }
 .bottom-container .users-active {
   display: block;
-  background: #16A6F1;
+  background: rgb(210, 210, 210);
 }
 .bottom-container .content-active {
   display: block;
-  background: #16A6F1;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .bottom-container .content-container .add-btn {
   position: absolute;
-  left: 90%;
-  top: 3.5%;
+  left: 95%;
+  top: 5%;
   transform: translate(0, 0);
-  padding: 0.5em 1.25em;
-  font-size: 1.25em;
-  background-color: #672BDF;
-  color: white;
+  box-sizing: border-box;
+  box-sizing: border-box;
+  width: 4.5em;
+  height: 4.5em;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: #672BDF;
   border: none;
-  border-radius: 1.15em;
+  border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0.01em 0.01em 0.15em white;
+  box-shadow: 0.1em 0.1em 1.5em rgb(99, 96, 96);
   font-weight: 800;
 }
 .bottom-container .content-container .add-btn i {
-  margin-right: 0.5em;
+  font-size: xx-large;
+  font-weight: 800;
+}
+.bottom-container .content-container .card {
+  box-sizing: border-box;
+  width: 15em;
+  height: 15em;
+  margin: 0 2.75em;
+  padding: 1.5em;
+  cursor: pointer;
+  background-color: #672BDF;
+  border-radius: 1.25em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  transition: transform 1.5s;
+  box-shadow: 0.15em 0.15em 1.75em rgb(179, 179, 179);
+}
+.bottom-container .content-container .card i {
+  font-size: 3.5em;
+  color: white;
+  transition: transform 0.95s;
+}
+.bottom-container .content-container .card:hover {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
+.bottom-container .content-container .card:hover i {
+  transform: scale(1.15);
 }
 
 .modal {
@@ -244,7 +281,8 @@ body {
   padding: 2.5em;
   border-radius: 1.15em;
 }
-.modal form input:not(input[type=file]), .modal form select {
+.modal form input:not(input[type=file]),
+.modal form select {
   margin: 0.75em 0;
   box-sizing: border-box;
   width: 25em;
@@ -271,4 +309,63 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.content-modal {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(0, 0);
+  background-color: #672BDF;
+  z-index: 7;
+}
+.content-modal i {
+  position: absolute;
+  left: 96%;
+  top: 5%;
+  transform: translate(-15%, 0);
+  font-size: 2.5em;
+  color: white;
+  cursor: pointer;
+}
+.content-modal h3 {
+  text-align: center;
+  color: white;
+}
+
+.content-modal {
+  display: none;
+}
+.content-modal table {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0 2em;
+  padding: 0;
+  overflow: scroll;
+}
+.content-modal table th {
+  color: white;
+  margin: 2.75em 0;
+}
+.content-modal table th,
+.content-modal table td {
+  text-align: left;
+}
+.content-modal table tr {
+  margin: 0.25em;
+  border: none;
+  border-radius: 0.25em;
+}
+.content-modal table tr td .fixture-card {
+  width: 15em;
+  height: 5em;
+  background: white;
+  border-radius: 1.15em;
+  padding: 0.5em;
 }/*# sourceMappingURL=admin-dashboard.css.map */

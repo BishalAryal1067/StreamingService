@@ -61,3 +61,34 @@ function registerUser(
     mysqli_stmt_close($stmt);
     mysqli_stmt_close($stmt2);
 }
+
+//a function to redirect to desired pages
+function redirect($url){
+    header('Location'.$url, true);
+}
+
+//a function to login user
+function loginUser($email, $password){
+    global $db_connection;
+
+    $query = "SELECT * FROM users WHERE email = '{$email}'  AND status = 'active'";
+    $selectUser = mysqli_query($db_connection, $query);
+    
+    while ($row = mysqli_fetch_array($selectUser)) {
+    $registeredEmail = $row ['email'];
+    $db_password = $row ['password'];
+    $role = strtolower($row['role']);
+        if (password_verify($password, $db_password)) {
+        $_SESSION['email'] = $registeredEmail;
+        $_SESSION['logged_in'] = "logged_in";
+        if($role == 'user'){
+            redirect("home.php");
+        }
+        else{
+            redirect("admin/admin-dashboard.html"); 
+        }
+        
+        }
+    }
+}
+
