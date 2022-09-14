@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--font-awesome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--css-->
+    <link rel="stylesheet" href="./style/video.css">
     <title>Videos</title>
 </head>
+
 <body>
 
     <!--navigation bar-->
@@ -39,44 +47,52 @@
                 <a href="">Contact</a>
             </div>
         </div>
+        <!--profile-->
+        <div class="profile">
+            <a href="profile.php">Username</a>
+            <i class="fa-solid fa-circle"></i>
+        </div>
+        <!--btns-->
         <div class="nav-btns">
-            <button class="signup-btn">
-                <a href="signup.php" id="#register">Sign Up</a>
-                <i class="fa-solid fa-user-plus"></i>
-            </button>
-            <button class="login-btn">
-                <a href="login.php" id="#login"> Sign In</a>
-                <i class="fa-solid fa-right-to-bracket"></i>
+            <button class="login-btn" type="submit">
+                Sign Out
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </button>
         </div>
+    </div>
     </div>
 
     <div class="container">
         <div class="recent">
-            <h5>Recent Videos</h5>
+            <div class="heading">
+                 <div></div>
+                <h5>Recent Videos</h5>
+            </div>
             <div class="video-section">
                 <iframe width="500" height="350" src="https://www.youtube.com/embed/EjWGIcZbIoQ"
-                title="Men's 100m Semi-Finals | World Athletics Championships Beijing 2015" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-    
-            <iframe src="https://www.youtube.com/embed/UmIYanq5gH8"
-                title="Michael Phelps Last Olympic Race - Swimming Men's 4x100m Medley Relay Final | Rio 2016 Replay"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-    
-            <iframe width="1280" height="720" src="https://www.youtube.com/embed/2RlLmK5WM_s"
-                title="Men's BMX Gold Medal Race | Tokyo Replays" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-    
-            <iframe width="1280" height="720" src="https://www.youtube.com/embed/Sxag-kynFFM"
-                title="Brazil 🇧🇷 vs USA 🇺🇸 | Women's Volleyball Gold Medal Match | Tokyo Replays" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+                    title="Men's 100m Semi-Finals | World Athletics Championships Beijing 2015" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+                <iframe src="https://www.youtube.com/embed/UmIYanq5gH8"
+                    title="Michael Phelps Last Olympic Race - Swimming Men's 4x100m Medley Relay Final | Rio 2016 Replay"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+                <iframe width="1280" height="720" src="https://www.youtube.com/embed/2RlLmK5WM_s"
+                    title="Men's BMX Gold Medal Race | Tokyo Replays" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+                <iframe width="1280" height="720" src="https://www.youtube.com/embed/Sxag-kynFFM"
+                    title="Brazil 🇧🇷 vs USA 🇺🇸 | Women's Volleyball Gold Medal Match | Tokyo Replays"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
         </div>
     </div>
 </body>
+
 </html>

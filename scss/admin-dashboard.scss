@@ -73,222 +73,186 @@ body {
     }
 }
 
-.side-bar {
-    @include defineSize(100%, auto, 2.5em 0, 0.5em 0);
-    @include flexDisplay(row, center, center);
+/*mid-section*/
+.mid-section {
+    @include defineSize(90%, auto, 2.5em auto, 1.5em 0);
+    @include flexDisplay(row, flex-start, center);
 
-    .user-icon,
-    .content-icon {
-        text-decoration: none;
+    button {
+        @include defineSize(auto, auto, 0 0.75em, 0.75em 1.5em);
+        @include buttonDesign(white, $secondary-color, 0.2em solid $secondary-color, 1.5em);
         @include flexDisplay(row, center, center);
-        margin: 0 3.75em;
-        padding: 0 2.75em;
-        color: $primary-color;
-        font-size: 1.25em;
-        cursor: pointer;
+        font-size: 1em;
         font-weight: map-get($map: $font-weights, $key: bold);
-        position: relative;
-        transition: after 1.25s;
 
         i {
-            margin: 0 0.5em;
+            margin-right: 0.5em;
         }
     }
 
-    .user-icon-active,
-    .content-icon-active {
-        background: $secondary-color;
-        padding: 0.5em;
-        border-radius: 0.15em;
-        color: white;
+    .active-button {
+        @include buttonDesign($primary-color, white, none, 1.5em);
+        font-size: 1em;
     }
 }
 
-.bottom-container {
-    width: 100%;
-    height: 73.5vh;
-    overflow: hidden;
+/*bottom container*/
+.bottom-section {
+    @include defineSize(90%, 65vh, 0.5em auto, 0);
+    overflow-y: scroll;
+    box-shadow: 0.1em 0.1em 0.5em grey;
+    border-radius: 0.75em;
     position: relative;
 
-    .users-container,
-    .content-container {
-        @include defineSize(100%, 100%, 0, 0.75em);
+    .users-section,
+    .video-section,
+    .images-section,
+    .video-section,
+    .fixture-section,
+    .category-section {
+        @include defineSize(100%, 100%, 0, 1.5em);
         @include positionElement(absolute, 0, 0, 0, 0);
+        @include flexDisplay(column, flex-start, flex-start);
+        overflow-x: hidden;
+        overflow-y: scroll;
         display: none;
-    }
 
-    .user-info {
-        @include defineSize(100%, auto, 0, 0);
-        h3 {
-            text-align: center;
-            color: white;
-            font-size: 1.35em;
-        }
-    }
+        .top-section {
+            @include defineSize(100%, auto, 0, 0);
+            @include flexDisplay(row, space-between, center);
+            .filter-section {
+                @include flexDisplay(row, center, center);
 
-    .information {
-        @include flexDisplay(row, center, center);
+                p,
+                i {
+                    color: grey;
+                    font-weight: map-get($map: $font-weights, $key: bold);
+                    margin: 0 0.5em 0 0;
+                }
 
-        p {
-            margin: 0 0.75em 0 0;
-            color: white;
-            padding: 0.5em;
-            border-radius: 0.15em;
-            font-weight: map-get($map: $font-weights, $key: bold);
-        }
-        p:nth-child(1) {
-            background-color: white;
-            color: $tertiary-color;
-        }
+                select {
+                    @include defineSize(10em, 2.75em, 0.75em 0, 0 0.5em);
+                    border: 0.1em solid rgb(213, 213, 213);
+                    border-radius: 0.25em;
+                    font-size: 1em;
+                    background-color: $input-background;
+                    outline: none;
+                }
+            }
 
-        p:nth-child(2) {
-            background-color: red;
-            color: $font-color;
-        }
-        p:nth-child(3) {
-            background-color: green;
-            color: $font-color;
-        }
-    }
-
-    .users-active {
-        display: block;
-        background: rgb(210, 210, 210);
-    }
-
-    .content-active {
-        display: block;
-        background: white;
-        @include flexDisplay(row, center, center);
-    }
-
-    .content-container {
-        .add-btn {
-            @include positionElement(absolute, 95%, 5%, 0, 0);
-            box-sizing: border-box;
-            @include defineSize(4.5em, 4.5em, 0, 0);
-            @include buttonDesign(white, $primary-color, none, 50%);
-            box-shadow: 0.1em 0.1em 1.5em rgb(99, 96, 96);
-            font-weight: map-get($map: $font-weights, $key: bold);
-
-            i {
-                font-size: xx-large;
+            button {
+                @include defineSize(auto, auto, 0 0.75em, 0.75em 1.5em);
+                @include buttonDesign(white, $primary-color, 0.2em solid $primary-color, 1.5em);
+                @include flexDisplay(row, center, center);
+                font-size: 0.98em;
                 font-weight: map-get($map: $font-weights, $key: bold);
-            }
-        }
-
-        .card {
-            @include defineSize(15em, 15em, 0 2.75em, 1.5em);
-            cursor: pointer;
-            background-color: $primary-color;
-            border-radius: 1.25em;
-            @include flexDisplay(column, space-around, center);
-            transition: transform 1.5s;
-            box-shadow: 0.15em 0.15em 1.75em rgb(179, 179, 179);
-
-            i {
-                font-size: 3.5em;
-                color: $font-color;
-                transition: transform 0.95s;
-            }
-
-            &:hover {
-                transform: scale(0.95);
-                opacity: 0.9;
 
                 i {
-                    transform: scale(1.15);
+                    margin-right: 0.5em;
+                    color: $primary-color;
                 }
             }
         }
     }
+
+    /*active section*/
+    .active-section {
+        display: block;
+        z-index: 2;
+    }
+
+    input[type="search"] {
+        @include defineSize(25em, 2.75em, 0.75em 0, 0 1.75em);
+        border: 0.1em solid rgb(213, 213, 213);
+        border-radius: 1.75em;
+        font-size: 1em;
+        background-color: $input-background;
+        outline: none;
+    }
 }
 
-.modal {
+.add-image-modal,
+.add-video-modal,
+.add-category-modal,
+.add-fixture-modal,
+.add-news-modal {
     display: none;
-    @include defineSize(100%, 100vh, 0, 0);
-    @include positionElement(absolute, 0, 0, 0, 0);
-    background-color: rgba(48, 48, 48, 0.89);
-    transition: display 0.88s;
-
-    form {
-        background: $font-color;
-        @include flexDisplay(column, center, flex-start);
-        @include defineSize(auto, 45%, 0, 2.5em);
-        border-radius: 1.15em;
-
-        input:not(input[type="file"]),
-        select {
-            margin: 0.75em 0;
-            @include defineSize(25em, 2.5em, 0.75em 0, 0.15em);
-            font-size: 1.15em;
-            outline: none;
-            border-radius: 0.25em;
-            border: 0.1em solid grey;
-        }
-    }
-
-    i {
-        @include positionElement(absolute, 96%, 5%, 15%, 0);
-        font-size: 2.5em;
-        color: $font-color;
-        cursor: pointer;
-    }
 }
+
+
 
 .modal-active {
-    @include flexDisplay(row, center, center);
-}
-
-.content-modal {
-    @include defineSize(100%, 100vh, 0, 0);
     @include positionElement(absolute, 0, 0, 0, 0);
-    background-color: $primary-color;
-    z-index: 7;
+    @include defineSize(100%, 100vh, 0, 0);
+    @include flexDisplay(row, center, center);
+    background: fixed;
+    background-color: rgba(0, 0, 0, 0.541);
+    z-index: 5;
 
-    i {
-        @include positionElement(absolute, 96%, 5%, 15%, 0);
-        font-size: 2.5em;
-        color: $font-color;
-        cursor: pointer;
-    }
+    form {
+        position: relative;
+        background-color: white;
+        padding: 5em;
+        border-radius: 0.75em;
+        backdrop-filter: 10px;
+        -webkit-backdrop-filter: 10px;
+        @include flexDisplay(column, center, flex-start);
 
-    h3 {
-        text-align: center;
-        color: $font-color;
-    }
-}
-
-.content-modal {
-    display: none;
-    table {
-        @include defineSize(auto, auto, 0 2em, 0);
-        overflow: scroll;
-
-        th {
-            color: $font-color;
-            margin: 2.75em 0;
+        h3 {
+            color: $secondary-color;
+            margin: 0;
         }
 
-        th,
-        td {
-            text-align: left;
+        input[type="text"],
+        input[type="date"] {
+            @include defineSize(25em, 2.75em, 0.75em 0, 0 0.75em);
+            border: 0.1em solid rgb(213, 213, 213);
+            border-radius: 0.35em;
+            font-size: 1em;
+            background-color: $input-background;
+            outline: none;
         }
 
-        tr {
-            margin: 0.25em;
-            border: none;
-            border-radius: 0.25em;
+        textarea{
+            padding: 0.75em;
+            background-color: $input-background;
+            border: 0.1em solid rgb(213, 213, 213);
+            outline: none;
+            border-radius: 0.35em;
+            font-size: 1em;
+        }
 
-            td {
-                .fixture-card {
-                    width: 15em;
-                    height: 5em;
-                    background: white;
-                    border-radius: 1.15em;
-                    padding: .5em;
-                }
-            }
-        } 
+
+
+        input[type="file"]::file-selector-button {
+            @include defineSize(auto, auto, 0.75em 0, 0.5em 1.25em);
+            cursor: pointer;
+            margin-right: 0.5em;
+            @include buttonDesign(
+                $input-background,
+                rgba(0, 0, 0, 0.55),
+                0.1em solid rgba(128, 128, 128, 0.481),
+                0.35em
+            );
+            font-size: 1.1em;
+            font-weight: bolder;
+            outline: none;
+        }
+
+        button {
+            @include defineSize(auto, auto, 0.75em 0, 0.5em 2em);
+            cursor: pointer;
+            margin-right: 0.5em;
+            @include buttonDesign($secondary-color, white, none, 0.35em);
+            font-size: 1.1em;
+            outline: none;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            color: red;
+            font-size: 2.15em;
+            @include positionElement(absolute, 92%, 2.5%, 0, 0);
+        }
     }
 }

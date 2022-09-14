@@ -53,9 +53,33 @@ body {
             }
         }
     }
+
+    .profile {
+        @include defineSize(auto, auto, 0, 0.75em);
+        @include flexDisplay(row, center, center);
+        @include gridItem(3, 4, 1, 2);
+        justify-self: center;
+
+        a,
+        a:active {
+            text-decoration: none;
+            cursor: pointer;
+            color: $secondary-color;
+            font-weight: map-get($map: $font-weights, $key: bold);
+            margin-right: 0.25em;
+            font-size: 0.95em;
+        }
+
+        i {
+            color: rgb(41, 202, 41);
+            font-size: 0.95em;
+        }
+    }
+
     .nav-btns {
         @include flexDisplay(row, flex-end, center);
         width: 100%;
+        @include gridItem(3, 4, 1, 2);
 
         button {
             @include defineSize(auto, auto, 0 1em, 0.75em 0);
@@ -64,6 +88,47 @@ body {
             font-weight: map-get($map: $font-weights, $key: bold);
             outline: none;
             text-decoration: none;
+        }
+    }
+}
+
+.container {
+    @include defineSize(100%, 85vh, 0, 2.5em);
+    @include flexDisplay(column, flex-start, center);
+    border: 2px solid black;
+    overflow: hidden;
+
+    .recent {
+        @include flexDisplay(column, center, flex-start);
+        @include defineSize(100%, auto, 0, 0.75em);
+
+        .heading {
+            @include flexDisplay(row, flex-start,flex-start);
+            margin-bottom: .35em;
+            div{
+                @include defineSize(.45em, 1.2em,0,0);
+                background-color: $primary-color;
+                margin-right:.85em;
+            }
+            h5 {
+                margin: 0;
+                margin-bottom: 0.25em;
+                font-size: 1.15em;
+                color: $primary-color;
+            
+            }
+        }
+
+        .video-section {
+            @include defineSize(100%, auto, 0, 0);
+            @include flexDisplay(row, space-between, space-between);
+        }
+
+        iframe {
+            display: inline-block;
+            @include defineSize(26em, 18em, 0, 0);
+            border: none;
+            border-radius: .15em;
         }
     }
 }

@@ -95,277 +95,312 @@ body {
   transform: rotateX(360deg);
 }
 
-.side-bar {
+/*mid-section*/
+.mid-section {
   box-sizing: border-box;
-  width: 100%;
+  width: 90%;
   height: auto;
-  margin: 2.5em 0;
-  padding: 0.5em 0;
+  margin: 2.5em auto;
+  padding: 1.5em 0;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
-.side-bar .user-icon,
-.side-bar .content-icon {
-  text-decoration: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 0 3.75em;
-  padding: 0 2.75em;
-  color: #672BDF;
-  font-size: 1.25em;
+.mid-section button {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0 0.75em;
+  padding: 0.75em 1.5em;
+  background-color: white;
+  color: #16A6F1;
+  border: 0.2em solid #16A6F1;
+  border-radius: 1.5em;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
   font-weight: 800;
-  position: relative;
-  transition: after 1.25s;
 }
-.side-bar .user-icon i,
-.side-bar .content-icon i {
-  margin: 0 0.5em;
+.mid-section button i {
+  margin-right: 0.5em;
 }
-.side-bar .user-icon-active,
-.side-bar .content-icon-active {
-  background: #16A6F1;
-  padding: 0.5em;
-  border-radius: 0.15em;
+.mid-section .active-button {
+  background-color: #672BDF;
   color: white;
+  border: none;
+  border-radius: 1.5em;
+  cursor: pointer;
+  font-size: 1em;
 }
 
-.bottom-container {
-  width: 100%;
-  height: 73.5vh;
-  overflow: hidden;
+/*bottom container*/
+.bottom-section {
+  box-sizing: border-box;
+  width: 90%;
+  height: 65vh;
+  margin: 0.5em auto;
+  padding: 0;
+  overflow-y: scroll;
+  box-shadow: 0.1em 0.1em 0.5em grey;
+  border-radius: 0.75em;
   position: relative;
+  /*active section*/
 }
-.bottom-container .users-container,
-.bottom-container .content-container {
+.bottom-section .users-section,
+.bottom-section .video-section,
+.bottom-section .images-section,
+.bottom-section .video-section,
+.bottom-section .fixture-section,
+.bottom-section .category-section {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 0.75em;
+  padding: 1.5em;
   position: absolute;
   left: 0;
   top: 0;
   transform: translate(0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: none;
 }
-.bottom-container .user-info {
+.bottom-section .users-section .top-section,
+.bottom-section .video-section .top-section,
+.bottom-section .images-section .top-section,
+.bottom-section .video-section .top-section,
+.bottom-section .fixture-section .top-section,
+.bottom-section .category-section .top-section {
   box-sizing: border-box;
   width: 100%;
   height: auto;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
-.bottom-container .user-info h3 {
-  text-align: center;
-  color: white;
-  font-size: 1.35em;
-}
-.bottom-container .information {
+.bottom-section .users-section .top-section .filter-section,
+.bottom-section .video-section .top-section .filter-section,
+.bottom-section .images-section .top-section .filter-section,
+.bottom-section .video-section .top-section .filter-section,
+.bottom-section .fixture-section .top-section .filter-section,
+.bottom-section .category-section .top-section .filter-section {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.bottom-container .information p {
-  margin: 0 0.75em 0 0;
-  color: white;
-  padding: 0.5em;
-  border-radius: 0.15em;
+.bottom-section .users-section .top-section .filter-section p,
+.bottom-section .users-section .top-section .filter-section i,
+.bottom-section .video-section .top-section .filter-section p,
+.bottom-section .video-section .top-section .filter-section i,
+.bottom-section .images-section .top-section .filter-section p,
+.bottom-section .images-section .top-section .filter-section i,
+.bottom-section .video-section .top-section .filter-section p,
+.bottom-section .video-section .top-section .filter-section i,
+.bottom-section .fixture-section .top-section .filter-section p,
+.bottom-section .fixture-section .top-section .filter-section i,
+.bottom-section .category-section .top-section .filter-section p,
+.bottom-section .category-section .top-section .filter-section i {
+  color: grey;
   font-weight: 800;
+  margin: 0 0.5em 0 0;
 }
-.bottom-container .information p:nth-child(1) {
-  background-color: white;
-  color: #B52666;
-}
-.bottom-container .information p:nth-child(2) {
-  background-color: red;
-  color: white;
-}
-.bottom-container .information p:nth-child(3) {
-  background-color: green;
-  color: white;
-}
-.bottom-container .users-active {
-  display: block;
-  background: rgb(210, 210, 210);
-}
-.bottom-container .content-active {
-  display: block;
-  background: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.bottom-container .content-container .add-btn {
-  position: absolute;
-  left: 95%;
-  top: 5%;
-  transform: translate(0, 0);
+.bottom-section .users-section .top-section .filter-section select,
+.bottom-section .video-section .top-section .filter-section select,
+.bottom-section .images-section .top-section .filter-section select,
+.bottom-section .video-section .top-section .filter-section select,
+.bottom-section .fixture-section .top-section .filter-section select,
+.bottom-section .category-section .top-section .filter-section select {
   box-sizing: border-box;
+  width: 10em;
+  height: 2.75em;
+  margin: 0.75em 0;
+  padding: 0 0.5em;
+  border: 0.1em solid rgb(213, 213, 213);
+  border-radius: 0.25em;
+  font-size: 1em;
+  background-color: rgb(240, 240, 240);
+  outline: none;
+}
+.bottom-section .users-section .top-section button,
+.bottom-section .video-section .top-section button,
+.bottom-section .images-section .top-section button,
+.bottom-section .video-section .top-section button,
+.bottom-section .fixture-section .top-section button,
+.bottom-section .category-section .top-section button {
   box-sizing: border-box;
-  width: 4.5em;
-  height: 4.5em;
-  margin: 0;
-  padding: 0;
+  width: auto;
+  height: auto;
+  margin: 0 0.75em;
+  padding: 0.75em 1.5em;
   background-color: white;
   color: #672BDF;
-  border: none;
-  border-radius: 50%;
+  border: 0.2em solid #672BDF;
+  border-radius: 1.5em;
   cursor: pointer;
-  box-shadow: 0.1em 0.1em 1.5em rgb(99, 96, 96);
-  font-weight: 800;
-}
-.bottom-container .content-container .add-btn i {
-  font-size: xx-large;
-  font-weight: 800;
-}
-.bottom-container .content-container .card {
-  box-sizing: border-box;
-  width: 15em;
-  height: 15em;
-  margin: 0 2.75em;
-  padding: 1.5em;
-  cursor: pointer;
-  background-color: #672BDF;
-  border-radius: 1.25em;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  transition: transform 1.5s;
-  box-shadow: 0.15em 0.15em 1.75em rgb(179, 179, 179);
+  font-size: 0.98em;
+  font-weight: 800;
 }
-.bottom-container .content-container .card i {
-  font-size: 3.5em;
-  color: white;
-  transition: transform 0.95s;
+.bottom-section .users-section .top-section button i,
+.bottom-section .video-section .top-section button i,
+.bottom-section .images-section .top-section button i,
+.bottom-section .video-section .top-section button i,
+.bottom-section .fixture-section .top-section button i,
+.bottom-section .category-section .top-section button i {
+  margin-right: 0.5em;
+  color: #672BDF;
 }
-.bottom-container .content-container .card:hover {
-  transform: scale(0.95);
-  opacity: 0.9;
+.bottom-section .active-section {
+  display: block;
+  z-index: 2;
 }
-.bottom-container .content-container .card:hover i {
-  transform: scale(1.15);
+.bottom-section input[type=search] {
+  box-sizing: border-box;
+  width: 25em;
+  height: 2.75em;
+  margin: 0.75em 0;
+  padding: 0 1.75em;
+  border: 0.1em solid rgb(213, 213, 213);
+  border-radius: 1.75em;
+  font-size: 1em;
+  background-color: rgb(240, 240, 240);
+  outline: none;
 }
 
-.modal {
+.add-image-modal,
+.add-video-modal,
+.add-category-modal,
+.add-fixture-modal,
+.add-news-modal {
   display: none;
+}
+
+.modal-active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(0, 0);
   box-sizing: border-box;
   width: 100%;
   height: 100vh;
   margin: 0;
   padding: 0;
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform: translate(0, 0);
-  background-color: rgba(48, 48, 48, 0.89);
-  transition: display 0.88s;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: fixed;
+  background-color: rgba(0, 0, 0, 0.541);
+  z-index: 5;
 }
-.modal form {
-  background: white;
+.modal-active form {
+  position: relative;
+  background-color: white;
+  padding: 5em;
+  border-radius: 0.75em;
+  backdrop-filter: 10px;
+  -webkit-backdrop-filter: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  box-sizing: border-box;
-  width: auto;
-  height: 45%;
-  margin: 0;
-  padding: 2.5em;
-  border-radius: 1.15em;
 }
-.modal form input:not(input[type=file]),
-.modal form select {
-  margin: 0.75em 0;
+.modal-active form h3 {
+  color: #16A6F1;
+  margin: 0;
+}
+.modal-active form input[type=text],
+.modal-active form input[type=date] {
   box-sizing: border-box;
   width: 25em;
-  height: 2.5em;
+  height: 2.75em;
   margin: 0.75em 0;
-  padding: 0.15em;
-  font-size: 1.15em;
+  padding: 0 0.75em;
+  border: 0.1em solid rgb(213, 213, 213);
+  border-radius: 0.35em;
+  font-size: 1em;
+  background-color: rgb(240, 240, 240);
   outline: none;
-  border-radius: 0.25em;
-  border: 0.1em solid grey;
 }
-.modal i {
-  position: absolute;
-  left: 96%;
-  top: 5%;
-  transform: translate(-15%, 0);
-  font-size: 2.5em;
-  color: white;
-  cursor: pointer;
+.modal-active form textarea {
+  padding: 0.75em;
+  background-color: rgb(240, 240, 240);
+  border: 0.1em solid rgb(213, 213, 213);
+  outline: none;
+  border-radius: 0.35em;
+  font-size: 1em;
 }
-
-.modal-active {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.content-modal {
-  box-sizing: border-box;
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform: translate(0, 0);
-  background-color: #672BDF;
-  z-index: 7;
-}
-.content-modal i {
-  position: absolute;
-  left: 96%;
-  top: 5%;
-  transform: translate(-15%, 0);
-  font-size: 2.5em;
-  color: white;
-  cursor: pointer;
-}
-.content-modal h3 {
-  text-align: center;
-  color: white;
-}
-
-.content-modal {
-  display: none;
-}
-.content-modal table {
+.modal-active form input[type=file]::-webkit-file-upload-button {
   box-sizing: border-box;
   width: auto;
   height: auto;
-  margin: 0 2em;
-  padding: 0;
-  overflow: scroll;
+  margin: 0.75em 0;
+  padding: 0.5em 1.25em;
+  cursor: pointer;
+  margin-right: 0.5em;
+  background-color: rgb(240, 240, 240);
+  color: rgba(0, 0, 0, 0.55);
+  border: 0.1em solid rgba(128, 128, 128, 0.481);
+  border-radius: 0.35em;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bolder;
+  outline: none;
 }
-.content-modal table th {
+.modal-active form input[type=file]::file-selector-button {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0.75em 0;
+  padding: 0.5em 1.25em;
+  cursor: pointer;
+  margin-right: 0.5em;
+  background-color: rgb(240, 240, 240);
+  color: rgba(0, 0, 0, 0.55);
+  border: 0.1em solid rgba(128, 128, 128, 0.481);
+  border-radius: 0.35em;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bolder;
+  outline: none;
+}
+.modal-active form button {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0.75em 0;
+  padding: 0.5em 2em;
+  cursor: pointer;
+  margin-right: 0.5em;
+  background-color: #16A6F1;
   color: white;
-  margin: 2.75em 0;
-}
-.content-modal table th,
-.content-modal table td {
-  text-align: left;
-}
-.content-modal table tr {
-  margin: 0.25em;
   border: none;
-  border-radius: 0.25em;
+  border-radius: 0.35em;
+  cursor: pointer;
+  font-size: 1.1em;
+  outline: none;
 }
-.content-modal table tr td .fixture-card {
-  width: 15em;
-  height: 5em;
-  background: white;
-  border-radius: 1.15em;
-  padding: 0.5em;
+.modal-active form .close-btn {
+  cursor: pointer;
+  color: red;
+  font-size: 2.15em;
+  position: absolute;
+  left: 92%;
+  top: 2.5%;
+  transform: translate(0, 0);
 }/*# sourceMappingURL=admin-dashboard.css.map */

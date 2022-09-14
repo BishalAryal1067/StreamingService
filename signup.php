@@ -32,6 +32,8 @@ if(isset($_POST['signup'])){
     <title>FunOlympic</title>
 </head>
 
+
+
 <body>
     <div class="container">
         <div class="left-section">
@@ -54,10 +56,9 @@ if(isset($_POST['signup'])){
                 <input type="submit" name="signup" value="Sign In">
             </form>
             <a href="login.php">Sign in with your account</a>
-            <p> </p>
         </div>
     </div>
-
+    
     <!--external javascript file-->
     <script src="./js/signup.js"></script>
 </body>
