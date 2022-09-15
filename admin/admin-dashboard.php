@@ -2,6 +2,7 @@
 
 include('../functions.php');
 
+//adding fixture from modal
 try {
     if (isset($_POST['add-fixture'])) {
         $fixtureTitle = $_POST['fixture-title'];
@@ -9,18 +10,36 @@ try {
         $category = $_POST['fixture-category'];
     
         if (addFixtures($fixtureTitle, $fixtureDate, $category)) {
-            echo "<script>
-              alert('Fixture added successfully');
-            </script>";
+            echo "Yes baby";
+            
         } else {
-            echo "<script>
-            alert('Something went wrong');
-          </script>";
+            echo "Fuck No";
+            
         }
     }
 } catch (Error $err) {
     $error = $err;
     echo $error;
+}
+
+//adding category from modal
+if(isset($_POST['add-category'])){
+    $categoryTitle= $_POST['category-title'];
+    if(addCategory($categoryTitle)){
+       echo "
+         <script language='javascript' type='text/javascript'>
+           alert('Category successfully added');
+         </script>
+       ";
+    }
+
+    else{
+        echo "
+        <script language='javascript' type='text/javascript'>
+          alert('Something went wrong!');
+        </script>
+      ";
+    }
 }
 ?>
 
