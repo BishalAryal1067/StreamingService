@@ -3,7 +3,13 @@
 include('database.php');
 include('emailHandler.php');
 
-
+function confirm_query($result)
+{
+    global $db_connection;
+    if (!$result) {
+        die('Query Failed' . mysqli_error($db_connection));
+    }
+}
 
 function signUpConfirmation($email, $confirmationCode)
 {
@@ -12,9 +18,20 @@ function signUpConfirmation($email, $confirmationCode)
     $emailSubject = "Dear User, Confirm you registration !";
     $emailBody = "The confirmation code is: $confirmationCode";
 
-    sendMail($email, $emailSubject, $emailBody);
+    if (sendMail($email, $emailSubject, $emailBody)) {
+        return true;
+    }
+    return true;
 }
-
+function insertSecurityDetail($email, $securityQuestion, $answer, $securityPin)
+{
+    global $db_connection;
+    $query = "INSERT INTO user_security VALUES('$email', '$securityQuestion', '$answer', '$securityPin')";
+    $result = mysqli_query($db_connection, $query);
+    if ($result) {
+        return true;
+    }
+}
 
 //function to register user
 function registerUser(
@@ -27,68 +44,48 @@ function registerUser(
     $answer,
     $securityPin
 ) {
-
     global $db_connection;
-    $fullName = mysqli_real_escape_string($db_connection, trim($fullName));
-    $email = mysqli_real_escape_string($db_connection, trim($email));
-    $country = mysqli_real_escape_string($db_connection, trim($country));
-    $phoneNumber = mysqli_real_escape_string($db_connection, trim($phoneNumber));
-    $password = mysqli_real_escape_string($db_connection, trim($password));
-    $securityQuestion = mysqli_real_escape_string($db_connection, trim($securityQuestion));
-    $answer = mysqli_real_escape_string($db_connection, trim($answer));
-    $phoneNumber = mysqli_real_escape_string($db_connection, trim($securityPin));
-
 
     //performing hashing on password
     $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 11));
     $status = 'active';
     $role = 'user';
 
-    //executing statments
-    $stmt = mysqli_prepare($db_connection, "INSERT INTO 
-    user_information(full_name, email, country,phone_number,password,status,role,user_password) 
-    VALUES(?, ?, ?, ?,?, ?, ?, ?)");
+    //writing and executing query
+    $query = "INSERT INTO user_information(full_name, email, country, phone_number, password, status, role) 
+    VALUES('$fullName', '$email', '$country', '$phoneNumber', '$password', '$status', '$role')";
 
-    $stmt2 = mysqli_prepare($db_connection, "INSERT INTO 
-     user_security(email, security_question,answer,security_pin) 
-     VALUES(?, ?, ?, ?)");
-
-
-    mysqli_stmt_bind_param($stmt, 'ssssssss', $fullName, $email, $country, $phoneNumber, $password, $status, $role);
-    mysqli_stmt_bind_param($stmt2, 'ssss', $email, $securityQuestion, $answer, $securityPin);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_execute($stmt2);
-    mysqli_stmt_close($stmt);
-    mysqli_stmt_close($stmt2);
+    $q1 = mysqli_query($db_connection, $query);
+    if ($q1) {
+        insertSecurityDetail($email, $securityQuestion, $answer, $securityPin);
+        return true;
+    }
 }
 
-//a function to redirect to desired pages
-function redirect($url){
-    header('Location'.$url, true);
-}
 
 //a function to login user
-function loginUser($email, $password){
+function loginUser($email, $password)
+{
     global $db_connection;
 
-    $query = "SELECT * FROM users WHERE email = '{$email}'  AND status = 'active'";
+    $query = "SELECT * FROM user_information WHERE email = '{$email}'  AND status = 'active'";
     $selectUser = mysqli_query($db_connection, $query);
-    
+
     while ($row = mysqli_fetch_array($selectUser)) {
-    $registeredEmail = $row ['email'];
-    $db_password = $row ['password'];
-    $role = strtolower($row['role']);
+        $registeredEmail = $row['email'];
+        $db_password = $row['password'];
+        $role = strtolower($row['role']);
         if (password_verify($password, $db_password)) {
-        $_SESSION['email'] = $registeredEmail;
-        $_SESSION['logged_in'] = "logged_in";
-        if($role == 'user'){
-            redirect("home.php");
-        }
-        else{
-            redirect("admin/admin-dashboard.html"); 
-        }
-        
+            $_SESSION['email'] = $registeredEmail;
+            return true;
         }
     }
 }
 
+//function to log user out of the system
+function logoutUser()
+{
+    session_start();
+    session_destroy();
+    header("Location:login.php");
+}

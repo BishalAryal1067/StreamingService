@@ -1,6 +1,83 @@
 <?php
 
-include('../functions.php');
+include ('../functions.php');
+
+//adding video from modal
+try {
+    if (isset($_POST['add-video'])) {
+        $videoTitle = $_POST['video-title'];
+        $videoDescription = $_POST['video-description'];
+        $videoDate = date('Y-m-d') . '  ' . date('h:i:sa');
+        $allowedFiles = array('mp4', 'mov', 'avi');
+        $videoCategory = $_POST['video-category'];
+
+        $path = $_FILES['video']['name'];
+        $path_temp = $_FILES['video']['temp_name'];
+
+        $message = [
+            'extension_error' => '',
+            'empty_error' => '',
+        ];
+
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
+        if (!in_array($ext, $allowedFiles)) {
+            $message['extension_error'] = 'File format not supported !';
+        }
+
+        if (empty($videoTitle) && empty($videoDescription) && $path) {
+            $message['empty_error'] = 'No feild can be left empty';
+        }
+
+        foreach ($message as $key => $value) {
+            if (empty($value)) {
+                unset($error[$key]);
+            }
+        }
+
+        if (empty($message)) {
+            if (add_videos($path, $videoTitle, $videoDescription, $videoDate, $videoCategory)) {
+                copy($path_temp, '../videos' . time() . $path);
+                echo "
+                <script language='javascript' type='text/javascript'>
+                  alert('Video successfully added');
+                </script>
+              ";
+            } else {
+                echo "
+                <script language='javascript' type='text/javascript'>
+                  alert('Something went wrong');
+                </script>
+              ";
+            }
+        }
+    }
+} catch (Error $err) {
+    echo $err;
+}
+
+
+
+//adding category from modal
+try {
+    if (isset($_POST['add-category'])) {
+        $categoryTitle = $_POST['category-title'];
+        if (add_category($categoryTitle)) {
+            echo "
+             <script language='javascript' type='text/javascript'>
+               alert('Category successfully added');
+             </script>
+           ";
+        } else {
+            echo "
+            <script language='javascript' type='text/javascript'>
+              alert('Something went wrong!');
+            </script>
+          ";
+        }
+    }
+} catch (Error $err) {
+    echo $err;
+}
 
 //adding fixture from modal
 try {
@@ -8,13 +85,19 @@ try {
         $fixtureTitle = $_POST['fixture-title'];
         $fixtureDate = $_POST['fixture-date'];
         $category = $_POST['fixture-category'];
-    
-        if (addFixtures($fixtureTitle, $fixtureDate, $category)) {
-            echo "Yes baby";
-            
+
+        if (add_fixtures($fixtureTitle, $fixtureDate, $category)) {
+            echo "
+         <script language='javascript' type='text/javascript'>
+           alert('Fixture successfully added');
+         </script>
+       ";
         } else {
-            echo "Fuck No";
-            
+            echo "
+            <script language='javascript' type='text/javascript'>
+              alert('Something went wrong!');
+            </script>
+          ";
         }
     }
 } catch (Error $err) {
@@ -22,24 +105,72 @@ try {
     echo $error;
 }
 
-//adding category from modal
-if(isset($_POST['add-category'])){
-    $categoryTitle= $_POST['category-title'];
-    if(addCategory($categoryTitle)){
-       echo "
+//adding fixture from modal
+try {
+    if (isset($_POST['add-fixture'])) {
+        $fixtureTitle = $_POST['fixture-title'];
+        $fixtureDate = $_POST['fixture-date'];
+        $category = $_POST['fixture-category'];
+
+        if (add_fixtures($fixtureTitle, $fixtureDate, $category)) {
+            echo "
          <script language='javascript' type='text/javascript'>
-           alert('Category successfully added');
+           alert('Fixture successfully added');
          </script>
        ";
+        } else {
+            echo "
+            <script language='javascript' type='text/javascript'>
+              alert('Something went wrong!');
+            </script>
+          ";
+        }
+    }
+} catch (Error $err) {
+    $error = $err;
+    echo $error;
+}
+
+//adding images from modal
+try {
+  if(isset($_POST['add-image'])){
+    $imageCaption = $_POST['image-caption'];
+    $path = $_FILES['images']['name'];
+    $path_temp = $_FILES['images']['tmp_name'];
+    $imageDate = date('Y-m-d') . ' ' . date('h:i:sa');
+    $imageCategory = $_POST['image-category'];
+
+    $allowedFiles = array('jpg', 'jpeg', 'png'); 
+    $ext = pathinfo($path, PATHINFO_EXTENSION);
+
+    $message = [
+        'extension_error' => '',
+        'empty_error' => '',
+    ];
+
+    
+    if(empty($imageCaption) && empty($path) && empty($imageCategory)){
+        $message['empty_error'] = 'No feild can be left empty !';
+    }
+    else if(!in_array($ext, $allowedFiles)){
+        $message['extension_error'] = 'File format not supported';
     }
 
-    else{
-        echo "
-        <script language='javascript' type='text/javascript'>
-          alert('Something went wrong!');
-        </script>
-      ";
+    foreach($error as $key => $value){
+        if(empty($value)){
+            unset($error[$key]);
+        }
     }
+
+    if(empty($error)){
+        if(add_images($path, $imageCaption, $imageCategory, $imageDate)){
+            
+        }
+    }
+
+  }
+} catch (Error $err) {
+    echo $err;
 }
 ?>
 
@@ -60,6 +191,7 @@ if(isset($_POST['add-category'])){
 
 <body>
 
+    <p><?php echo $err; ?></p>
 
     <!--navigation bar-->
     <div class="navbar">
@@ -217,9 +349,14 @@ if(isset($_POST['add-category'])){
                 <i class="fa-solid fa-circle-xmark"></i>
             </div>
             <h3>Add image</h3>
-            <input type="text" name="image-title" id="" placeholder="Image title..">
-            <input type="file" name="" id="" placeholder="Choose image">
-            <button type="submit">Add</button>
+            <input type="text" name="image-caption" id="" placeholder="Image caption..">
+            <input type="file" name="image" id="" placeholder="Choose image">
+            <select name="image-category" id="">
+                <option value="">Football</option>
+                <option value="">Marathon</option>
+                <option value="">Gymnastics</option>
+            </select>
+            <button type="submit" name="add-image">Add</button>
         </form>
     </div>
 
@@ -244,8 +381,8 @@ if(isset($_POST['add-category'])){
             <h3>Add Video</h3>
             <input type="text" name="video-title" id="" placeholder="Video title..">
             <textarea name="video-description" id="" cols="37" rows="6" placeholder="Video Description.."></textarea>
-            <input type="file" name="" id="" placeholder="Choose an video file to upload">
-            <select name="video-cateogry" id="">
+            <input type="file" name="video" id="" placeholder="Choose an video file to upload">
+            <select name="video-category" id="">
                 <option value="">Football</option>
                 <option value="">Marathon</option>
                 <option value="">Gymnastics</option>

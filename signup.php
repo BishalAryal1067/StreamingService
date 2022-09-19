@@ -1,22 +1,29 @@
 <?php
 
-include('auth.php');
+include('./auth.php');
+include('./functions.php');
 
-if(isset($_POST['signup'])){
-    session_start();
+if (isset($_POST['signup'])) {
     $email = $_POST['email'];
-    $code = '9986';
-    if(signUpConfirmation($email,$code)){
+    $code = random_int(1000, 9999);
+    if (signUpConfirmation($email, $code)) {
         $_SESSION['code'] = $code;
         $_SESSION['fullname'] = $_POST['fullname'];
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['country'] = $_POST['country'];
-        $_SESSION['phone'] = $_POST['phone'];
-        $_SESSION['password'] = $_POST['password']; 
+        $_SESSION['phone'] = $_POST['phone-number'];
+        $_SESSION['password'] = $_POST['password'];
 
-        header('Location: confirmation.php', true);
+        return header('Location: confirmation.php', true);
+        exit();
     }
 }
+
+// try {
+
+// } catch (\Throwable $th) {
+//     echo $th;
+// }
 ?>
 
 
@@ -58,7 +65,7 @@ if(isset($_POST['signup'])){
             <a href="login.php">Sign in with your account</a>
         </div>
     </div>
-    
+
     <!--external javascript file-->
     <script src="./js/signup.js"></script>
 </body>

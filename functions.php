@@ -1,63 +1,63 @@
 <?php
 
-include('./database.php');
+include('../database.php');
+session_start();
 
-
-
-function Query_execution($result){
-  global $db_connection;
-  if(!$result){
-    die ('Query failed !'. mysqli_error($db_connection));
-  }
+//a function to redirect to desired pages
+function redirect($url)
+{
+   return header('Location' . $url);
+   exit();
 }
 
-
 //function to add fixtures
-function addFixtures($fixtureTitle, $fixtureDate, $category)
+function add_fixtures($fixtureTitle, $fixtureDate, $category)
 {
-    global $db_connection;
-    // $fixtureTitle = mysqli_real_escape_string($db_connection, trim($fixtureTitle));
-    // $fixtureDate = mysqli_real_escape_string($db_connection, trim($fixtureDate));
-    // $category = mysqli_real_escape_string($db_connection, $category);
-
-    // $stmt = mysqli_prepare($db_connection, "INSERT INTO 
-    //  fixture(fixture_title, fixture_date, category) 
-    // VALUES(?, ?, ?)");
-
-    // mysqli_stmt_bind_param($stmt, 'sss', $fixtureTitle, $fixtureDate, $category);
-    // mysqli_stmt_execute($stmt);
-    // mysqli_stmt_close($stmt);
-    $query = "INSERT INTO fixtures(fixture_id,fixture_title, fixtre_date, fixture_category) VALUES ('1','$fixtureTitle', '$fixtureDate', '$category')";
-    $queryInsert = mysqli_query($db_connection, $query);
-    Query_execution($queryInsert);
-    // if($queryInsert){
-    //   return true;
-    // }
+  global $db_connection;
+  $query = "INSERT INTO fixtures(fixture_title, fixture_date, fixture_category) VALUES('$fixtureTitle', '$fixtureDate', '$category')";
+  $insertQuery = mysqli_query($db_connection, $query);
+  if ($insertQuery) {
+    return true;
+  }
 }
 
 //function to add videos
-function addVideos($videoTitle, $videoDescription){
+function add_videos($path,$videoTitle, $videoDescription, $videoDate, $videoCategory)
+{
   global $db_connection;
+  $viewCount = 0;
+  $query = "INSERT INTO videos(path, video_title, video_description,video_date, video_category, view_count) VALUES('$path','$videoTitle','$videoDescription','$videoDate', '$videoCategory', $viewCount)";
+  $insertQuery = mysqli_query($db_connection, $query);
+  if($insertQuery){
+    return true;
+  }
+}
 
+//function to add images
+function add_images($path,$imageCaption, $category, $uploadDate){
+   global $db_connection;
+   $query = "INSERT INTO images(path, image_caption, category, upload_date) 
+   VALUES('$path', '$imageCaption', '$category', '$uploadDate')";
+   $insertQuery = mysqli_query($db_connection, $query);
+   if($insertQuery){
+     return true;
+   }
 }
 
 //function to add category
-function addCategory($categoryTitle){
+function add_category($title)
+{
   global $db_connection;
-
-  $categoryTitle = mysqli_real_escape_string($db_connection, $categoryTitle);
-  $stmt = mysqli_prepare($db_connection, "INSERT INTO category(category_name) VALUES(?)");
-  mysqli_stmt_bind_param($stmt, 's', $categoryTitle);
-  mysqli_stmt_execute($stmt);
-  mysqli_stmt_close($stmt);
-  if($stmt){
+  $query = "INSERT INTO category(category_name) VALUES('{$title}')";
+  $insertQuery = mysqli_query($db_connection, $query);
+  if ($insertQuery) {
     return true;
-  }
-  else{
-    echo "Kera vaihalyo ni";
   }
 }
 
-
-?>
-
+//function to fetch category
+function fetch_category(){
+  global $db_connection;
+  $query = "SELECT * FROM category";
+  
+}

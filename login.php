@@ -1,5 +1,19 @@
 <?php
+ echo '<link rel="stylesheet" type="text/css" href="./style/login.css">';
 
+ include('./functions.php');
+ include('./auth.php');
+
+ if(isset($_POST['login'])){
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    if(loginUser($email, $password)){
+        return header('Location: confirm_login.php');
+    }
+    else{
+        echo "<script>alert('Something went wrong')</script>";
+    }
+ }
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +24,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/login.css">
+    <!-- <PHP> echo '<link rel="stylesheet" type="text/css" href="style.css"></head>'; <PHP> -->
     <title>FunOlympic</title>
 </head>
 
