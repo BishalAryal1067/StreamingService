@@ -1,6 +1,11 @@
 <?php
 
-include ('../functions.php');
+try {
+    include("../functions.php");
+    echo "<link rel='stylesheet' href='../style/admin-dashboard.css'>";
+} catch (\Throwable $th) {
+    //throw $th;
+}
 
 //adding video from modal
 try {
@@ -79,31 +84,7 @@ try {
     echo $err;
 }
 
-//adding fixture from modal
-try {
-    if (isset($_POST['add-fixture'])) {
-        $fixtureTitle = $_POST['fixture-title'];
-        $fixtureDate = $_POST['fixture-date'];
-        $category = $_POST['fixture-category'];
 
-        if (add_fixtures($fixtureTitle, $fixtureDate, $category)) {
-            echo "
-         <script language='javascript' type='text/javascript'>
-           alert('Fixture successfully added');
-         </script>
-       ";
-        } else {
-            echo "
-            <script language='javascript' type='text/javascript'>
-              alert('Something went wrong!');
-            </script>
-          ";
-        }
-    }
-} catch (Error $err) {
-    $error = $err;
-    echo $error;
-}
 
 //adding fixture from modal
 try {
@@ -130,45 +111,48 @@ try {
     $error = $err;
     echo $error;
 }
+
+
+//-------------------------------------------------------------------------------------
+
+
+
 
 //adding images from modal
 try {
-  if(isset($_POST['add-image'])){
-    $imageCaption = $_POST['image-caption'];
-    $path = $_FILES['images']['name'];
-    $path_temp = $_FILES['images']['tmp_name'];
-    $imageDate = date('Y-m-d') . ' ' . date('h:i:sa');
-    $imageCategory = $_POST['image-category'];
+    if (isset($_POST['add-image'])) {
+        $imageCaption = $_POST['image-caption'];
+        $path = $_FILES['images']['name'];
+        $path_temp = $_FILES['images']['tmp_name'];
+        $imageDate = date('Y-m-d') . ' ' . date('h:i:sa');
+        $imageCategory = $_POST['image-category'];
 
-    $allowedFiles = array('jpg', 'jpeg', 'png'); 
-    $ext = pathinfo($path, PATHINFO_EXTENSION);
+        $allowedFiles = array('jpg', 'jpeg', 'png');
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
 
-    $message = [
-        'extension_error' => '',
-        'empty_error' => '',
-    ];
+        $message = [
+            'extension_error' => '',
+            'empty_error' => '',
+        ];
 
-    
-    if(empty($imageCaption) && empty($path) && empty($imageCategory)){
-        $message['empty_error'] = 'No feild can be left empty !';
-    }
-    else if(!in_array($ext, $allowedFiles)){
-        $message['extension_error'] = 'File format not supported';
-    }
 
-    foreach($error as $key => $value){
-        if(empty($value)){
-            unset($error[$key]);
+        if (empty($imageCaption) && empty($path) && empty($imageCategory)) {
+            $message['empty_error'] = 'No feild can be left empty !';
+        } else if (!in_array($ext, $allowedFiles)) {
+            $message['extension_error'] = 'File format not supported';
+        }
+
+        foreach ($error as $key => $value) {
+            if (empty($value)) {
+                unset($error[$key]);
+            }
+        }
+
+        if (empty($error)) {
+            if (add_images($path, $imageCaption, $imageCategory, $imageDate)) {
+            }
         }
     }
-
-    if(empty($error)){
-        if(add_images($path, $imageCaption, $imageCategory, $imageDate)){
-            
-        }
-    }
-
-  }
 } catch (Error $err) {
     echo $err;
 }
@@ -185,7 +169,7 @@ try {
     <!--fontawesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--css link-->
-    <link rel="stylesheet" href="../style/admin-dashboard.css">
+    <link rel='stylesheet' href='../style/admin-dashboard.css'>
     <title>Admin Dashboard</title>
 </head>
 
@@ -257,7 +241,9 @@ try {
                 </div>
             </div>
             <!--list /table of users-->
+            <div class="list-section">
 
+            </div>
         </div>
         <!--image section-->
         <div class="images-section">
@@ -274,7 +260,7 @@ try {
                         <option value="">Admin</option>
                     </select>
                 </div>
-                <!--add fixtures-->
+                <!--add images-->
                 <button class="add-image-btn">
                     <i class="fa-solid fa-plus"></i>
                     Add
@@ -328,6 +314,44 @@ try {
                 </button>
             </div>
             <!--list-table of fixtures-->
+            <div class="list-section">
+                <table>
+                    <th>
+                        Fixture Detail
+                    </th>
+                    <th>Actions</th>
+                    <?php
+                    try {
+                        global $db_connection;
+                        $query = "SELECT * FROM fixtures";
+                        $query_result = mysqli_query($db_connection, $query);
+                        while ($row = mysqli_fetch_assoc($query_result)) {
+                            $db_id = $row['fixture_id'];
+                            $db_title = $row['fixture_title'];
+                            $db_date = $row['fixture_date'];
+
+                            echo "
+                           <tr>
+                           <td>
+                             <p>$db_title</p>
+                             <p>$db_date</p>
+                           </td>
+                           <td>
+                              <button class='update-btn' name='update-fixture-btn'  type='submit'>Update</buttton>                         
+                              <form method='post'>
+                               <button class='delete-btn' name='delete-fixture-btn'  type='submit'>Delete</buttton>
+                               </form>
+                            
+                            <td>
+                         </tr>
+                           ";
+                        }
+                    } catch (\Throwable $th) {
+                        //throw $th;
+                    }
+                    ?>
+                </table>
+            </div>
         </div>
 
         <!--category section-->

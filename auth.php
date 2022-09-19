@@ -89,3 +89,7 @@ function logoutUser()
     session_destroy();
     header("Location:login.php");
 }
+
+function fetch_users(){
+    
+}

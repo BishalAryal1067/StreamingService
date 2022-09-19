@@ -110,9 +110,9 @@ body {
     .video-section,
     .fixture-section,
     .category-section {
-        @include defineSize(100%, 100%, 0, 1.5em);
+        @include defineSize(100%, 100%, 0,0 1.5em);
         @include positionElement(absolute, 0, 0, 0, 0);
-        @include flexDisplay(column, flex-start, flex-start);
+        @include flexDisplay(column, space-between, space-between);
         overflow-x: hidden;
         overflow-y: scroll;
         display: none;
@@ -153,6 +153,89 @@ body {
                 }
             }
         }
+
+        .list-section{
+            @include defineSize(100%, 80%, .5em 0, 1.75em 0);
+            @include flexDisplay(row, flex-start, center);
+            overflow-y: scroll;
+            border: 2px solid black;
+
+
+            table{
+                @include defineSize(auto, 100%, .75em 0, 0);
+                border: .15em solid $primary-color;
+            }
+             
+
+            table th:nth-child(1) {
+                border-right: 1px solid teal;
+            }
+            
+            table tr {
+                width: auto;
+                height: auto;
+                margin:0 !important;
+            }
+            
+            table tr:nth-child(odd) {
+                background: rgba(230, 230, 230, 0.6);
+            }
+            
+            table th {
+                padding: .15em 5em;
+                background-color: $primary-color;
+                color: white;
+            }
+            
+            table th:nth-child(1){
+                margin-right: 1.5em;
+            }
+            
+            .update-btn {
+                background: blue;
+                color: white;
+                outline: none;
+                padding: 0.5em;
+            }
+            
+            .delete-btn {
+                background: red;
+                color: white;
+                outline: none;
+                padding: 0.5em;
+            }
+            
+            table td:nth-child(2){
+                padding: .5em;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            
+            table td form{
+                margin: 0;
+                padding: 0;
+            }
+            
+            table td p:nth-child(1){
+                font-weight: map-get($map: $font-weights, $key: bold);
+                margin: .15em 0;
+                font-size: 1.1em;
+                color: $secondary-color;
+            }
+            
+            table td p:nth-child(2){
+                font-weight: map-get($map: $font-weights, $key: bold);
+                margin: 0;
+                font-size: .75em;
+                color: grey;
+            }
+            
+            table td p:nth-child(2){
+                margin:0;
+            }
+
+        }
     }
 
     /*active section*/
@@ -178,8 +261,6 @@ body {
 .add-news-modal {
     display: none;
 }
-
-
 
 .modal-active {
     @include positionElement(absolute, 0, 0, 0, 0);
@@ -213,7 +294,7 @@ body {
             outline: none;
         }
 
-        textarea{
+        textarea {
             padding: 0.75em;
             background-color: $input-background;
             border: 0.1em solid rgb(213, 213, 213);
@@ -221,8 +302,6 @@ body {
             border-radius: 0.35em;
             font-size: 1em;
         }
-
-
 
         input[type="file"]::file-selector-button {
             @include defineSize(auto, auto, 0.75em 0, 0.5em 1.25em);
@@ -256,3 +335,6 @@ body {
         }
     }
 }
+
+
+
