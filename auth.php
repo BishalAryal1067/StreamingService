@@ -11,6 +11,23 @@ function confirm_query($result)
     }
 }
 
+
+//function to check if user exists
+function check_user($email){
+    global $connection;
+    $query = "SELECT username FROM user_information WHERE email = '$email'";
+    $result = mysqli_query($connection, $query);
+    confirm_Query($result);
+    $row = mysqli_num_rows($result);
+    
+    if ($row > 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 function signUpConfirmation($email, $confirmationCode)
 {
 
@@ -90,6 +107,28 @@ function logoutUser()
     header("Location:login.php");
 }
 
-function fetch_users(){
-    
+function fetch_users()
+{
+    global $db_connection;
+    $query = "SELECT * FROM user_information";
+    $result = mysqli_query($db_connection, $query);
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $full_name = $row['full_name'];
+            $email = $row['email'];
+            $country = $row['country'];
+            $phone_number = $row['phone_number'];
+            $status = $row['status'];
+
+            echo "
+           <tr>
+               <td> $full_name </td>
+               <td> $email</td>
+               <td> $country</td>
+               <td> $phone_number</td>
+               <td> $status</td>
+           </tr>
+          ";
+        }
+    }
 }

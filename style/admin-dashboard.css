@@ -165,12 +165,8 @@ body {
   left: 0;
   top: 0;
   transform: translate(0, 0);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: space-between;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
   display: none;
 }
 .bottom-section .users-section .top-section,
@@ -181,7 +177,7 @@ body {
 .bottom-section .category-section .top-section {
   box-sizing: border-box;
   width: 100%;
-  height: auto;
+  height: 10%;
   margin: 0;
   padding: 0;
   display: flex;
@@ -265,12 +261,12 @@ body {
   margin-right: 0.5em;
   color: #672BDF;
 }
-.bottom-section .users-section .list-section,
-.bottom-section .video-section .list-section,
-.bottom-section .images-section .list-section,
-.bottom-section .video-section .list-section,
-.bottom-section .fixture-section .list-section,
-.bottom-section .category-section .list-section {
+.bottom-section .users-section .table-section,
+.bottom-section .video-section .table-section,
+.bottom-section .images-section .table-section,
+.bottom-section .video-section .table-section,
+.bottom-section .fixture-section .table-section,
+.bottom-section .category-section .table-section {
   box-sizing: border-box;
   width: 100%;
   height: 80%;
@@ -278,142 +274,322 @@ body {
   padding: 1.75em 0;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   overflow-y: scroll;
-  border: 2px solid black;
 }
-.bottom-section .users-section .list-section table,
-.bottom-section .video-section .list-section table,
-.bottom-section .images-section .list-section table,
-.bottom-section .video-section .list-section table,
-.bottom-section .fixture-section .list-section table,
-.bottom-section .category-section .list-section table {
+.bottom-section .users-section .table-section table,
+.bottom-section .video-section .table-section table,
+.bottom-section .images-section .table-section table,
+.bottom-section .video-section .table-section table,
+.bottom-section .fixture-section .table-section table,
+.bottom-section .category-section .table-section table {
+  width: 70em;
+  min-width: 25em;
+  border-collapse: collapse;
+  box-shadow: 0.1em 0.1em 0.5em grey;
+  border-radius: 0.25em;
+  overflow: hidden;
+  font-size: 0.9em;
+}
+.bottom-section .users-section .table-section table table,
+.bottom-section .users-section .table-section table th,
+.bottom-section .users-section .table-section table td,
+.bottom-section .video-section .table-section table table,
+.bottom-section .video-section .table-section table th,
+.bottom-section .video-section .table-section table td,
+.bottom-section .images-section .table-section table table,
+.bottom-section .images-section .table-section table th,
+.bottom-section .images-section .table-section table td,
+.bottom-section .video-section .table-section table table,
+.bottom-section .video-section .table-section table th,
+.bottom-section .video-section .table-section table td,
+.bottom-section .fixture-section .table-section table table,
+.bottom-section .fixture-section .table-section table th,
+.bottom-section .fixture-section .table-section table td,
+.bottom-section .category-section .table-section table table,
+.bottom-section .category-section .table-section table th,
+.bottom-section .category-section .table-section table td {
+  text-align: left;
+  padding: 0.95em;
+}
+.bottom-section .users-section .table-section table th,
+.bottom-section .video-section .table-section table th,
+.bottom-section .images-section .table-section table th,
+.bottom-section .video-section .table-section table th,
+.bottom-section .fixture-section .table-section table th,
+.bottom-section .category-section .table-section table th {
+  background-color: #B52666;
+  color: white;
+}
+.bottom-section .users-section .table-section table tr td,
+.bottom-section .video-section .table-section table tr td,
+.bottom-section .images-section .table-section table tr td,
+.bottom-section .video-section .table-section table tr td,
+.bottom-section .fixture-section .table-section table tr td,
+.bottom-section .category-section .table-section table tr td {
+  font-weight: 500;
+}
+.bottom-section .users-section .table-section table tr:nth-of-type(odd),
+.bottom-section .video-section .table-section table tr:nth-of-type(odd),
+.bottom-section .images-section .table-section table tr:nth-of-type(odd),
+.bottom-section .video-section .table-section table tr:nth-of-type(odd),
+.bottom-section .fixture-section .table-section table tr:nth-of-type(odd),
+.bottom-section .category-section .table-section table tr:nth-of-type(odd) {
+  background-color: #eeeeee;
+}
+.bottom-section .users-section .fixture-card-section,
+.bottom-section .video-section .fixture-card-section,
+.bottom-section .images-section .fixture-card-section,
+.bottom-section .video-section .fixture-card-section,
+.bottom-section .fixture-section .fixture-card-section,
+.bottom-section .category-section .fixture-card-section {
   box-sizing: border-box;
-  width: auto;
-  height: 100%;
-  margin: 0.75em 0;
+  width: 100%;
+  height: 80%;
+  margin: auto;
+  padding: 1.5em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(10em, 1fr));
+  justify-items: center;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  row-gap: 0.5em;
+  overflow-y: scroll;
+}
+.bottom-section .users-section .fixture-card-section .fixture-card,
+.bottom-section .video-section .fixture-card-section .fixture-card,
+.bottom-section .images-section .fixture-card-section .fixture-card,
+.bottom-section .video-section .fixture-card-section .fixture-card,
+.bottom-section .fixture-section .fixture-card-section .fixture-card,
+.bottom-section .category-section .fixture-card-section .fixture-card {
+  box-sizing: border-box;
+  width: 18em;
+  height: 10em;
+  margin: 0;
   padding: 0;
-  border: 0.15em solid #672BDF;
-}
-.bottom-section .users-section .list-section table th:nth-child(1),
-.bottom-section .video-section .list-section table th:nth-child(1),
-.bottom-section .images-section .list-section table th:nth-child(1),
-.bottom-section .video-section .list-section table th:nth-child(1),
-.bottom-section .fixture-section .list-section table th:nth-child(1),
-.bottom-section .category-section .list-section table th:nth-child(1) {
-  border-right: 1px solid teal;
-}
-.bottom-section .users-section .list-section table tr,
-.bottom-section .video-section .list-section table tr,
-.bottom-section .images-section .list-section table tr,
-.bottom-section .video-section .list-section table tr,
-.bottom-section .fixture-section .list-section table tr,
-.bottom-section .category-section .list-section table tr {
-  width: auto;
-  height: auto;
-  margin: 0 !important;
-}
-.bottom-section .users-section .list-section table tr:nth-child(odd),
-.bottom-section .video-section .list-section table tr:nth-child(odd),
-.bottom-section .images-section .list-section table tr:nth-child(odd),
-.bottom-section .video-section .list-section table tr:nth-child(odd),
-.bottom-section .fixture-section .list-section table tr:nth-child(odd),
-.bottom-section .category-section .list-section table tr:nth-child(odd) {
-  background: rgba(230, 230, 230, 0.6);
-}
-.bottom-section .users-section .list-section table th,
-.bottom-section .video-section .list-section table th,
-.bottom-section .images-section .list-section table th,
-.bottom-section .video-section .list-section table th,
-.bottom-section .fixture-section .list-section table th,
-.bottom-section .category-section .list-section table th {
-  padding: 0.15em 5em;
-  background-color: #672BDF;
-  color: white;
-}
-.bottom-section .users-section .list-section table th:nth-child(1),
-.bottom-section .video-section .list-section table th:nth-child(1),
-.bottom-section .images-section .list-section table th:nth-child(1),
-.bottom-section .video-section .list-section table th:nth-child(1),
-.bottom-section .fixture-section .list-section table th:nth-child(1),
-.bottom-section .category-section .list-section table th:nth-child(1) {
-  margin-right: 1.5em;
-}
-.bottom-section .users-section .list-section .update-btn,
-.bottom-section .video-section .list-section .update-btn,
-.bottom-section .images-section .list-section .update-btn,
-.bottom-section .video-section .list-section .update-btn,
-.bottom-section .fixture-section .list-section .update-btn,
-.bottom-section .category-section .list-section .update-btn {
-  background: blue;
-  color: white;
-  outline: none;
-  padding: 0.5em;
-}
-.bottom-section .users-section .list-section .delete-btn,
-.bottom-section .video-section .list-section .delete-btn,
-.bottom-section .images-section .list-section .delete-btn,
-.bottom-section .video-section .list-section .delete-btn,
-.bottom-section .fixture-section .list-section .delete-btn,
-.bottom-section .category-section .list-section .delete-btn {
-  background: red;
-  color: white;
-  outline: none;
-  padding: 0.5em;
-}
-.bottom-section .users-section .list-section table td:nth-child(2),
-.bottom-section .video-section .list-section table td:nth-child(2),
-.bottom-section .images-section .list-section table td:nth-child(2),
-.bottom-section .video-section .list-section table td:nth-child(2),
-.bottom-section .fixture-section .list-section table td:nth-child(2),
-.bottom-section .category-section .list-section table td:nth-child(2) {
-  padding: 0.5em;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.25em;
+  overflow: hidden;
+  box-shadow: 0.1em 0.1em 0.75em #e2e2e2, -0.1em -0.1em 0.75em #e2e2e2;
+}
+.bottom-section .users-section .fixture-card-section .fixture-card .card-header,
+.bottom-section .video-section .fixture-card-section .fixture-card .card-header,
+.bottom-section .images-section .fixture-card-section .fixture-card .card-header,
+.bottom-section .video-section .fixture-card-section .fixture-card .card-header,
+.bottom-section .fixture-section .fixture-card-section .fixture-card .card-header,
+.bottom-section .category-section .fixture-card-section .fixture-card .card-header {
+  box-sizing: border-box;
+  width: 100%;
+  height: 65%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
-.bottom-section .users-section .list-section table td form,
-.bottom-section .video-section .list-section table td form,
-.bottom-section .images-section .list-section table td form,
-.bottom-section .video-section .list-section table td form,
-.bottom-section .fixture-section .list-section table td form,
-.bottom-section .category-section .list-section table td form {
+.bottom-section .users-section .fixture-card-section .fixture-card .card-header h4,
+.bottom-section .users-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .video-section .fixture-card-section .fixture-card .card-header h4,
+.bottom-section .video-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .images-section .fixture-card-section .fixture-card .card-header h4,
+.bottom-section .images-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .video-section .fixture-card-section .fixture-card .card-header h4,
+.bottom-section .video-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .fixture-section .fixture-card-section .fixture-card .card-header h4,
+.bottom-section .fixture-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .category-section .fixture-card-section .fixture-card .card-header h4,
+.bottom-section .category-section .fixture-card-section .fixture-card .card-header p {
+  margin: 0.1em 0;
+  font-size: 1.1em;
+}
+.bottom-section .users-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .video-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .images-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .video-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .fixture-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .category-section .fixture-card-section .fixture-card .card-header p {
+  color: grey;
+  font-size: 0.9em;
+}
+.bottom-section .users-section .fixture-card-section .fixture-card .card-footer,
+.bottom-section .video-section .fixture-card-section .fixture-card .card-footer,
+.bottom-section .images-section .fixture-card-section .fixture-card .card-footer,
+.bottom-section .video-section .fixture-card-section .fixture-card .card-footer,
+.bottom-section .fixture-section .fixture-card-section .fixture-card .card-footer,
+.bottom-section .category-section .fixture-card-section .fixture-card .card-footer {
+  box-sizing: border-box;
+  width: 100%;
+  height: 35%;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #B52666;
 }
-.bottom-section .users-section .list-section table td p:nth-child(1),
-.bottom-section .video-section .list-section table td p:nth-child(1),
-.bottom-section .images-section .list-section table td p:nth-child(1),
-.bottom-section .video-section .list-section table td p:nth-child(1),
-.bottom-section .fixture-section .list-section table td p:nth-child(1),
-.bottom-section .category-section .list-section table td p:nth-child(1) {
-  font-weight: 800;
-  margin: 0.15em 0;
+.bottom-section .users-section .fixture-card-section .fixture-card .card-footer button,
+.bottom-section .video-section .fixture-card-section .fixture-card .card-footer button,
+.bottom-section .images-section .fixture-card-section .fixture-card .card-footer button,
+.bottom-section .video-section .fixture-card-section .fixture-card .card-footer button,
+.bottom-section .fixture-section .fixture-card-section .fixture-card .card-footer button,
+.bottom-section .category-section .fixture-card-section .fixture-card .card-footer button {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0 0.75em;
+  padding: 0.5em;
+  background-color: white;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.bottom-section .users-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even),
+.bottom-section .video-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even),
+.bottom-section .images-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even),
+.bottom-section .video-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even),
+.bottom-section .fixture-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even),
+.bottom-section .category-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even) {
+  color: red;
+}
+.bottom-section .users-section .category-card-section,
+.bottom-section .video-section .category-card-section,
+.bottom-section .images-section .category-card-section,
+.bottom-section .video-section .category-card-section,
+.bottom-section .fixture-section .category-card-section,
+.bottom-section .category-section .category-card-section {
+  box-sizing: border-box;
+  width: 100%;
+  height: 80%;
+  margin: auto;
+  padding: 1.5em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(10em, 1fr));
+  justify-items: center;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  row-gap: 0.5em;
+  overflow-y: scroll;
+}
+.bottom-section .users-section .category-card-section .category-card,
+.bottom-section .video-section .category-card-section .category-card,
+.bottom-section .images-section .category-card-section .category-card,
+.bottom-section .video-section .category-card-section .category-card,
+.bottom-section .fixture-section .category-card-section .category-card,
+.bottom-section .category-section .category-card-section .category-card {
+  box-sizing: border-box;
+  width: 18em;
+  height: 10em;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.25em;
+  overflow: hidden;
+  box-shadow: 0.1em 0.1em 0.75em #e2e2e2, -0.1em -0.1em 0.75em #e2e2e2;
+}
+.bottom-section .users-section .category-card-section .category-card .card-header,
+.bottom-section .video-section .category-card-section .category-card .card-header,
+.bottom-section .images-section .category-card-section .category-card .card-header,
+.bottom-section .video-section .category-card-section .category-card .card-header,
+.bottom-section .fixture-section .category-card-section .category-card .card-header,
+.bottom-section .category-section .category-card-section .category-card .card-header {
+  box-sizing: border-box;
+  width: 100%;
+  height: 65%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bottom-section .users-section .category-card-section .category-card .card-header h4,
+.bottom-section .users-section .category-card-section .category-card .card-header p,
+.bottom-section .video-section .category-card-section .category-card .card-header h4,
+.bottom-section .video-section .category-card-section .category-card .card-header p,
+.bottom-section .images-section .category-card-section .category-card .card-header h4,
+.bottom-section .images-section .category-card-section .category-card .card-header p,
+.bottom-section .video-section .category-card-section .category-card .card-header h4,
+.bottom-section .video-section .category-card-section .category-card .card-header p,
+.bottom-section .fixture-section .category-card-section .category-card .card-header h4,
+.bottom-section .fixture-section .category-card-section .category-card .card-header p,
+.bottom-section .category-section .category-card-section .category-card .card-header h4,
+.bottom-section .category-section .category-card-section .category-card .card-header p {
+  margin: 0.1em 0;
   font-size: 1.1em;
-  color: #16A6F1;
 }
-.bottom-section .users-section .list-section table td p:nth-child(2),
-.bottom-section .video-section .list-section table td p:nth-child(2),
-.bottom-section .images-section .list-section table td p:nth-child(2),
-.bottom-section .video-section .list-section table td p:nth-child(2),
-.bottom-section .fixture-section .list-section table td p:nth-child(2),
-.bottom-section .category-section .list-section table td p:nth-child(2) {
-  font-weight: 800;
-  margin: 0;
-  font-size: 0.75em;
+.bottom-section .users-section .category-card-section .category-card .card-header p,
+.bottom-section .video-section .category-card-section .category-card .card-header p,
+.bottom-section .images-section .category-card-section .category-card .card-header p,
+.bottom-section .video-section .category-card-section .category-card .card-header p,
+.bottom-section .fixture-section .category-card-section .category-card .card-header p,
+.bottom-section .category-section .category-card-section .category-card .card-header p {
   color: grey;
+  font-size: 0.9em;
 }
-.bottom-section .users-section .list-section table td p:nth-child(2),
-.bottom-section .video-section .list-section table td p:nth-child(2),
-.bottom-section .images-section .list-section table td p:nth-child(2),
-.bottom-section .video-section .list-section table td p:nth-child(2),
-.bottom-section .fixture-section .list-section table td p:nth-child(2),
-.bottom-section .category-section .list-section table td p:nth-child(2) {
+.bottom-section .users-section .category-card-section .category-card .card-footer,
+.bottom-section .video-section .category-card-section .category-card .card-footer,
+.bottom-section .images-section .category-card-section .category-card .card-footer,
+.bottom-section .video-section .category-card-section .category-card .card-footer,
+.bottom-section .fixture-section .category-card-section .category-card .card-footer,
+.bottom-section .category-section .category-card-section .category-card .card-footer {
+  box-sizing: border-box;
+  width: 100%;
+  height: 35%;
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #B52666;
+}
+.bottom-section .users-section .category-card-section .category-card .card-footer button,
+.bottom-section .video-section .category-card-section .category-card .card-footer button,
+.bottom-section .images-section .category-card-section .category-card .card-footer button,
+.bottom-section .video-section .category-card-section .category-card .card-footer button,
+.bottom-section .fixture-section .category-card-section .category-card .card-footer button,
+.bottom-section .category-section .category-card-section .category-card .card-footer button {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0 0.75em;
+  padding: 0.5em;
+  background-color: white;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.bottom-section .users-section .category-card-section .category-card .card-footer button:nth-of-type(even),
+.bottom-section .video-section .category-card-section .category-card .card-footer button:nth-of-type(even),
+.bottom-section .images-section .category-card-section .category-card .card-footer button:nth-of-type(even),
+.bottom-section .video-section .category-card-section .category-card .card-footer button:nth-of-type(even),
+.bottom-section .fixture-section .category-card-section .category-card .card-footer button:nth-of-type(even),
+.bottom-section .category-section .category-card-section .category-card .card-footer button:nth-of-type(even) {
+  color: red;
 }
 .bottom-section .active-section {
   display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
   z-index: 2;
 }
 .bottom-section input[type=search] {

@@ -110,15 +110,14 @@ body {
     .video-section,
     .fixture-section,
     .category-section {
-        @include defineSize(100%, 100%, 0,0 1.5em);
+        @include defineSize(100%, 100%, 0, 0 1.5em);
         @include positionElement(absolute, 0, 0, 0, 0);
-        @include flexDisplay(column, space-between, space-between);
         overflow-x: hidden;
-        overflow-y: scroll;
+        overflow-y: hidden;
         display: none;
 
         .top-section {
-            @include defineSize(100%, auto, 0, 0);
+            @include defineSize(100%, 10%, 0, 0);
             @include flexDisplay(row, space-between, center);
             .filter-section {
                 @include flexDisplay(row, center, center);
@@ -154,93 +153,151 @@ body {
             }
         }
 
-        .list-section{
-            @include defineSize(100%, 80%, .5em 0, 1.75em 0);
-            @include flexDisplay(row, flex-start, center);
+        .table-section {
+            @include defineSize(100%, 80%, 0.5em 0, 1.75em 0);
+            @include flexDisplay(row, center, center);
             overflow-y: scroll;
-            border: 2px solid black;
 
+            table {
+                width: 70em;
+                min-width: 25em;
+                border-collapse: collapse;
+                box-shadow: 0.1em 0.1em 0.5em grey;
+                border-radius: 0.25em;
+                overflow: hidden;
+                font-size: 0.9em;
 
-            table{
-                @include defineSize(auto, 100%, .75em 0, 0);
-                border: .15em solid $primary-color;
-            }
-             
+                table,
+                th,
+                td {
+                    text-align: left;
+                    padding: 0.95em;
+                }
 
-            table th:nth-child(1) {
-                border-right: 1px solid teal;
-            }
-            
-            table tr {
-                width: auto;
-                height: auto;
-                margin:0 !important;
-            }
-            
-            table tr:nth-child(odd) {
-                background: rgba(230, 230, 230, 0.6);
-            }
-            
-            table th {
-                padding: .15em 5em;
-                background-color: $primary-color;
-                color: white;
-            }
-            
-            table th:nth-child(1){
-                margin-right: 1.5em;
-            }
-            
-            .update-btn {
-                background: blue;
-                color: white;
-                outline: none;
-                padding: 0.5em;
-            }
-            
-            .delete-btn {
-                background: red;
-                color: white;
-                outline: none;
-                padding: 0.5em;
-            }
-            
-            table td:nth-child(2){
-                padding: .5em;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-            }
-            
-            table td form{
-                margin: 0;
-                padding: 0;
-            }
-            
-            table td p:nth-child(1){
-                font-weight: map-get($map: $font-weights, $key: bold);
-                margin: .15em 0;
-                font-size: 1.1em;
-                color: $secondary-color;
-            }
-            
-            table td p:nth-child(2){
-                font-weight: map-get($map: $font-weights, $key: bold);
-                margin: 0;
-                font-size: .75em;
-                color: grey;
-            }
-            
-            table td p:nth-child(2){
-                margin:0;
-            }
+                th {
+                    background-color: $tertiary-color;
+                    color: white;
+                }
 
+                tr td {
+                    font-weight: 500;
+                }
+
+                tr:nth-of-type(odd) {
+                    background-color: #eeeeee;
+                }
+            }
+        }
+
+        .fixture-card-section {
+            @include defineSize(100%, 80%, auto, 1.5em 0);
+            @include gridDisplay(
+                repeat(auto-fit, minmax(18em, 1fr)),
+                repeat(auto-fit, minmax(10em, 1fr)),
+                center,
+                center
+            );
+            column-gap: 0.5em;
+            row-gap: 0.5em;
+            overflow-y: scroll;
+
+            .fixture-card {
+                @include defineSize(18em, 10em, 0, 0);
+                @include flexDisplay(column, space-between, center);
+                border-radius: 0.25em;
+                overflow: hidden;
+                box-shadow: 0.1em 0.1em 0.75em #e2e2e2, -0.1em -0.1em 0.75em #e2e2e2;
+
+                .card-header {
+                    @include defineSize(100%, 65%, 0, 0);
+                    @include flexDisplay(column, center, center);
+                    h4,
+                    p {
+                        margin: 0.1em 0;
+                        font-size: 1.1em;
+                    }
+
+                    p {
+                        color: grey;
+                        font-size: 0.9em;
+                    }
+                }
+
+                .card-footer {
+                    @include defineSize(100%, 35%, 0, 0);
+                    @include flexDisplay(row, center, center);
+                    background-color: $tertiary-color;
+
+                    button {
+                        @include defineSize(auto, auto, 0 0.75em, 0.5em);
+                        background-color: white;
+                        @include buttonDesign(white, black, none, 50%);
+                    }
+
+                    button:nth-of-type(even) {
+                        color: red;
+                    }
+                }
+            }
+        }
+
+        .category-card-section {
+            @include defineSize(100%, 80%, auto, 1.5em 0);
+            @include gridDisplay(
+                repeat(auto-fit, minmax(18em, 1fr)),
+                repeat(auto-fit, minmax(10em, 1fr)),
+                center,
+                center
+            );
+            column-gap: 0.5em;
+            row-gap: 0.5em;
+            overflow-y: scroll;
+
+            .category-card {
+                @include defineSize(18em, 10em, 0, 0);
+                @include flexDisplay(column, space-between, center);
+                border-radius: 0.25em;
+                overflow: hidden;
+                box-shadow: 0.1em 0.1em 0.75em #e2e2e2, -0.1em -0.1em 0.75em #e2e2e2;
+
+                .card-header {
+                    @include defineSize(100%, 65%, 0, 0);
+                    @include flexDisplay(column, center, center);
+                    h4,
+                    p {
+                        margin: 0.1em 0;
+                        font-size: 1.1em;
+                    }
+
+                    p {
+                        color: grey;
+                        font-size: 0.9em;
+                    }
+                }
+
+                .card-footer {
+                    @include defineSize(100%, 35%, 0, 0);
+                    @include flexDisplay(row, center, center);
+                    background-color: $tertiary-color;
+
+                    button {
+                        @include defineSize(auto, auto, 0 0.75em, 0.5em);
+                        background-color: white;
+                        @include buttonDesign(white, black, none, 50%);
+                    }
+
+                    button:nth-of-type(even) {
+                        color: red;
+                    }
+                }
+            }
         }
     }
 
     /*active section*/
     .active-section {
         display: block;
+        @include flexDisplay(column, space-between, space-between);
         z-index: 2;
     }
 
@@ -335,6 +392,3 @@ body {
         }
     }
 }
-
-
-

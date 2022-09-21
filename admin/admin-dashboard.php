@@ -2,6 +2,7 @@
 
 try {
     include("../functions.php");
+    include("../auth.php");
     echo "<link rel='stylesheet' href='../style/admin-dashboard.css'>";
 } catch (\Throwable $th) {
     //throw $th;
@@ -10,41 +11,48 @@ try {
 //adding video from modal
 try {
     if (isset($_POST['add-video'])) {
-        $videoTitle = $_POST['video-title'];
-        $videoDescription = $_POST['video-description'];
-        $videoDate = date('Y-m-d') . '  ' . date('h:i:sa');
-        $allowedFiles = array('mp4', 'mov', 'avi');
-        $videoCategory = $_POST['video-category'];
-
+        $video_title = $_POST['video-title'];
         $path = $_FILES['video']['name'];
-        $path_temp = $_FILES['video']['temp_name'];
+        $path_temp = $_FILES['video']['tmp_name'];
+        $video_date = date('Y-m-d') . ' / ' . date('H:i:sa');
+        $video_description = $_POST['video-description'];
+        $video_category = $_POST['video-category'];
+        $allowed_files = array('mp4', 'mov', 'avi');
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
+
+        echo "<script>alert('1')</script>";
+        echo "<script>alert('data :',$path, $video_date, $video_description, $video_category)</script>";
 
         $message = [
-            'extension_error' => '',
-            'empty_error' => '',
+            'extension_error' => "",
+            'empty_error' => ""
         ];
 
-        $ext = pathinfo($path, PATHINFO_EXTENSION);
-        if (!in_array($ext, $allowedFiles)) {
-            $message['extension_error'] = 'File format not supported !';
-        }
 
-        if (empty($videoTitle) && empty($videoDescription) && $path) {
-            $message['empty_error'] = 'No feild can be left empty';
+        if (empty($video_title) || empty($path) || empty($video_category)) {
+            $message['empty_error'] = "<script language='javascript' type='text/javascript'>
+            alert('No field can be empty');
+                </script> ";
+            echo $message['empty_error'];
+        } else if (!empty($path) && !in_array($ext, $allowed_files)) {
+            $message['extension_error'] = "  <script language='javascript' type='text/javascript'>
+            alert('File format not supported! Supported Files(jpg, jpeg, png)');
+                </script> ";
+            echo $message['extension_error'];
         }
 
         foreach ($message as $key => $value) {
             if (empty($value)) {
-                unset($error[$key]);
+                unset($message[$key]);
             }
         }
 
         if (empty($message)) {
-            if (add_videos($path, $videoTitle, $videoDescription, $videoDate, $videoCategory)) {
-                copy($path_temp, '../videos' . time() . $path);
+            if (add_videos($path, $video_title, $video_description, $video_date, $video_category)) {
+                echo "<script>alert('4')</script>";
                 echo "
                 <script language='javascript' type='text/javascript'>
-                  alert('Video successfully added');
+                  alert('Image successfully added');
                 </script>
               ";
             } else {
@@ -115,41 +123,58 @@ try {
 
 //-------------------------------------------------------------------------------------
 
-
-
-
 //adding images from modal
 try {
     if (isset($_POST['add-image'])) {
-        $imageCaption = $_POST['image-caption'];
-        $path = $_FILES['images']['name'];
-        $path_temp = $_FILES['images']['tmp_name'];
-        $imageDate = date('Y-m-d') . ' ' . date('h:i:sa');
-        $imageCategory = $_POST['image-category'];
-
-        $allowedFiles = array('jpg', 'jpeg', 'png');
+        $image_caption = $_POST['image-caption'];
+        $path = $_FILES['image']['name'];
+        $path_temp = $_FILES['image']['tmp_name'];
+        $image_date = date('Y-m-d') . ' / ' . date('H:i:sa');
+        $image_category = $_POST['image-category'];
+        $allowed_files = array('jpg', 'jpeg', 'png');
         $ext = pathinfo($path, PATHINFO_EXTENSION);
 
+
+
         $message = [
-            'extension_error' => '',
-            'empty_error' => '',
+            'extension_error' => "",
+            'empty_error' => ""
         ];
 
 
-        if (empty($imageCaption) && empty($path) && empty($imageCategory)) {
-            $message['empty_error'] = 'No feild can be left empty !';
-        } else if (!in_array($ext, $allowedFiles)) {
-            $message['extension_error'] = 'File format not supported';
+        if (empty($image_caption) || empty($path) || empty($image_category)) {
+            echo "<script>alert('if checked')</script>";
+            $message['empty_error'] = "<script language='javascript' type='text/javascript'>
+            alert('File format not supported! Supported Files(jpg, jpeg, png)');
+                </script> ";
+            echo $message['empty_error'];
+        } else if (!empty($path) && !in_array($ext, $allowed_files)) {
+            $message['extension_error'] = "  <script language='javascript' type='text/javascript'>
+            alert('File format not supported! Supported Files(jpg, jpeg, png)');
+                </script> ";
+            echo $message['extension_error'];
         }
 
-        foreach ($error as $key => $value) {
+        foreach ($message as $key => $value) {
             if (empty($value)) {
-                unset($error[$key]);
+                unset($message[$key]);
             }
         }
 
-        if (empty($error)) {
-            if (add_images($path, $imageCaption, $imageCategory, $imageDate)) {
+
+        if (empty($message)) {
+            if (add_images($path, $image_caption, $image_category, $image_date)) {
+                echo "
+                <script language='javascript' type='text/javascript'>
+                  alert('Image successfully added');
+                </script>
+              ";
+            } else {
+                echo "
+                <script language='javascript' type='text/javascript'>
+                  alert('Something went wrong');
+                </script>
+              ";
             }
         }
     }
@@ -177,7 +202,7 @@ try {
 
     <p><?php echo $err; ?></p>
 
-    <!--navigation bar-->
+    <!--navigation bar------------------------------------------------------------->
     <div class="navbar">
         <div class="logo">
             <img src="../images/medals.jpg" alt="">
@@ -215,7 +240,7 @@ try {
             </button>
         </div>
     </div>
-    <!--mid-section-->
+    <!--mid-section------------------------------------------------------------------>
     <div class="mid-section">
         <button class="user-btn"><i class="fa-solid fa-users"></i>Users</button>
         <button class="image-btn"><i class="fa-solid fa-image"></i>Images</button>
@@ -224,7 +249,7 @@ try {
         <button class="category-btn"><i class="fa-solid fa-list"></i>Categories</button>
     </div>
     <div class="bottom-section">
-        <!--users section-->
+        <!--users section----------------------------------------------------------->
         <div class="users-section">
             <!--user search and filter section-->
             <div class="top-section">
@@ -241,11 +266,19 @@ try {
                 </div>
             </div>
             <!--list /table of users-->
-            <div class="list-section">
-
+            <div class="table-section">
+                <table class="users-table">
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Country</th>
+                    <th>Phone Number</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                    <?php fetch_users(); ?>
+                </table>
             </div>
         </div>
-        <!--image section-->
+        <!--image section---------------------------------------------------------->
         <div class="images-section">
             <!--image search and filter options-->
             <div class="top-section">
@@ -269,7 +302,7 @@ try {
 
             <!--list/table of images-->
         </div>
-        <!--video section-->
+        <!--video section---------------------------------------------------------->
         <div class="video-section">
             <!--video searcha and filter options-->
             <div class="top-section">
@@ -314,43 +347,37 @@ try {
                 </button>
             </div>
             <!--list-table of fixtures-->
-            <div class="list-section">
-                <table>
-                    <th>
-                        Fixture Detail
-                    </th>
-                    <th>Actions</th>
-                    <?php
-                    try {
-                        global $db_connection;
-                        $query = "SELECT * FROM fixtures";
-                        $query_result = mysqli_query($db_connection, $query);
-                        while ($row = mysqli_fetch_assoc($query_result)) {
-                            $db_id = $row['fixture_id'];
-                            $db_title = $row['fixture_title'];
-                            $db_date = $row['fixture_date'];
+            <div class="fixture-card-section">
+                <!--loading data from php-->
+                <?php
+                try {
+                    global $db_connection;
+                    $query = "SELECT * FROM fixtures";
+                    $query_result = mysqli_query($db_connection, $query);
+                    while ($row = mysqli_fetch_assoc($query_result)) {
+                        $db_id = $row['fixture_id'];
+                        $db_title = $row['fixture_title'];
+                        $db_date = $row['fixture_date'];
 
-                            echo "
-                           <tr>
-                           <td>
-                             <p>$db_title</p>
-                             <p>$db_date</p>
-                           </td>
-                           <td>
-                              <button class='update-btn' name='update-fixture-btn'  type='submit'>Update</buttton>                         
-                              <form method='post'>
-                               <button class='delete-btn' name='delete-fixture-btn'  type='submit'>Delete</buttton>
-                               </form>
-                            
-                            <td>
-                         </tr>
-                           ";
-                        }
-                    } catch (\Throwable $th) {
-                        //throw $th;
+                        echo "
+                          <div class='fixture-card'>
+                               <div class='card-header'>
+                               <h4>$db_title</h4>
+                               <p>$db_date</p>
+                               </div>
+                               <div class='card-footer'>
+                                  <form method='post'>
+                                      <button type='submit' name='update-fixture'><i class='fa-solid fa-pen'></i></button>
+                                      <button type='submit' name='delete-fixture'><i class='fa-solid fa-trash'></i></button>
+                                  </form>
+                               </div>
+                          </div>
+                        ";
                     }
-                    ?>
-                </table>
+                } catch (\Throwable $th) {
+                    //throw $th;
+                }
+                ?>
             </div>
         </div>
 
@@ -363,12 +390,21 @@ try {
                     Add
                 </button>
             </div>
+            <div class="category-card-section">
+                <?php
+                try {
+                    fetch_category();
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+                ?>
+            </div>
         </div>
     </div>
 
     <!--add image modal-->
     <div class="add-image-modal" id="modal">
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <div class="close-btn" id="close-image-modal">
                 <i class="fa-solid fa-circle-xmark"></i>
             </div>
@@ -376,9 +412,9 @@ try {
             <input type="text" name="image-caption" id="" placeholder="Image caption..">
             <input type="file" name="image" id="" placeholder="Choose image">
             <select name="image-category" id="">
-                <option value="">Football</option>
-                <option value="">Marathon</option>
-                <option value="">Gymnastics</option>
+                <option value="Football">Football</option>
+                <option value="Marathon">Marathon</option>
+                <option value="Gymnastics">Gymnastics</option>
             </select>
             <button type="submit" name="add-image">Add</button>
         </form>
@@ -396,20 +432,22 @@ try {
         </form>
     </div>
 
+
+
     <!--Add video modal-->
     <div class="add-video-modal" id="modal">
-        <form action="" method="post">
-            <div class="close-btn" id="close-video-modal">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="close-btn" id="close-image-modal">
                 <i class="fa-solid fa-circle-xmark"></i>
             </div>
-            <h3>Add Video</h3>
-            <input type="text" name="video-title" id="" placeholder="Video title..">
-            <textarea name="video-description" id="" cols="37" rows="6" placeholder="Video Description.."></textarea>
-            <input type="file" name="video" id="" placeholder="Choose an video file to upload">
+            <h3>Add image</h3>
+            <input type="text" name="video-title" id="" placeholder="Video Title..">
+            <textarea name="video-description" id="" cols="37" rows="6"></textarea>
+            <input type="file" name="video" id="" placeholder="Choose image...">
             <select name="video-category" id="">
-                <option value="">Football</option>
-                <option value="">Marathon</option>
-                <option value="">Gymnastics</option>
+                <option value="Football">Football</option>
+                <option value="Marathon">Marathon</option>
+                <option value="Gymnastics">Gymnastics</option>
             </select>
             <button type="submit" name="add-video">Add</button>
         </form>
