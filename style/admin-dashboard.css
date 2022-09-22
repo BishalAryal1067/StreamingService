@@ -155,7 +155,9 @@ body {
 .bottom-section .images-section,
 .bottom-section .video-section,
 .bottom-section .fixture-section,
-.bottom-section .category-section {
+.bottom-section .category-section,
+.bottom-section .news-section,
+.bottom-section .live-section {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -174,7 +176,9 @@ body {
 .bottom-section .images-section .top-section,
 .bottom-section .video-section .top-section,
 .bottom-section .fixture-section .top-section,
-.bottom-section .category-section .top-section {
+.bottom-section .category-section .top-section,
+.bottom-section .news-section .top-section,
+.bottom-section .live-section .top-section {
   box-sizing: border-box;
   width: 100%;
   height: 10%;
@@ -190,7 +194,9 @@ body {
 .bottom-section .images-section .top-section .filter-section,
 .bottom-section .video-section .top-section .filter-section,
 .bottom-section .fixture-section .top-section .filter-section,
-.bottom-section .category-section .top-section .filter-section {
+.bottom-section .category-section .top-section .filter-section,
+.bottom-section .news-section .top-section .filter-section,
+.bottom-section .live-section .top-section .filter-section {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -207,7 +213,11 @@ body {
 .bottom-section .fixture-section .top-section .filter-section p,
 .bottom-section .fixture-section .top-section .filter-section i,
 .bottom-section .category-section .top-section .filter-section p,
-.bottom-section .category-section .top-section .filter-section i {
+.bottom-section .category-section .top-section .filter-section i,
+.bottom-section .news-section .top-section .filter-section p,
+.bottom-section .news-section .top-section .filter-section i,
+.bottom-section .live-section .top-section .filter-section p,
+.bottom-section .live-section .top-section .filter-section i {
   color: grey;
   font-weight: 800;
   margin: 0 0.5em 0 0;
@@ -217,7 +227,9 @@ body {
 .bottom-section .images-section .top-section .filter-section select,
 .bottom-section .video-section .top-section .filter-section select,
 .bottom-section .fixture-section .top-section .filter-section select,
-.bottom-section .category-section .top-section .filter-section select {
+.bottom-section .category-section .top-section .filter-section select,
+.bottom-section .news-section .top-section .filter-section select,
+.bottom-section .live-section .top-section .filter-section select {
   box-sizing: border-box;
   width: 10em;
   height: 2.75em;
@@ -234,7 +246,9 @@ body {
 .bottom-section .images-section .top-section button,
 .bottom-section .video-section .top-section button,
 .bottom-section .fixture-section .top-section button,
-.bottom-section .category-section .top-section button {
+.bottom-section .category-section .top-section button,
+.bottom-section .news-section .top-section button,
+.bottom-section .live-section .top-section button {
   box-sizing: border-box;
   width: auto;
   height: auto;
@@ -257,7 +271,9 @@ body {
 .bottom-section .images-section .top-section button i,
 .bottom-section .video-section .top-section button i,
 .bottom-section .fixture-section .top-section button i,
-.bottom-section .category-section .top-section button i {
+.bottom-section .category-section .top-section button i,
+.bottom-section .news-section .top-section button i,
+.bottom-section .live-section .top-section button i {
   margin-right: 0.5em;
   color: #672BDF;
 }
@@ -266,7 +282,9 @@ body {
 .bottom-section .images-section .table-section,
 .bottom-section .video-section .table-section,
 .bottom-section .fixture-section .table-section,
-.bottom-section .category-section .table-section {
+.bottom-section .category-section .table-section,
+.bottom-section .news-section .table-section,
+.bottom-section .live-section .table-section {
   box-sizing: border-box;
   width: 100%;
   height: 80%;
@@ -283,7 +301,9 @@ body {
 .bottom-section .images-section .table-section table,
 .bottom-section .video-section .table-section table,
 .bottom-section .fixture-section .table-section table,
-.bottom-section .category-section .table-section table {
+.bottom-section .category-section .table-section table,
+.bottom-section .news-section .table-section table,
+.bottom-section .live-section .table-section table {
   width: 70em;
   min-width: 25em;
   border-collapse: collapse;
@@ -309,7 +329,13 @@ body {
 .bottom-section .fixture-section .table-section table td,
 .bottom-section .category-section .table-section table table,
 .bottom-section .category-section .table-section table th,
-.bottom-section .category-section .table-section table td {
+.bottom-section .category-section .table-section table td,
+.bottom-section .news-section .table-section table table,
+.bottom-section .news-section .table-section table th,
+.bottom-section .news-section .table-section table td,
+.bottom-section .live-section .table-section table table,
+.bottom-section .live-section .table-section table th,
+.bottom-section .live-section .table-section table td {
   text-align: left;
   padding: 0.95em;
 }
@@ -318,7 +344,9 @@ body {
 .bottom-section .images-section .table-section table th,
 .bottom-section .video-section .table-section table th,
 .bottom-section .fixture-section .table-section table th,
-.bottom-section .category-section .table-section table th {
+.bottom-section .category-section .table-section table th,
+.bottom-section .news-section .table-section table th,
+.bottom-section .live-section .table-section table th {
   background-color: #B52666;
   color: white;
 }
@@ -327,7 +355,9 @@ body {
 .bottom-section .images-section .table-section table tr td,
 .bottom-section .video-section .table-section table tr td,
 .bottom-section .fixture-section .table-section table tr td,
-.bottom-section .category-section .table-section table tr td {
+.bottom-section .category-section .table-section table tr td,
+.bottom-section .news-section .table-section table tr td,
+.bottom-section .live-section .table-section table tr td {
   font-weight: 500;
 }
 .bottom-section .users-section .table-section table tr:nth-of-type(odd),
@@ -335,7 +365,9 @@ body {
 .bottom-section .images-section .table-section table tr:nth-of-type(odd),
 .bottom-section .video-section .table-section table tr:nth-of-type(odd),
 .bottom-section .fixture-section .table-section table tr:nth-of-type(odd),
-.bottom-section .category-section .table-section table tr:nth-of-type(odd) {
+.bottom-section .category-section .table-section table tr:nth-of-type(odd),
+.bottom-section .news-section .table-section table tr:nth-of-type(odd),
+.bottom-section .live-section .table-section table tr:nth-of-type(odd) {
   background-color: #eeeeee;
 }
 .bottom-section .users-section .fixture-card-section,
@@ -343,7 +375,9 @@ body {
 .bottom-section .images-section .fixture-card-section,
 .bottom-section .video-section .fixture-card-section,
 .bottom-section .fixture-section .fixture-card-section,
-.bottom-section .category-section .fixture-card-section {
+.bottom-section .category-section .fixture-card-section,
+.bottom-section .news-section .fixture-card-section,
+.bottom-section .live-section .fixture-card-section {
   box-sizing: border-box;
   width: 100%;
   height: 80%;
@@ -364,7 +398,9 @@ body {
 .bottom-section .images-section .fixture-card-section .fixture-card,
 .bottom-section .video-section .fixture-card-section .fixture-card,
 .bottom-section .fixture-section .fixture-card-section .fixture-card,
-.bottom-section .category-section .fixture-card-section .fixture-card {
+.bottom-section .category-section .fixture-card-section .fixture-card,
+.bottom-section .news-section .fixture-card-section .fixture-card,
+.bottom-section .live-section .fixture-card-section .fixture-card {
   box-sizing: border-box;
   width: 18em;
   height: 10em;
@@ -383,7 +419,9 @@ body {
 .bottom-section .images-section .fixture-card-section .fixture-card .card-header,
 .bottom-section .video-section .fixture-card-section .fixture-card .card-header,
 .bottom-section .fixture-section .fixture-card-section .fixture-card .card-header,
-.bottom-section .category-section .fixture-card-section .fixture-card .card-header {
+.bottom-section .category-section .fixture-card-section .fixture-card .card-header,
+.bottom-section .news-section .fixture-card-section .fixture-card .card-header,
+.bottom-section .live-section .fixture-card-section .fixture-card .card-header {
   box-sizing: border-box;
   width: 100%;
   height: 65%;
@@ -405,7 +443,11 @@ body {
 .bottom-section .fixture-section .fixture-card-section .fixture-card .card-header h4,
 .bottom-section .fixture-section .fixture-card-section .fixture-card .card-header p,
 .bottom-section .category-section .fixture-card-section .fixture-card .card-header h4,
-.bottom-section .category-section .fixture-card-section .fixture-card .card-header p {
+.bottom-section .category-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .news-section .fixture-card-section .fixture-card .card-header h4,
+.bottom-section .news-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .live-section .fixture-card-section .fixture-card .card-header h4,
+.bottom-section .live-section .fixture-card-section .fixture-card .card-header p {
   margin: 0.1em 0;
   font-size: 1.1em;
 }
@@ -414,7 +456,9 @@ body {
 .bottom-section .images-section .fixture-card-section .fixture-card .card-header p,
 .bottom-section .video-section .fixture-card-section .fixture-card .card-header p,
 .bottom-section .fixture-section .fixture-card-section .fixture-card .card-header p,
-.bottom-section .category-section .fixture-card-section .fixture-card .card-header p {
+.bottom-section .category-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .news-section .fixture-card-section .fixture-card .card-header p,
+.bottom-section .live-section .fixture-card-section .fixture-card .card-header p {
   color: grey;
   font-size: 0.9em;
 }
@@ -423,7 +467,9 @@ body {
 .bottom-section .images-section .fixture-card-section .fixture-card .card-footer,
 .bottom-section .video-section .fixture-card-section .fixture-card .card-footer,
 .bottom-section .fixture-section .fixture-card-section .fixture-card .card-footer,
-.bottom-section .category-section .fixture-card-section .fixture-card .card-footer {
+.bottom-section .category-section .fixture-card-section .fixture-card .card-footer,
+.bottom-section .news-section .fixture-card-section .fixture-card .card-footer,
+.bottom-section .live-section .fixture-card-section .fixture-card .card-footer {
   box-sizing: border-box;
   width: 100%;
   height: 35%;
@@ -440,7 +486,9 @@ body {
 .bottom-section .images-section .fixture-card-section .fixture-card .card-footer button,
 .bottom-section .video-section .fixture-card-section .fixture-card .card-footer button,
 .bottom-section .fixture-section .fixture-card-section .fixture-card .card-footer button,
-.bottom-section .category-section .fixture-card-section .fixture-card .card-footer button {
+.bottom-section .category-section .fixture-card-section .fixture-card .card-footer button,
+.bottom-section .news-section .fixture-card-section .fixture-card .card-footer button,
+.bottom-section .live-section .fixture-card-section .fixture-card .card-footer button {
   box-sizing: border-box;
   width: auto;
   height: auto;
@@ -458,7 +506,9 @@ body {
 .bottom-section .images-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even),
 .bottom-section .video-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even),
 .bottom-section .fixture-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even),
-.bottom-section .category-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even) {
+.bottom-section .category-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even),
+.bottom-section .news-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even),
+.bottom-section .live-section .fixture-card-section .fixture-card .card-footer button:nth-of-type(even) {
   color: red;
 }
 .bottom-section .users-section .category-card-section,
@@ -466,7 +516,9 @@ body {
 .bottom-section .images-section .category-card-section,
 .bottom-section .video-section .category-card-section,
 .bottom-section .fixture-section .category-card-section,
-.bottom-section .category-section .category-card-section {
+.bottom-section .category-section .category-card-section,
+.bottom-section .news-section .category-card-section,
+.bottom-section .live-section .category-card-section {
   box-sizing: border-box;
   width: 100%;
   height: 80%;
@@ -487,7 +539,9 @@ body {
 .bottom-section .images-section .category-card-section .category-card,
 .bottom-section .video-section .category-card-section .category-card,
 .bottom-section .fixture-section .category-card-section .category-card,
-.bottom-section .category-section .category-card-section .category-card {
+.bottom-section .category-section .category-card-section .category-card,
+.bottom-section .news-section .category-card-section .category-card,
+.bottom-section .live-section .category-card-section .category-card {
   box-sizing: border-box;
   width: 18em;
   height: 10em;
@@ -506,7 +560,9 @@ body {
 .bottom-section .images-section .category-card-section .category-card .card-header,
 .bottom-section .video-section .category-card-section .category-card .card-header,
 .bottom-section .fixture-section .category-card-section .category-card .card-header,
-.bottom-section .category-section .category-card-section .category-card .card-header {
+.bottom-section .category-section .category-card-section .category-card .card-header,
+.bottom-section .news-section .category-card-section .category-card .card-header,
+.bottom-section .live-section .category-card-section .category-card .card-header {
   box-sizing: border-box;
   width: 100%;
   height: 65%;
@@ -528,7 +584,11 @@ body {
 .bottom-section .fixture-section .category-card-section .category-card .card-header h4,
 .bottom-section .fixture-section .category-card-section .category-card .card-header p,
 .bottom-section .category-section .category-card-section .category-card .card-header h4,
-.bottom-section .category-section .category-card-section .category-card .card-header p {
+.bottom-section .category-section .category-card-section .category-card .card-header p,
+.bottom-section .news-section .category-card-section .category-card .card-header h4,
+.bottom-section .news-section .category-card-section .category-card .card-header p,
+.bottom-section .live-section .category-card-section .category-card .card-header h4,
+.bottom-section .live-section .category-card-section .category-card .card-header p {
   margin: 0.1em 0;
   font-size: 1.1em;
 }
@@ -537,7 +597,9 @@ body {
 .bottom-section .images-section .category-card-section .category-card .card-header p,
 .bottom-section .video-section .category-card-section .category-card .card-header p,
 .bottom-section .fixture-section .category-card-section .category-card .card-header p,
-.bottom-section .category-section .category-card-section .category-card .card-header p {
+.bottom-section .category-section .category-card-section .category-card .card-header p,
+.bottom-section .news-section .category-card-section .category-card .card-header p,
+.bottom-section .live-section .category-card-section .category-card .card-header p {
   color: grey;
   font-size: 0.9em;
 }
@@ -546,7 +608,9 @@ body {
 .bottom-section .images-section .category-card-section .category-card .card-footer,
 .bottom-section .video-section .category-card-section .category-card .card-footer,
 .bottom-section .fixture-section .category-card-section .category-card .card-footer,
-.bottom-section .category-section .category-card-section .category-card .card-footer {
+.bottom-section .category-section .category-card-section .category-card .card-footer,
+.bottom-section .news-section .category-card-section .category-card .card-footer,
+.bottom-section .live-section .category-card-section .category-card .card-footer {
   box-sizing: border-box;
   width: 100%;
   height: 35%;
@@ -563,7 +627,9 @@ body {
 .bottom-section .images-section .category-card-section .category-card .card-footer button,
 .bottom-section .video-section .category-card-section .category-card .card-footer button,
 .bottom-section .fixture-section .category-card-section .category-card .card-footer button,
-.bottom-section .category-section .category-card-section .category-card .card-footer button {
+.bottom-section .category-section .category-card-section .category-card .card-footer button,
+.bottom-section .news-section .category-card-section .category-card .card-footer button,
+.bottom-section .live-section .category-card-section .category-card .card-footer button {
   box-sizing: border-box;
   width: auto;
   height: auto;
@@ -581,7 +647,9 @@ body {
 .bottom-section .images-section .category-card-section .category-card .card-footer button:nth-of-type(even),
 .bottom-section .video-section .category-card-section .category-card .card-footer button:nth-of-type(even),
 .bottom-section .fixture-section .category-card-section .category-card .card-footer button:nth-of-type(even),
-.bottom-section .category-section .category-card-section .category-card .card-footer button:nth-of-type(even) {
+.bottom-section .category-section .category-card-section .category-card .card-footer button:nth-of-type(even),
+.bottom-section .news-section .category-card-section .category-card .card-footer button:nth-of-type(even),
+.bottom-section .live-section .category-card-section .category-card .card-footer button:nth-of-type(even) {
   color: red;
 }
 .bottom-section .active-section {
@@ -609,7 +677,8 @@ body {
 .add-video-modal,
 .add-category-modal,
 .add-fixture-modal,
-.add-news-modal {
+.add-news-modal,
+.add-live-modal {
   display: none;
 }
 

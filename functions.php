@@ -32,6 +32,7 @@ function delete_fixtures($id)
   $update_result = mysqli_query($db_connection, $update);
   if ($delete_result && $update_result) {
     return true;
+    header("refresh");
   } else {
     echo "Query Failed";
     return false;
@@ -43,11 +44,14 @@ function delete_fixtures($id)
 //function to add videos----------------------------------------------------------
 function add_videos($path, $video_title, $video_description, $video_date, $video_category)
 {
+  
   global $db_connection;
-  $view_count = 0;
-  $query = "INSERT INTO videos(path, video_title, video_description,video_date, video_category, view_count) 
+   $view_count = 0;
+
+  $query = "INSERT INTO videos(video_path, video_title, video_description,video_date, video_category, view_count) 
   VALUES('$path','$video_title','$video_description','$video_date', '$video_category', $view_count)";
   $insertQuery = mysqli_query($db_connection, $query);
+  
   if ($insertQuery) {
     return true;
   }
@@ -55,6 +59,23 @@ function add_videos($path, $video_title, $video_description, $video_date, $video
   else{
     echo "<script>alert('Query Failed')<script>";
     return false;
+  }
+}
+
+//function to fetch videos
+function fetch_videos()
+{
+  global $db_connection;
+  $query = "SELECT * FROM videos";
+  $result = mysqli_query($db_connection, $query);
+  if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $video_id = $row['video_id'];
+      $video_path = $row['video_path'];
+      $video_caption = $row['video_caption'];
+      $video_category = $row['video_category'];
+      $upload_date = $row['upload_date'];
+    }
   }
 }
 
@@ -82,7 +103,7 @@ function fetch_images()
       $image_id = $row['image_id'];
       $image_path = $row['image_path'];
       $image_caption = $row['image_caption'];
-      $image_category = $row['image-category'];
+      $image_category = $row['image_category'];
       $upload_date = $row['upload_date'];
     }
   }

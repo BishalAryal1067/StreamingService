@@ -8,7 +8,7 @@ try {
     //throw $th;
 }
 
-//adding video from modal
+//adding video from modal-------------------------------------------
 try {
     if (isset($_POST['add-video'])) {
         $video_title = $_POST['video-title'];
@@ -20,8 +20,9 @@ try {
         $allowed_files = array('mp4', 'mov', 'avi');
         $ext = pathinfo($path, PATHINFO_EXTENSION);
 
-        echo "<script>alert('1')</script>";
-        echo "<script>alert('data :',$path, $video_date, $video_description, $video_category)</script>";
+        // $destination = "../admin/uploads/";
+        // $m= is_writable($destination);
+        // echo "<script>$m</script>";
 
         $message = [
             'extension_error' => "",
@@ -49,10 +50,10 @@ try {
 
         if (empty($message)) {
             if (add_videos($path, $video_title, $video_description, $video_date, $video_category)) {
-                echo "<script>alert('4')</script>";
+                move_uploaded_file($path_temp, "uploads/" . $path);
                 echo "
                 <script language='javascript' type='text/javascript'>
-                  alert('Image successfully added');
+                  alert('Video successfully added');
                 </script>
               ";
             } else {
@@ -68,9 +69,7 @@ try {
     echo $err;
 }
 
-
-
-//adding category from modal
+//adding category from modal-------------------------------------------------
 try {
     if (isset($_POST['add-category'])) {
         $categoryTitle = $_POST['category-title'];
@@ -92,7 +91,64 @@ try {
     echo $err;
 }
 
+//adding news from modal------------------------------------------------------------
+try {
+    if (isset($_POST['add-news'])) {
+        $video_title = $_POST['news-title'];
+        $path = $_FILES['video']['name'];
+        $path_temp = $_FILES['video']['tmp_name'];
+        $video_date = date('Y-m-d') . ' / ' . date('H:i:sa');
+        $video_description = $_POST['video-description'];
+        $video_category = $_POST['video-category'];
+        $allowed_files = array('mp4', 'mov', 'avi');
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
 
+        $message = [
+            'extension_error' => "",
+            'empty_error' => ""
+        ];
+
+
+        if (empty($video_title) || empty($path) || empty($video_category)) {
+            $message['empty_error'] = "<script language='javascript' type='text/javascript'>
+            alert('No field can be empty');
+                </script> ";
+            echo $message['empty_error'];
+        } else if (!empty($path) && !in_array($ext, $allowed_files)) {
+            $message['extension_error'] = "  <script language='javascript' type='text/javascript'>
+            alert('File format not supported! Supported Files(jpg, jpeg, png)');
+                </script> ";
+            echo $message['extension_error'];
+        }
+
+        foreach ($message as $key => $value) {
+            if (empty($value)) {
+                unset($message[$key]);
+            }
+        }
+
+        if (empty($message)) {
+            copy($_FILES['video']['name'], "../../uploads/" . time() . $path);
+            if (add_videos($path, $video_title, $video_description, $video_date, $video_category)) {
+                echo ("here");
+
+                echo "
+                <script language='javascript' type='text/javascript'>
+                  alert('Image successfully added');
+                </script>
+              ";
+            } else {
+                echo "
+                <script language='javascript' type='text/javascript'>
+                  alert('Something went wrong');
+                </script>
+              ";
+            }
+        }
+    }
+} catch (Error $err) {
+    echo $err;
+}
 
 //adding fixture from modal
 try {
@@ -163,6 +219,7 @@ try {
 
 
         if (empty($message)) {
+            copy($path_temp, './uploads', time() . $path);
             if (add_images($path, $image_caption, $image_category, $image_date)) {
                 echo "
                 <script language='javascript' type='text/javascript'>
@@ -246,6 +303,8 @@ try {
         <button class="image-btn"><i class="fa-solid fa-image"></i>Images</button>
         <button class="video-btn"><i class="fa-solid fa-video"></i>Videos</button>
         <button class="fixture-btn"><i class="fa-solid fa-ranking-star"></i>Fixtures</button>
+        <button class="news-btn"><i class="fa-solid fa-newspaper"></i></i>News</button>
+        <button class="live-btn"><i class="fa-solid fa-tower-broadcast"></i></i>Live</button>
         <button class="category-btn"><i class="fa-solid fa-list"></i>Categories</button>
     </div>
     <div class="bottom-section">
@@ -400,6 +459,32 @@ try {
                 ?>
             </div>
         </div>
+
+
+        <!--news section------------------------------------------------------>
+        <div class="news-section">
+            <div class="top-section">
+                <input type="search" name="search-news" id="" placeholder="Search news...">
+                <button class="add-news-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add
+                </button>
+            </div>
+            <div class="news-card-section">
+            </div>
+        </div>
+
+        <div class="live-section">
+            <div class="top-section">
+                <input type="search" name="search-news" id="" placeholder="Search news...">
+                <button class="add-live-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add
+                </button>
+            </div>
+            <div class="live-card-section">
+            </div>
+        </div>
     </div>
 
     <!--add image modal-->
@@ -432,15 +517,13 @@ try {
         </form>
     </div>
 
-
-
     <!--Add video modal-->
     <div class="add-video-modal" id="modal">
         <form action="" method="post" enctype="multipart/form-data">
-            <div class="close-btn" id="close-image-modal">
+            <div class="close-btn" id="close-video-modal">
                 <i class="fa-solid fa-circle-xmark"></i>
             </div>
-            <h3>Add image</h3>
+            <h3>Add video</h3>
             <input type="text" name="video-title" id="" placeholder="Video Title..">
             <textarea name="video-description" id="" cols="37" rows="6"></textarea>
             <input type="file" name="video" id="" placeholder="Choose image...">
@@ -471,9 +554,44 @@ try {
         </form>
     </div>
 
+    <!--add news modal-->
+    <div class="add-news-modal" id="modal">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="close-btn" id="close-news-modal">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <h3>Add News</h3>
+            <input type="text" name="image-caption" id="" placeholder="News title..">
+            <textarea name="" id="" cols="36" rows="7"></textarea>
+            <input type="file" name="image" id="" placeholder="Choose image">
+            <select name="image-category" id="">
+                <option value="Football">Football</option>
+                <option value="Marathon">Marathon</option>
+                <option value="Gymnastics">Gymnastics</option>
+            </select>
+            <button type="submit" name="add-news">Add</button>
+        </form>
+    </div>
+
+    <!-- Add live modal -->
+    <div class="add-live-modal" id="modal">
+        <form action="" method="post">
+            <div class="close-btn" id="close-live-modal">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <h3>Add Live</h3>
+            <input type="text" name="live-title" id="" placeholder="Live Match Title...">
+            <input type="text" name="category-title" id="" placeholder="URL...">
+            <button type="submit" name="add-live">Add</button>
+        </form>
+    </div>
+
+
+
+
 
     <!--javascript-->
-    <script src="../js/admin-dashboard.js"></script>
+    <script type="text/javascript" src="../js/admin-dashboard.js"></script>
 </body>
 
 </html>

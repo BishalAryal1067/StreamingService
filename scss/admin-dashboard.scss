@@ -109,7 +109,9 @@ body {
     .images-section,
     .video-section,
     .fixture-section,
-    .category-section {
+    .category-section,
+    .news-section,
+    .live-section {
         @include defineSize(100%, 100%, 0, 0 1.5em);
         @include positionElement(absolute, 0, 0, 0, 0);
         overflow-x: hidden;
@@ -315,7 +317,8 @@ body {
 .add-video-modal,
 .add-category-modal,
 .add-fixture-modal,
-.add-news-modal {
+.add-news-modal,
+.add-live-modal {
     display: none;
 }
 
