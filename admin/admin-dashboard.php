@@ -20,10 +20,7 @@ try {
         $allowed_files = array('mp4', 'mov', 'avi');
         $ext = pathinfo($path, PATHINFO_EXTENSION);
 
-        // $destination = "../admin/uploads/";
-        // $m= is_writable($destination);
-        // echo "<script>$m</script>";
-
+                
         $message = [
             'extension_error' => "",
             'empty_error' => ""
@@ -50,7 +47,7 @@ try {
 
         if (empty($message)) {
             if (add_videos($path, $video_title, $video_description, $video_date, $video_category)) {
-                move_uploaded_file($path_temp, "uploads/" . $path);
+                move_uploaded_file($path_temp, 'uploads/' . $path);
                 echo "
                 <script language='javascript' type='text/javascript'>
                   alert('Video successfully added');
