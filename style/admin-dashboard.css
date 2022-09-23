@@ -170,6 +170,7 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   display: none;
+  /*------live card section---------*/
 }
 .bottom-section .users-section .top-section,
 .bottom-section .video-section .top-section,
@@ -650,6 +651,603 @@ body {
 .bottom-section .category-section .category-card-section .category-card .card-footer button:nth-of-type(even),
 .bottom-section .news-section .category-card-section .category-card .card-footer button:nth-of-type(even),
 .bottom-section .live-section .category-card-section .category-card .card-footer button:nth-of-type(even) {
+  color: red;
+}
+.bottom-section .users-section .news-card-section,
+.bottom-section .video-section .news-card-section,
+.bottom-section .images-section .news-card-section,
+.bottom-section .video-section .news-card-section,
+.bottom-section .fixture-section .news-card-section,
+.bottom-section .category-section .news-card-section,
+.bottom-section .news-section .news-card-section,
+.bottom-section .live-section .news-card-section {
+  box-sizing: border-box;
+  width: 100%;
+  height: 80%;
+  margin: auto;
+  padding: 1.5em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(26em, 1fr));
+  justify-items: center;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  row-gap: 0.5em;
+  overflow-y: scroll;
+}
+.bottom-section .users-section .news-card-section .news-card,
+.bottom-section .video-section .news-card-section .news-card,
+.bottom-section .images-section .news-card-section .news-card,
+.bottom-section .video-section .news-card-section .news-card,
+.bottom-section .fixture-section .news-card-section .news-card,
+.bottom-section .category-section .news-card-section .news-card,
+.bottom-section .news-section .news-card-section .news-card,
+.bottom-section .live-section .news-card-section .news-card {
+  box-sizing: border-box;
+  width: 20em;
+  height: 15em;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 0.25em;
+  overflow: hidden;
+  box-shadow: 0.1em 0.1em 0.75em #e2e2e2, -0.1em -0.1em 0.75em #e2e2e2;
+}
+.bottom-section .users-section .news-card-section .news-card img,
+.bottom-section .video-section .news-card-section .news-card img,
+.bottom-section .images-section .news-card-section .news-card img,
+.bottom-section .video-section .news-card-section .news-card img,
+.bottom-section .fixture-section .news-card-section .news-card img,
+.bottom-section .category-section .news-card-section .news-card img,
+.bottom-section .news-section .news-card-section .news-card img,
+.bottom-section .live-section .news-card-section .news-card img {
+  width: 100%;
+  height: 80%;
+}
+.bottom-section .users-section .news-card-section .news-card .card-header,
+.bottom-section .video-section .news-card-section .news-card .card-header,
+.bottom-section .images-section .news-card-section .news-card .card-header,
+.bottom-section .video-section .news-card-section .news-card .card-header,
+.bottom-section .fixture-section .news-card-section .news-card .card-header,
+.bottom-section .category-section .news-card-section .news-card .card-header,
+.bottom-section .news-section .news-card-section .news-card .card-header,
+.bottom-section .live-section .news-card-section .news-card .card-header {
+  box-sizing: border-box;
+  width: 100%;
+  height: 80%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.bottom-section .users-section .news-card-section .news-card .card-header h4,
+.bottom-section .users-section .news-card-section .news-card .card-header p,
+.bottom-section .video-section .news-card-section .news-card .card-header h4,
+.bottom-section .video-section .news-card-section .news-card .card-header p,
+.bottom-section .images-section .news-card-section .news-card .card-header h4,
+.bottom-section .images-section .news-card-section .news-card .card-header p,
+.bottom-section .video-section .news-card-section .news-card .card-header h4,
+.bottom-section .video-section .news-card-section .news-card .card-header p,
+.bottom-section .fixture-section .news-card-section .news-card .card-header h4,
+.bottom-section .fixture-section .news-card-section .news-card .card-header p,
+.bottom-section .category-section .news-card-section .news-card .card-header h4,
+.bottom-section .category-section .news-card-section .news-card .card-header p,
+.bottom-section .news-section .news-card-section .news-card .card-header h4,
+.bottom-section .news-section .news-card-section .news-card .card-header p,
+.bottom-section .live-section .news-card-section .news-card .card-header h4,
+.bottom-section .live-section .news-card-section .news-card .card-header p {
+  margin: 0.1em 0;
+  font-size: 1.1em;
+}
+.bottom-section .users-section .news-card-section .news-card .card-header p,
+.bottom-section .video-section .news-card-section .news-card .card-header p,
+.bottom-section .images-section .news-card-section .news-card .card-header p,
+.bottom-section .video-section .news-card-section .news-card .card-header p,
+.bottom-section .fixture-section .news-card-section .news-card .card-header p,
+.bottom-section .category-section .news-card-section .news-card .card-header p,
+.bottom-section .news-section .news-card-section .news-card .card-header p,
+.bottom-section .live-section .news-card-section .news-card .card-header p {
+  color: grey;
+  font-size: 0.9em;
+}
+.bottom-section .users-section .news-card-section .news-card .card-footer,
+.bottom-section .video-section .news-card-section .news-card .card-footer,
+.bottom-section .images-section .news-card-section .news-card .card-footer,
+.bottom-section .video-section .news-card-section .news-card .card-footer,
+.bottom-section .fixture-section .news-card-section .news-card .card-footer,
+.bottom-section .category-section .news-card-section .news-card .card-footer,
+.bottom-section .news-section .news-card-section .news-card .card-footer,
+.bottom-section .live-section .news-card-section .news-card .card-footer {
+  box-sizing: border-box;
+  width: 100%;
+  height: 20%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #B52666;
+}
+.bottom-section .users-section .news-card-section .news-card .card-footer button,
+.bottom-section .video-section .news-card-section .news-card .card-footer button,
+.bottom-section .images-section .news-card-section .news-card .card-footer button,
+.bottom-section .video-section .news-card-section .news-card .card-footer button,
+.bottom-section .fixture-section .news-card-section .news-card .card-footer button,
+.bottom-section .category-section .news-card-section .news-card .card-footer button,
+.bottom-section .news-section .news-card-section .news-card .card-footer button,
+.bottom-section .live-section .news-card-section .news-card .card-footer button {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0 0.75em;
+  padding: 0.5em;
+  background-color: white;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.bottom-section .users-section .news-card-section .news-card .card-footer button:nth-of-type(even),
+.bottom-section .video-section .news-card-section .news-card .card-footer button:nth-of-type(even),
+.bottom-section .images-section .news-card-section .news-card .card-footer button:nth-of-type(even),
+.bottom-section .video-section .news-card-section .news-card .card-footer button:nth-of-type(even),
+.bottom-section .fixture-section .news-card-section .news-card .card-footer button:nth-of-type(even),
+.bottom-section .category-section .news-card-section .news-card .card-footer button:nth-of-type(even),
+.bottom-section .news-section .news-card-section .news-card .card-footer button:nth-of-type(even),
+.bottom-section .live-section .news-card-section .news-card .card-footer button:nth-of-type(even) {
+  color: red;
+}
+.bottom-section .users-section .live-card-section,
+.bottom-section .video-section .live-card-section,
+.bottom-section .images-section .live-card-section,
+.bottom-section .video-section .live-card-section,
+.bottom-section .fixture-section .live-card-section,
+.bottom-section .category-section .live-card-section,
+.bottom-section .news-section .live-card-section,
+.bottom-section .live-section .live-card-section {
+  box-sizing: border-box;
+  width: 100%;
+  height: 80%;
+  margin: auto;
+  padding: 1.5em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(15em, 1fr));
+  justify-items: center;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  row-gap: 0.5em;
+  overflow-y: scroll;
+}
+.bottom-section .users-section .live-card-section .live-card,
+.bottom-section .video-section .live-card-section .live-card,
+.bottom-section .images-section .live-card-section .live-card,
+.bottom-section .video-section .live-card-section .live-card,
+.bottom-section .fixture-section .live-card-section .live-card,
+.bottom-section .category-section .live-card-section .live-card,
+.bottom-section .news-section .live-card-section .live-card,
+.bottom-section .live-section .live-card-section .live-card {
+  box-sizing: border-box;
+  width: 18em;
+  height: 10em;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.25em;
+  overflow: hidden;
+  box-shadow: 0.1em 0.1em 0.75em #e2e2e2, -0.1em -0.1em 0.75em #e2e2e2;
+}
+.bottom-section .users-section .live-card-section .live-card .card-header,
+.bottom-section .video-section .live-card-section .live-card .card-header,
+.bottom-section .images-section .live-card-section .live-card .card-header,
+.bottom-section .video-section .live-card-section .live-card .card-header,
+.bottom-section .fixture-section .live-card-section .live-card .card-header,
+.bottom-section .category-section .live-card-section .live-card .card-header,
+.bottom-section .news-section .live-card-section .live-card .card-header,
+.bottom-section .live-section .live-card-section .live-card .card-header {
+  box-sizing: border-box;
+  width: 100%;
+  height: 65%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bottom-section .users-section .live-card-section .live-card .card-header h4,
+.bottom-section .users-section .live-card-section .live-card .card-header p,
+.bottom-section .video-section .live-card-section .live-card .card-header h4,
+.bottom-section .video-section .live-card-section .live-card .card-header p,
+.bottom-section .images-section .live-card-section .live-card .card-header h4,
+.bottom-section .images-section .live-card-section .live-card .card-header p,
+.bottom-section .video-section .live-card-section .live-card .card-header h4,
+.bottom-section .video-section .live-card-section .live-card .card-header p,
+.bottom-section .fixture-section .live-card-section .live-card .card-header h4,
+.bottom-section .fixture-section .live-card-section .live-card .card-header p,
+.bottom-section .category-section .live-card-section .live-card .card-header h4,
+.bottom-section .category-section .live-card-section .live-card .card-header p,
+.bottom-section .news-section .live-card-section .live-card .card-header h4,
+.bottom-section .news-section .live-card-section .live-card .card-header p,
+.bottom-section .live-section .live-card-section .live-card .card-header h4,
+.bottom-section .live-section .live-card-section .live-card .card-header p {
+  margin: 0.1em 0;
+  font-size: 1.1em;
+}
+.bottom-section .users-section .live-card-section .live-card .card-header p,
+.bottom-section .video-section .live-card-section .live-card .card-header p,
+.bottom-section .images-section .live-card-section .live-card .card-header p,
+.bottom-section .video-section .live-card-section .live-card .card-header p,
+.bottom-section .fixture-section .live-card-section .live-card .card-header p,
+.bottom-section .category-section .live-card-section .live-card .card-header p,
+.bottom-section .news-section .live-card-section .live-card .card-header p,
+.bottom-section .live-section .live-card-section .live-card .card-header p {
+  color: grey;
+  font-size: 0.9em;
+}
+.bottom-section .users-section .live-card-section .live-card .card-footer,
+.bottom-section .video-section .live-card-section .live-card .card-footer,
+.bottom-section .images-section .live-card-section .live-card .card-footer,
+.bottom-section .video-section .live-card-section .live-card .card-footer,
+.bottom-section .fixture-section .live-card-section .live-card .card-footer,
+.bottom-section .category-section .live-card-section .live-card .card-footer,
+.bottom-section .news-section .live-card-section .live-card .card-footer,
+.bottom-section .live-section .live-card-section .live-card .card-footer {
+  box-sizing: border-box;
+  width: 100%;
+  height: 35%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #B52666;
+}
+.bottom-section .users-section .live-card-section .live-card .card-footer button,
+.bottom-section .video-section .live-card-section .live-card .card-footer button,
+.bottom-section .images-section .live-card-section .live-card .card-footer button,
+.bottom-section .video-section .live-card-section .live-card .card-footer button,
+.bottom-section .fixture-section .live-card-section .live-card .card-footer button,
+.bottom-section .category-section .live-card-section .live-card .card-footer button,
+.bottom-section .news-section .live-card-section .live-card .card-footer button,
+.bottom-section .live-section .live-card-section .live-card .card-footer button {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0 0.75em;
+  padding: 0.5em;
+  background-color: white;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.bottom-section .users-section .live-card-section .live-card .card-footer button:nth-of-type(even),
+.bottom-section .video-section .live-card-section .live-card .card-footer button:nth-of-type(even),
+.bottom-section .images-section .live-card-section .live-card .card-footer button:nth-of-type(even),
+.bottom-section .video-section .live-card-section .live-card .card-footer button:nth-of-type(even),
+.bottom-section .fixture-section .live-card-section .live-card .card-footer button:nth-of-type(even),
+.bottom-section .category-section .live-card-section .live-card .card-footer button:nth-of-type(even),
+.bottom-section .news-section .live-card-section .live-card .card-footer button:nth-of-type(even),
+.bottom-section .live-section .live-card-section .live-card .card-footer button:nth-of-type(even) {
+  color: red;
+}
+.bottom-section .users-section .image-card-section,
+.bottom-section .video-section .image-card-section,
+.bottom-section .images-section .image-card-section,
+.bottom-section .video-section .image-card-section,
+.bottom-section .fixture-section .image-card-section,
+.bottom-section .category-section .image-card-section,
+.bottom-section .news-section .image-card-section,
+.bottom-section .live-section .image-card-section {
+  box-sizing: border-box;
+  width: 100%;
+  height: 80%;
+  margin: auto;
+  padding: 1.5em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(15em, 1fr));
+  justify-items: center;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  row-gap: 0.5em;
+  overflow-y: scroll;
+}
+.bottom-section .users-section .image-card-section .image-card,
+.bottom-section .video-section .image-card-section .image-card,
+.bottom-section .images-section .image-card-section .image-card,
+.bottom-section .video-section .image-card-section .image-card,
+.bottom-section .fixture-section .image-card-section .image-card,
+.bottom-section .category-section .image-card-section .image-card,
+.bottom-section .news-section .image-card-section .image-card,
+.bottom-section .live-section .image-card-section .image-card {
+  box-sizing: border-box;
+  width: 18em;
+  height: 10em;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.25em;
+  overflow: hidden;
+  box-shadow: 0.1em 0.1em 0.75em #e2e2e2, -0.1em -0.1em 0.75em #e2e2e2;
+}
+.bottom-section .users-section .image-card-section .image-card img,
+.bottom-section .video-section .image-card-section .image-card img,
+.bottom-section .images-section .image-card-section .image-card img,
+.bottom-section .video-section .image-card-section .image-card img,
+.bottom-section .fixture-section .image-card-section .image-card img,
+.bottom-section .category-section .image-card-section .image-card img,
+.bottom-section .news-section .image-card-section .image-card img,
+.bottom-section .live-section .image-card-section .image-card img {
+  width: 100%;
+  height: 60%;
+}
+.bottom-section .users-section .image-card-section .image-card .card-header,
+.bottom-section .video-section .image-card-section .image-card .card-header,
+.bottom-section .images-section .image-card-section .image-card .card-header,
+.bottom-section .video-section .image-card-section .image-card .card-header,
+.bottom-section .fixture-section .image-card-section .image-card .card-header,
+.bottom-section .category-section .image-card-section .image-card .card-header,
+.bottom-section .news-section .image-card-section .image-card .card-header,
+.bottom-section .live-section .image-card-section .image-card .card-header {
+  box-sizing: border-box;
+  width: 100%;
+  height: 65%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bottom-section .users-section .image-card-section .image-card .card-header h4,
+.bottom-section .users-section .image-card-section .image-card .card-header p,
+.bottom-section .video-section .image-card-section .image-card .card-header h4,
+.bottom-section .video-section .image-card-section .image-card .card-header p,
+.bottom-section .images-section .image-card-section .image-card .card-header h4,
+.bottom-section .images-section .image-card-section .image-card .card-header p,
+.bottom-section .video-section .image-card-section .image-card .card-header h4,
+.bottom-section .video-section .image-card-section .image-card .card-header p,
+.bottom-section .fixture-section .image-card-section .image-card .card-header h4,
+.bottom-section .fixture-section .image-card-section .image-card .card-header p,
+.bottom-section .category-section .image-card-section .image-card .card-header h4,
+.bottom-section .category-section .image-card-section .image-card .card-header p,
+.bottom-section .news-section .image-card-section .image-card .card-header h4,
+.bottom-section .news-section .image-card-section .image-card .card-header p,
+.bottom-section .live-section .image-card-section .image-card .card-header h4,
+.bottom-section .live-section .image-card-section .image-card .card-header p {
+  margin: 0.1em 0;
+  font-size: 1.1em;
+}
+.bottom-section .users-section .image-card-section .image-card .card-header p,
+.bottom-section .video-section .image-card-section .image-card .card-header p,
+.bottom-section .images-section .image-card-section .image-card .card-header p,
+.bottom-section .video-section .image-card-section .image-card .card-header p,
+.bottom-section .fixture-section .image-card-section .image-card .card-header p,
+.bottom-section .category-section .image-card-section .image-card .card-header p,
+.bottom-section .news-section .image-card-section .image-card .card-header p,
+.bottom-section .live-section .image-card-section .image-card .card-header p {
+  color: grey;
+  font-size: 0.9em;
+}
+.bottom-section .users-section .image-card-section .image-card .card-footer,
+.bottom-section .video-section .image-card-section .image-card .card-footer,
+.bottom-section .images-section .image-card-section .image-card .card-footer,
+.bottom-section .video-section .image-card-section .image-card .card-footer,
+.bottom-section .fixture-section .image-card-section .image-card .card-footer,
+.bottom-section .category-section .image-card-section .image-card .card-footer,
+.bottom-section .news-section .image-card-section .image-card .card-footer,
+.bottom-section .live-section .image-card-section .image-card .card-footer {
+  box-sizing: border-box;
+  width: 100%;
+  height: 35%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #B52666;
+}
+.bottom-section .users-section .image-card-section .image-card .card-footer button,
+.bottom-section .video-section .image-card-section .image-card .card-footer button,
+.bottom-section .images-section .image-card-section .image-card .card-footer button,
+.bottom-section .video-section .image-card-section .image-card .card-footer button,
+.bottom-section .fixture-section .image-card-section .image-card .card-footer button,
+.bottom-section .category-section .image-card-section .image-card .card-footer button,
+.bottom-section .news-section .image-card-section .image-card .card-footer button,
+.bottom-section .live-section .image-card-section .image-card .card-footer button {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0 0.75em;
+  padding: 0.5em;
+  background-color: white;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.bottom-section .users-section .image-card-section .image-card .card-footer button:nth-of-type(even),
+.bottom-section .video-section .image-card-section .image-card .card-footer button:nth-of-type(even),
+.bottom-section .images-section .image-card-section .image-card .card-footer button:nth-of-type(even),
+.bottom-section .video-section .image-card-section .image-card .card-footer button:nth-of-type(even),
+.bottom-section .fixture-section .image-card-section .image-card .card-footer button:nth-of-type(even),
+.bottom-section .category-section .image-card-section .image-card .card-footer button:nth-of-type(even),
+.bottom-section .news-section .image-card-section .image-card .card-footer button:nth-of-type(even),
+.bottom-section .live-section .image-card-section .image-card .card-footer button:nth-of-type(even) {
+  color: red;
+}
+.bottom-section .users-section .video-card-section,
+.bottom-section .video-section .video-card-section,
+.bottom-section .images-section .video-card-section,
+.bottom-section .video-section .video-card-section,
+.bottom-section .fixture-section .video-card-section,
+.bottom-section .category-section .video-card-section,
+.bottom-section .news-section .video-card-section,
+.bottom-section .live-section .video-card-section {
+  box-sizing: border-box;
+  width: 100%;
+  height: 80%;
+  margin: auto;
+  padding: 1.5em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(30em, 1fr));
+  justify-items: center;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  row-gap: 0.5em;
+  overflow-y: scroll;
+}
+.bottom-section .users-section .video-card-section .video-card,
+.bottom-section .video-section .video-card-section .video-card,
+.bottom-section .images-section .video-card-section .video-card,
+.bottom-section .video-section .video-card-section .video-card,
+.bottom-section .fixture-section .video-card-section .video-card,
+.bottom-section .category-section .video-card-section .video-card,
+.bottom-section .news-section .video-card-section .video-card,
+.bottom-section .live-section .video-card-section .video-card {
+  box-sizing: border-box;
+  width: 20em;
+  height: 25em;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.25em;
+  overflow: hidden;
+  box-shadow: 0.1em 0.1em 0.75em #e2e2e2, -0.1em -0.1em 0.75em #e2e2e2;
+}
+.bottom-section .users-section .video-card-section .video-card video,
+.bottom-section .video-section .video-card-section .video-card video,
+.bottom-section .images-section .video-card-section .video-card video,
+.bottom-section .video-section .video-card-section .video-card video,
+.bottom-section .fixture-section .video-card-section .video-card video,
+.bottom-section .category-section .video-card-section .video-card video,
+.bottom-section .news-section .video-card-section .video-card video,
+.bottom-section .live-section .video-card-section .video-card video {
+  width: 100%;
+  height: 50%;
+}
+.bottom-section .users-section .video-card-section .video-card .card-header,
+.bottom-section .video-section .video-card-section .video-card .card-header,
+.bottom-section .images-section .video-card-section .video-card .card-header,
+.bottom-section .video-section .video-card-section .video-card .card-header,
+.bottom-section .fixture-section .video-card-section .video-card .card-header,
+.bottom-section .category-section .video-card-section .video-card .card-header,
+.bottom-section .news-section .video-card-section .video-card .card-header,
+.bottom-section .live-section .video-card-section .video-card .card-header {
+  box-sizing: border-box;
+  width: 100%;
+  height: 75%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bottom-section .users-section .video-card-section .video-card .card-header h4,
+.bottom-section .users-section .video-card-section .video-card .card-header p,
+.bottom-section .video-section .video-card-section .video-card .card-header h4,
+.bottom-section .video-section .video-card-section .video-card .card-header p,
+.bottom-section .images-section .video-card-section .video-card .card-header h4,
+.bottom-section .images-section .video-card-section .video-card .card-header p,
+.bottom-section .video-section .video-card-section .video-card .card-header h4,
+.bottom-section .video-section .video-card-section .video-card .card-header p,
+.bottom-section .fixture-section .video-card-section .video-card .card-header h4,
+.bottom-section .fixture-section .video-card-section .video-card .card-header p,
+.bottom-section .category-section .video-card-section .video-card .card-header h4,
+.bottom-section .category-section .video-card-section .video-card .card-header p,
+.bottom-section .news-section .video-card-section .video-card .card-header h4,
+.bottom-section .news-section .video-card-section .video-card .card-header p,
+.bottom-section .live-section .video-card-section .video-card .card-header h4,
+.bottom-section .live-section .video-card-section .video-card .card-header p {
+  margin: 0.1em 0;
+  font-size: 1.1em;
+}
+.bottom-section .users-section .video-card-section .video-card .card-header p,
+.bottom-section .video-section .video-card-section .video-card .card-header p,
+.bottom-section .images-section .video-card-section .video-card .card-header p,
+.bottom-section .video-section .video-card-section .video-card .card-header p,
+.bottom-section .fixture-section .video-card-section .video-card .card-header p,
+.bottom-section .category-section .video-card-section .video-card .card-header p,
+.bottom-section .news-section .video-card-section .video-card .card-header p,
+.bottom-section .live-section .video-card-section .video-card .card-header p {
+  color: grey;
+  font-size: 0.9em;
+}
+.bottom-section .users-section .video-card-section .video-card .card-footer,
+.bottom-section .video-section .video-card-section .video-card .card-footer,
+.bottom-section .images-section .video-card-section .video-card .card-footer,
+.bottom-section .video-section .video-card-section .video-card .card-footer,
+.bottom-section .fixture-section .video-card-section .video-card .card-footer,
+.bottom-section .category-section .video-card-section .video-card .card-footer,
+.bottom-section .news-section .video-card-section .video-card .card-footer,
+.bottom-section .live-section .video-card-section .video-card .card-footer {
+  box-sizing: border-box;
+  width: 100%;
+  height: 15%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #B52666;
+}
+.bottom-section .users-section .video-card-section .video-card .card-footer button,
+.bottom-section .video-section .video-card-section .video-card .card-footer button,
+.bottom-section .images-section .video-card-section .video-card .card-footer button,
+.bottom-section .video-section .video-card-section .video-card .card-footer button,
+.bottom-section .fixture-section .video-card-section .video-card .card-footer button,
+.bottom-section .category-section .video-card-section .video-card .card-footer button,
+.bottom-section .news-section .video-card-section .video-card .card-footer button,
+.bottom-section .live-section .video-card-section .video-card .card-footer button {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0 0.75em;
+  padding: 0.5em;
+  background-color: white;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.bottom-section .users-section .video-card-section .video-card .card-footer button:nth-of-type(even),
+.bottom-section .video-section .video-card-section .video-card .card-footer button:nth-of-type(even),
+.bottom-section .images-section .video-card-section .video-card .card-footer button:nth-of-type(even),
+.bottom-section .video-section .video-card-section .video-card .card-footer button:nth-of-type(even),
+.bottom-section .fixture-section .video-card-section .video-card .card-footer button:nth-of-type(even),
+.bottom-section .category-section .video-card-section .video-card .card-footer button:nth-of-type(even),
+.bottom-section .news-section .video-card-section .video-card .card-footer button:nth-of-type(even),
+.bottom-section .live-section .video-card-section .video-card .card-footer button:nth-of-type(even) {
   color: red;
 }
 .bottom-section .active-section {

@@ -20,7 +20,7 @@ try {
         $allowed_files = array('mp4', 'mov', 'avi');
         $ext = pathinfo($path, PATHINFO_EXTENSION);
 
-                
+
         $message = [
             'extension_error' => "",
             'empty_error' => ""
@@ -46,8 +46,8 @@ try {
         }
 
         if (empty($message)) {
+            move_uploaded_file($path_temp, 'uploads/' . $path);
             if (add_videos($path, $video_title, $video_description, $video_date, $video_category)) {
-                move_uploaded_file($path_temp, 'uploads/' . $path);
                 echo "
                 <script language='javascript' type='text/javascript'>
                   alert('Video successfully added');
@@ -88,64 +88,6 @@ try {
     echo $err;
 }
 
-//adding news from modal------------------------------------------------------------
-try {
-    if (isset($_POST['add-news'])) {
-        $video_title = $_POST['news-title'];
-        $path = $_FILES['video']['name'];
-        $path_temp = $_FILES['video']['tmp_name'];
-        $video_date = date('Y-m-d') . ' / ' . date('H:i:sa');
-        $video_description = $_POST['video-description'];
-        $video_category = $_POST['video-category'];
-        $allowed_files = array('mp4', 'mov', 'avi');
-        $ext = pathinfo($path, PATHINFO_EXTENSION);
-
-        $message = [
-            'extension_error' => "",
-            'empty_error' => ""
-        ];
-
-
-        if (empty($video_title) || empty($path) || empty($video_category)) {
-            $message['empty_error'] = "<script language='javascript' type='text/javascript'>
-            alert('No field can be empty');
-                </script> ";
-            echo $message['empty_error'];
-        } else if (!empty($path) && !in_array($ext, $allowed_files)) {
-            $message['extension_error'] = "  <script language='javascript' type='text/javascript'>
-            alert('File format not supported! Supported Files(jpg, jpeg, png)');
-                </script> ";
-            echo $message['extension_error'];
-        }
-
-        foreach ($message as $key => $value) {
-            if (empty($value)) {
-                unset($message[$key]);
-            }
-        }
-
-        if (empty($message)) {
-            copy($_FILES['video']['name'], "../../uploads/" . time() . $path);
-            if (add_videos($path, $video_title, $video_description, $video_date, $video_category)) {
-                echo ("here");
-
-                echo "
-                <script language='javascript' type='text/javascript'>
-                  alert('Image successfully added');
-                </script>
-              ";
-            } else {
-                echo "
-                <script language='javascript' type='text/javascript'>
-                  alert('Something went wrong');
-                </script>
-              ";
-            }
-        }
-    }
-} catch (Error $err) {
-    echo $err;
-}
 
 //adding fixture from modal
 try {
@@ -173,6 +115,62 @@ try {
     echo $error;
 }
 
+//adding news from modal
+try {
+    if (isset($_POST['add-news'])) {
+        $news_title = $_POST['news-title'];
+        $news_path = $_FILES['news-image']['name'];
+        $path_temp_news = $_FILES['news-image']['tmp_name'];
+        $news_date = date('Y-m-d') . ' / ' . date('H:i:sa');
+        $news_description = $_POST['news-description'];
+        $news_category = $_POST['news-category'];
+        $allowed_files = array('jpg', 'png', 'jpeg');
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
+
+        $message = [
+            'extension_error' => "",
+            'empty_error' => ""
+        ];
+
+        if (empty($news_title)) {
+            $message['empty_error'] = "<script language='javascript' type='text/javascript'>
+            alert('No field can be empty');
+                </script> ";
+            echo $message['empty_error'];
+        } else if (!empty($path) && !in_array($ext, $allowed_files)) {
+            $message['extension_error'] = "  <script language='javascript' type='text/javascript'>
+            alert('File format not supported! Supported Files(jpg, jpeg, png)');
+                </script> ";
+            echo $message['extension_error'];
+        }
+
+        foreach ($message as $key => $value) {
+            if (empty($value)) {
+                unset($message[$key]);
+            }
+        }
+
+        if (empty($message)) {
+
+            if (add_news($news_title, $news_path, $news_description, $news_date, $news_category)) {
+                move_uploaded_file($path_temp_news, 'uploads/' . $path_temp_news);
+                echo "
+                <script language='javascript' type='text/javascript'>
+                  alert('News successfully added');
+                </script>
+              ";
+            } else {
+                echo "
+                <script language='javascript' type='text/javascript'>
+                  alert('Something went wrong');
+                </script>
+              ";
+            }
+        }
+    }
+} catch (\Throwable $th) {
+    throw $th;
+}
 
 //-------------------------------------------------------------------------------------
 
@@ -216,7 +214,7 @@ try {
 
 
         if (empty($message)) {
-            copy($path_temp, './uploads', time() . $path);
+            move_uploaded_file($path_temp, 'uploads/' . $path);
             if (add_images($path, $image_caption, $image_category, $image_date)) {
                 echo "
                 <script language='javascript' type='text/javascript'>
@@ -234,6 +232,50 @@ try {
     }
 } catch (Error $err) {
     echo $err;
+}
+
+//adding live 
+try {
+    if (isset($_POST['add-live'])) {
+        $live_title = $_POST['live-title'];
+        $live_url = $_POST['url'];
+        $live_category = $_POST['live-category'];
+
+        $message = [
+            'empty_error' => ""
+        ];
+
+        if (empty($live_title) || empty($live_url) || empty($live_category)) {
+            echo "<script>alert('if checked')</script>";
+            $message['empty_error'] = "<script language='javascript' type='text/javascript'>
+            alert('File format not supported! Supported Files(jpg, jpeg, png)');
+                </script> ";
+            echo $message['empty_error'];
+        }
+        foreach ($message as $key => $value) {
+            if (empty($value)) {
+                unset($message[$key]);
+            }
+        }
+
+        if (empty($message)) {
+            if (add_live($live_title, $live_url, $live_category)) {
+                echo "
+                <script language='javascript' type='text/javascript'>
+                  alert('Image successfully added');
+                </script>
+              ";
+            } else {
+                echo "
+                <script language='javascript' type='text/javascript'>
+                  alert('Something went wrong');
+                </script>
+              ";
+            }
+        }
+    }
+} catch (\Throwable $th) {
+    //throw $th;
 }
 ?>
 
@@ -355,8 +397,20 @@ try {
                     Add
                 </button>
             </div>
-
             <!--list/table of images-->
+            <div class="image-card-section">
+                <?php 
+                  try {
+                    if(isset($_GET['delete'])){
+                        $image_id = $_GET['delete'];
+                        delete_images($image_id);
+                    }
+                  } catch (\Throwable $th) {
+                    //throw $th;
+                  }
+                ?>
+                <?php fetch_images(); ?>
+            </div>
         </div>
         <!--video section---------------------------------------------------------->
         <div class="video-section">
@@ -380,6 +434,9 @@ try {
                 </button>
             </div>
             <!--list/table of videos-->
+            <div class="video-card-section">
+                <?php fetch_videos(); ?>
+            </div>
         </div>
         <!--fixtures section-->
         <div class="fixture-section">
@@ -457,7 +514,6 @@ try {
             </div>
         </div>
 
-
         <!--news section------------------------------------------------------>
         <div class="news-section">
             <div class="top-section">
@@ -467,8 +523,11 @@ try {
                     Add
                 </button>
             </div>
+            <!--list of news-->
             <div class="news-card-section">
+                <?php fetch_news(); ?>
             </div>
+
         </div>
 
         <div class="live-section">
@@ -480,6 +539,7 @@ try {
                 </button>
             </div>
             <div class="live-card-section">
+                <?php fetch_live(); ?>
             </div>
         </div>
     </div>
@@ -558,10 +618,10 @@ try {
                 <i class="fa-solid fa-circle-xmark"></i>
             </div>
             <h3>Add News</h3>
-            <input type="text" name="image-caption" id="" placeholder="News title..">
-            <textarea name="" id="" cols="36" rows="7"></textarea>
-            <input type="file" name="image" id="" placeholder="Choose image">
-            <select name="image-category" id="">
+            <input type="text" name="news-title" id="" placeholder="News title..">
+            <textarea name="news-description" id="" cols="36" rows="7" placeholder="News description..."></textarea>
+            <input type="file" name="news-image" id="" placeholder="Choose image">
+            <select name="news-category" id="">
                 <option value="Football">Football</option>
                 <option value="Marathon">Marathon</option>
                 <option value="Gymnastics">Gymnastics</option>
@@ -578,14 +638,15 @@ try {
             </div>
             <h3>Add Live</h3>
             <input type="text" name="live-title" id="" placeholder="Live Match Title...">
-            <input type="text" name="category-title" id="" placeholder="URL...">
+            <input type="text" name="url" id="" placeholder="URL...">
+            <select name="live-category" id="">
+                <option value="Football">Football</option>
+                <option value="Marathon">Marathon</option>
+                <option value="Gymnastics">Gymnastics</option>
+            </select>
             <button type="submit" name="add-live">Add</button>
         </form>
     </div>
-
-
-
-
 
     <!--javascript-->
     <script type="text/javascript" src="../js/admin-dashboard.js"></script>
