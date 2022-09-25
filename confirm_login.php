@@ -11,13 +11,14 @@ while ($row = mysqli_fetch_assoc($result)) {
     $db_answer = $row['answer'];
 }
 
+echo $email;
 echo "<p>$question</p>";
 
 
 
 if (isset($_POST['confirm'])) {
     $answer = strtolower($_POST['answer']);
-    if ($answer == $db_answer) {
+    if ($answer == strtolower($db_answer)) {
         return header('Location: user-dashboard.php');
         exit();
     } else {

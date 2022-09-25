@@ -1,19 +1,28 @@
 <?php
- echo '<link rel="stylesheet" type="text/css" href="./style/login.css">';
+echo '<link rel="stylesheet" type="text/css" href="./style/login.css">';
 
- include('./functions.php');
- include('./auth.php');
+include('./functions.php');
+include('./auth.php');
 
- if(isset($_POST['login'])){
+
+
+
+if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    if(loginUser($email, $password)){
+    if (loginUser($email, $password)) {
+        global $db_connection;
+        $email = $_POST['email'];
+        $result = mysqli_query($db_connection, "SELECT full_name FROM user_information WHERE email='$email'");
+        while ($row = mysqli_fetch_assoc($result)) {
+            $_SESSION['fullname'] = $row['full_name'];
+            echo $_SESSION['fullname'];
+        }
         return header('Location: confirm_login.php');
+    } else {
+        echo "<script>alert('Something went wrong !')</script>";
     }
-    else{
-        echo "<script>alert('Something went wrong')</script>";
-    }
- }
+}
 ?>
 
 <!DOCTYPE html>

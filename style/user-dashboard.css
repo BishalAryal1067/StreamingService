@@ -68,51 +68,42 @@ body {
   color: #B52666;
   margin-bottom: 0.3em;
 }
-.navbar .profile {
-  box-sizing: border-box;
-  width: auto;
-  height: auto;
-  margin: 0;
-  padding: 0.75em;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  justify-self: center;
-}
-.navbar .profile a {
-  text-decoration: none;
-  cursor: pointer;
-  color: #16A6F1;
-  font-weight: 800;
-  margin-right: 0.25em;
-  font-size: 0.95em;
-}
-.navbar .profile i {
-  color: rgb(41, 202, 41);
-  font-size: 0.95em;
-}
 .navbar .nav-btns {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 2;
+  align-self: center;
+}
+.navbar .nav-btns a {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #16A6F1;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+.navbar .nav-btns a i {
+  color: rgba(0, 128, 0, 0.736);
+  margin: 0.25em;
+}
+.navbar .nav-btns form {
+  margin: 0;
+  padding: 0;
 }
 .navbar .nav-btns button {
   box-sizing: border-box;
   width: auto;
   height: auto;
   margin: 0 1em;
-  padding: 0.75em 0;
+  padding: 0.75em 0.5em;
   background-color: white;
   color: #16A6F1;
   border: none;

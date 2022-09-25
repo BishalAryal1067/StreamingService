@@ -21,7 +21,36 @@ function add_fixtures($fixtureTitle, $fixtureDate, $category)
   global $db_connection;
   $query = "INSERT INTO fixtures(fixture_title, fixture_date, fixture_category) VALUES('$fixtureTitle', '$fixtureDate', '$category')";
   $insertQuery = mysqli_query($db_connection, $query);
-  return true;
+  if($insertQuery){
+    return true;
+  }
+}
+
+function fetch_fixtures()
+{
+  global $db_connection;
+  $query = "SELECT * FROM fixtures";
+  $query_result = mysqli_query($db_connection, $query);
+  while ($row = mysqli_fetch_assoc($query_result)) {
+    $fixture_id = $row['fixture_id'];
+    $fixture_title = $row['fixture_title'];
+    $fixture_date = $row['fixture_date'];
+
+    echo "
+                          <div class='fixture-card'>
+                               <div class='card-header'>
+                               <h4>$fixture_title</h4>
+                               <p>$fixture_date</p>
+                               </div>
+                               <div class='card-footer'>
+                                <form>
+                                <a href='../edit-page.php?edit=$fixture_id&data=fixture'><i class='fa-solid fa-pen'></i></a>
+                                <a href='admin-dashboard.php?data=fixture&delete=$fixture_id'><i class='fa-solid fa-trash'></i></a>
+                                </form>
+                               </div>
+                          </div>
+                        ";
+  }
 }
 
 function delete_fixtures($id)
@@ -74,28 +103,63 @@ function fetch_videos()
       $video_title = $row['video_title'];
       $video_category = $row['video_category'];
       $upload_date = $row['upload_date'];
+      $iframe_options = 'rel=0&modestbranding=1&autohide=1&showinfo=0&controls=0';
+      $new_path = $video_path.$iframe_options;
 
-      $video_file_path = "admin/uploads/" . $video_path;
-  
 
       echo "
                    <div class='video-card'>
                                <div class='card-header'>
-                                <video controls='controls'>
-                                 <source src = 'uploads/$video_path' type='video/mp4/'>
-                                </video>
+                               <iframe src ='$video_path' allowfullscreen
+                               style='width:18em; height:90%; border:none; padding:0; margin:0'
+                               ></iframe>
                                <h4>$video_title</h4>
                                <p>$upload_date</p>
                                </div>
                                <div class='card-footer'>
                                   <form method='post'>
-                                      <a  name='update-video'><i class='fa-solid fa-pen'></i></button>
-                                      <a  name='delete-video'><i class='fa-solid fa-trash'></i></button>
+                                      <a href='../edit-page.php?edit=$video_id&data=video'  name='update-video'><i class='fa-solid fa-pen'></i></a>
+                                      <a href='admin-dashboard.php?data=video&delete=$video_id' name='delete-video'><i class='fa-solid fa-trash'></i></a>
                                   </form>
                                </div>
                           </div>
         ";
     }
+  }
+}
+
+
+
+//function to delete videos
+function delete_videos($video_id)
+{
+  global $db_connection;
+  $query = "DELETE FROM videos WHERE video_id=$video_id";
+  $update = "SELECT * FROM videos";
+  $delete_result = mysqli_query($db_connection, $query);
+  $update_result = mysqli_query($db_connection, $update);
+  if ($delete_result && $update_result) {
+    return true;
+    header('refresh:3;url=admin-dashboard.php');
+  } else {
+    echo "Query Failed";
+    return false;
+  }
+}
+
+function update_videos($video_id, $video_path, $video_title, $video_description, $video_category, $upload_date)
+{
+  global $db_connection;
+  $query = $query = "UPDATE videos SET ";
+  $query .= "video_path = '{$video_path}',";
+  $query .= "video_title = '{$video_title}', ";
+  $query .= "video_category = '{$video_category}',";
+  $query .= "video_description= '{$video_description}',";
+  $query .= "upload_date = '{$upload_date}'";
+  $query .= " WHERE video_id = {$video_id}";
+  $insertQuery = mysqli_query($db_connection, $query);
+  if ($insertQuery) {
+    return true;
   }
 }
 
@@ -135,7 +199,7 @@ function fetch_images()
                                <div class='card-footer'>
                                   <form>
                                       <a href='../edit-page.php?edit=$image_id&data=image' name='update-image'><i class='fa-solid fa-pen'></i></a>
-                                      <a href='admin-dashboard.php?delete=$image_id' name='delete-image'><i class='fa-solid fa-trash'></i></a>
+                                      <a href='admin-dashboard.php?data=image&delete=$image_id' name='delete-image'><i class='fa-solid fa-trash'></i></a>
                                   </form>
                                </div>
                           </div>
@@ -148,7 +212,7 @@ function delete_images($image_id)
 {
   global $db_connection;
   $query = "DELETE FROM images WHERE image_id=$image_id";
-  $update = "SELECT * FROM fixtures";
+  $update = "SELECT * FROM images";
   $delete_result = mysqli_query($db_connection, $query);
   $update_result = mysqli_query($db_connection, $update);
   if ($delete_result && $update_result) {
@@ -160,7 +224,7 @@ function delete_images($image_id)
   }
 }
 
-function update_images($image_id,$image_path, $image_caption, $image_category, $upload_date)
+function update_images($image_id, $image_path, $image_caption, $image_category, $upload_date)
 {
   global $db_connection;
   $query = $query = "UPDATE images SET ";
@@ -215,6 +279,16 @@ function fetch_category()
   }
 }
 
+//fetching category as options
+function fetch_options(){
+  global $db_connection;
+  $query = "SELECT * FROM category";
+  $result = mysqli_query($db_connection, $query);
+  while($row = mysqli_fetch_assoc($result)){
+      $category_title = $row['category_name'];
+      echo "<option value='$category_title'>$category_title</option>";
+  }
+}
 
 function delete_category($category_id)
 {

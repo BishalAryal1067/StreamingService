@@ -12,17 +12,12 @@ try {
 try {
     if (isset($_POST['add-video'])) {
         $video_title = $_POST['video-title'];
-        $path = $_FILES['video']['name'];
-        $path_temp = $_FILES['video']['tmp_name'];
+        $path = $_POST['path'];
         $video_date = date('Y-m-d') . ' / ' . date('H:i:sa');
         $video_description = $_POST['video-description'];
         $video_category = $_POST['video-category'];
-        $allowed_files = array('mp4', 'mov', 'avi');
-        $ext = pathinfo($path, PATHINFO_EXTENSION);
-
 
         $message = [
-            'extension_error' => "",
             'empty_error' => ""
         ];
 
@@ -32,11 +27,6 @@ try {
             alert('No field can be empty');
                 </script> ";
             echo $message['empty_error'];
-        } else if (!empty($path) && !in_array($ext, $allowed_files)) {
-            $message['extension_error'] = "  <script language='javascript' type='text/javascript'>
-            alert('File format not supported! Supported Files(jpg, jpeg, png)');
-                </script> ";
-            echo $message['extension_error'];
         }
 
         foreach ($message as $key => $value) {
@@ -45,8 +35,9 @@ try {
             }
         }
 
+
+
         if (empty($message)) {
-            move_uploaded_file($path_temp, 'uploads/' . $path);
             if (add_videos($path, $video_title, $video_description, $video_date, $video_category)) {
                 echo "
                 <script language='javascript' type='text/javascript'>
@@ -93,8 +84,10 @@ try {
 try {
     if (isset($_POST['add-fixture'])) {
         $fixtureTitle = $_POST['fixture-title'];
-        $fixtureDate = $_POST['fixture-date'];
+        $fixtureDate = $_POST['fixture-date'] . ' '. $_POST['fixture-time'];
         $category = $_POST['fixture-category'];
+         
+        
 
         if (add_fixtures($fixtureTitle, $fixtureDate, $category)) {
             echo "
@@ -399,15 +392,19 @@ try {
             </div>
             <!--list/table of images-->
             <div class="image-card-section">
-                <?php 
-                  try {
-                    if(isset($_GET['delete'])){
-                        $image_id = $_GET['delete'];
-                        delete_images($image_id);
+                <?php
+                try {
+                    if (isset($_GET['delete'])) {
+                        if ($_GET['data'] == 'image') {
+                            $image_id = $_GET['delete'];
+                            if (delete_images($image_id)) {
+                                echo "<script>alert('Image deleted successfully');</script>";
+                            }
+                        }
                     }
-                  } catch (\Throwable $th) {
-                    //throw $th;
-                  }
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
                 ?>
                 <?php fetch_images(); ?>
             </div>
@@ -435,6 +432,18 @@ try {
             </div>
             <!--list/table of videos-->
             <div class="video-card-section">
+                <?php
+                try {
+                    if (isset($_GET['data'])) {
+                        if ($_GET['data'] == 'video') {
+                            $video_id = $_GET['delete'];
+                            delete_videos($video_id);
+                        }
+                    }
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+                ?>
                 <?php fetch_videos(); ?>
             </div>
         </div>
@@ -464,29 +473,19 @@ try {
                 <!--loading data from php-->
                 <?php
                 try {
-                    global $db_connection;
-                    $query = "SELECT * FROM fixtures";
-                    $query_result = mysqli_query($db_connection, $query);
-                    while ($row = mysqli_fetch_assoc($query_result)) {
-                        $db_id = $row['fixture_id'];
-                        $db_title = $row['fixture_title'];
-                        $db_date = $row['fixture_date'];
-
-                        echo "
-                          <div class='fixture-card'>
-                               <div class='card-header'>
-                               <h4>$db_title</h4>
-                               <p>$db_date</p>
-                               </div>
-                               <div class='card-footer'>
-                                  <form method='post'>
-                                      <button type='submit' name='update-fixture'><i class='fa-solid fa-pen'></i></button>
-                                      <button type='submit' name='delete-fixture'><i class='fa-solid fa-trash'></i></button>
-                                  </form>
-                               </div>
-                          </div>
-                        ";
+                    if (isset($_GET['data'])) {
+                        if ($_GET['data'] == 'fixture') {
+                            $fixture_id = $_GET['delete'];
+                            delete_videos($video_id);
+                        }
                     }
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+                ?>
+                <?php
+                try {
+                    fetch_fixtures();
                 } catch (\Throwable $th) {
                     //throw $th;
                 }
@@ -544,6 +543,9 @@ try {
         </div>
     </div>
 
+
+    <!--Modals--------------------------------------------------------------------------------------------------->
+
     <!--add image modal-->
     <div class="add-image-modal" id="modal">
         <form action="" method="post" enctype="multipart/form-data">
@@ -554,9 +556,13 @@ try {
             <input type="text" name="image-caption" id="" placeholder="Image caption..">
             <input type="file" name="image" id="" placeholder="Choose image">
             <select name="image-category" id="">
-                <option value="Football">Football</option>
-                <option value="Marathon">Marathon</option>
-                <option value="Gymnastics">Gymnastics</option>
+                <?php
+                try {
+                    fetch_options();
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+                ?>
             </select>
             <button type="submit" name="add-image">Add</button>
         </form>
@@ -582,12 +588,16 @@ try {
             </div>
             <h3>Add video</h3>
             <input type="text" name="video-title" id="" placeholder="Video Title..">
+            <input type="text" name='path' placeholder="Enter video url / link...">
             <textarea name="video-description" id="" cols="37" rows="6"></textarea>
-            <input type="file" name="video" id="" placeholder="Choose image...">
             <select name="video-category" id="">
-                <option value="Football">Football</option>
-                <option value="Marathon">Marathon</option>
-                <option value="Gymnastics">Gymnastics</option>
+                <?php
+                try {
+                    fetch_options();
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+                ?>
             </select>
             <button type="submit" name="add-video">Add</button>
         </form>
@@ -600,12 +610,17 @@ try {
                 <i class="fa-solid fa-circle-xmark"></i>
             </div>
             <h3>Add Video</h3>
-            <input type="text" name="fixture-title" id="" placeholder="Fixture Title...">
-            <input type="date" name="fixture-date" id="">
+            <input type="text" name="fixture-title" placeholder="Fixture Title...">
+            <input type="date" name="fixture-date">
+            <input type="time" name="fixture-time" >
             <select name="fixture-category" id="">
-                <option value="football">Football</option>
-                <option value="marathon">Marathon</option>
-                <option value="Gymnastics">Gymnastics</option>
+                <?php
+                try {
+                    fetch_options();
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+                ?>
             </select>
             <button type="submit" name="add-fixture">Add</button>
         </form>
@@ -622,9 +637,13 @@ try {
             <textarea name="news-description" id="" cols="36" rows="7" placeholder="News description..."></textarea>
             <input type="file" name="news-image" id="" placeholder="Choose image">
             <select name="news-category" id="">
-                <option value="Football">Football</option>
-                <option value="Marathon">Marathon</option>
-                <option value="Gymnastics">Gymnastics</option>
+            <?php
+                try {
+                   fetch_options();
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+                ?>
             </select>
             <button type="submit" name="add-news">Add</button>
         </form>
@@ -640,9 +659,14 @@ try {
             <input type="text" name="live-title" id="" placeholder="Live Match Title...">
             <input type="text" name="url" id="" placeholder="URL...">
             <select name="live-category" id="">
-                <option value="Football">Football</option>
-                <option value="Marathon">Marathon</option>
-                <option value="Gymnastics">Gymnastics</option>
+                <?php
+                try {
+                    fetch_options();
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+
+                ?>
             </select>
             <button type="submit" name="add-live">Add</button>
         </form>

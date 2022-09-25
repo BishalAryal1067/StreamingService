@@ -1,0 +1,68 @@
+@import "./variables";
+
+* {
+    font-family: $font-type;
+}
+
+body {
+    @include defineSize(100%, 100vh, 0, 0);
+    overflow: hidden;
+}
+
+form {
+    @include flexDisplay(column, center, center);
+    @include defineSize(auto, auto, 0, 2.5em 6em);
+    input[type="text"],
+    input[type="date"],
+    input[type="time"] {
+        @include defineSize(25em, 2.75em, 0.75em 0, 0 0.75em);
+        border: 0.1em solid rgb(213, 213, 213);
+        border-radius: 0.35em;
+        font-size: 1em;
+        background-color: $input-background;
+        outline: none;
+    }
+
+    textarea {
+        padding: 0.75em;
+        background-color: $input-background;
+        border: 0.1em solid rgb(213, 213, 213);
+        outline: none;
+        border-radius: 0.35em;
+        font-size: 1em;
+    }
+
+    input[type="file"]::file-selector-button {
+        @include defineSize(auto, auto, 0.75em 0, 0.5em 1.25em);
+        cursor: pointer;
+        margin-right: 0.5em;
+        @include buttonDesign($input-background, rgba(0, 0, 0, 0.55), 0.1em solid rgba(128, 128, 128, 0.481), 0.35em);
+        font-size: 1.1em;
+        font-weight: bolder;
+        outline: none;
+    }
+
+    button {
+        @include defineSize(auto, auto, 0.75em 0, 0.5em 2em);
+        cursor: pointer;
+        margin-right: 0.5em;
+        @include buttonDesign($secondary-color, white, none, 0.35em);
+        font-size: 1.1em;
+        outline: none;
+    }
+}
+
+.video-form,
+.fixture-form,
+.image-form,
+.category-form,
+.live-form,
+.news-form {
+    display: none;
+}
+
+.active-form{
+  display: block;
+}
+
+
