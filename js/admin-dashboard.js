@@ -1,3 +1,5 @@
+console.log("hello");
+
 let userButton = document.querySelector('.user-btn');
 let imageButton = document.querySelector('.image-btn');
 let videoButton = document.querySelector('.video-btn');
@@ -6,6 +8,8 @@ let categoryButton = document.querySelector('.category-btn');
 let newsButton = document.querySelector('.news-btn');
 let liveButton = document.querySelector('.live-btn');
 
+
+
 let userSection = document.querySelector('.users-section');
 let imageSection = document.querySelector('.images-section');
 let videoSection = document.querySelector('.video-section');
@@ -13,6 +17,9 @@ let fixtureSection = document.querySelector('.fixture-section');
 let categorySection = document.querySelector('.category-section');
 let newsSection = document.querySelector('.news-section');
 let liveSection = document.querySelector('.live-section');
+
+
+
 
 
 //funcion to display and hide elements;
@@ -56,42 +63,47 @@ let buttonToggle = (inactiveBtn1,
 document.addEventListener('DOMContentLoaded', () => {
   userButton.classList.add('active-button');
   userSection.classList.add('active-section');
+  console.log("Hello");
 });
 
 userButton.addEventListener('click', () => {
   buttonToggle(imageButton, videoButton, fixtureButton, categoryButton, newsButton, liveButton, userButton);
-  hideAndDisplay(imageSection, videoSection, fixtureSection, categorySection,newsSection,liveSection, userSection);
+  hideAndDisplay(imageSection, videoSection, fixtureSection, categorySection, newsSection,  requestSection, userSection);
+  
 });
 
 imageButton.addEventListener('click', () => {
-  buttonToggle(userButton, videoButton, fixtureButton, categoryButton, newsButton, liveButton, imageButton);
-  hideAndDisplay(videoSection, fixtureSection, categorySection, userSection,liveSection, newsSection, imageSection);
+  buttonToggle(userButton, videoButton, fixtureButton, categoryButton, newsButton, liveButton,  imageButton);
+  hideAndDisplay(videoSection, fixtureSection, categorySection, userSection, liveSection, newsSection,  imageSection);
 });
 
 videoButton.addEventListener('click', () => {
-  buttonToggle(userButton, imageButton, fixtureButton, categoryButton, newsButton, liveButton, videoButton);
-  hideAndDisplay(fixtureSection, categorySection, userSection, imageSection,liveSection,newsSection, videoSection);
+  buttonToggle(userButton, imageButton, fixtureButton, categoryButton, newsButton, liveButton,  videoButton);
+  hideAndDisplay(fixtureSection, categorySection, userSection, imageSection, liveSection, newsSection,  videoSection);
 });
 
 fixtureButton.addEventListener('click', () => {
-  buttonToggle(userButton, imageButton, videoButton, categoryButton, newsButton, liveButton, fixtureButton);
-  hideAndDisplay(imageSection, videoSection, userSection, categorySection,liveSection,newsSection, fixtureSection);
+  buttonToggle(userButton, imageButton, videoButton, categoryButton, newsButton, liveButton,  fixtureButton);
+  hideAndDisplay(imageSection, videoSection, userSection, categorySection, liveSection, newsSection,  fixtureSection);
 });
 
 categoryButton.addEventListener('click', () => {
-  buttonToggle(userButton, imageButton, videoButton, fixtureButton, newsButton, liveButton, categoryButton)
-  hideAndDisplay(imageSection, videoSection, userSection, fixtureSection,newsSection,liveSection, categorySection);
+  buttonToggle(userButton, imageButton, videoButton, fixtureButton, newsButton, liveButton,  categoryButton)
+  hideAndDisplay(imageSection, videoSection, userSection, fixtureSection, newsSection, liveSection, categorySection);
 });
 
 newsButton.addEventListener('click', () => {
-  buttonToggle(userButton, imageButton, videoButton, fixtureButton, categoryButton, liveButton, newsButton);
-  hideAndDisplay(imageSection, videoSection, userSection, fixtureSection, categorySection, liveSection, newsSection);
+  buttonToggle(userButton, imageButton, videoButton, fixtureButton, categoryButton, liveButton,  newsButton);
+  hideAndDisplay(imageSection, videoSection, userSection, fixtureSection, categorySection, liveSection,  newsSection);
 })
 
 liveButton.addEventListener('click', () => {
-  buttonToggle(userButton, imageButton, videoButton, fixtureButton, categoryButton, newsButton, liveButton);
+  buttonToggle(userButton, imageButton, videoButton, fixtureButton, categoryButton, newsButton,  liveButton);
   hideAndDisplay(imageSection, videoSection, userSection, fixtureSection, categorySection, newsSection, liveSection);
 })
+
+
+
 
 
 //showing modals on button click

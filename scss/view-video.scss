@@ -1,0 +1,323 @@
+@import "./variables";
+
+* {
+  font-family: $font-type;
+}
+
+body {
+  @include defineSize(100%, 100vh, 0, 0);
+  position:relative;
+}
+
+.navbar {
+  @include defineSize(90%, 12.5vh, auto auto, 0);
+  @include gridDisplay(25% 50% 25%, 100%, center, center);
+
+  .logo {
+    width: 100%;
+    @include flexDisplay(row, flex-start, center);
+    img {
+      height: 5em;
+      border-radius: 50%;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .nav-items {
+    @include flexDisplay(row, center, center);
+
+    .nav-link {
+      @include flexDisplay(column, center, center);
+      margin: 0 1.5em;
+
+      &:hover {
+        a,
+        i {
+          color: $secondary-color;
+        }
+
+        opacity: 0.85;
+        cursor: pointer;
+      }
+
+      a {
+        font-size: 0.98em;
+        text-decoration: none;
+        color: $tertiary-color;
+        font-weight: map-get($map: $font-weights, $key: medium);
+      }
+
+      i {
+        color: $tertiary-color;
+        margin-bottom: 0.3em;
+      }
+    }
+  }
+
+  .nav-btns {
+    @include flexDisplay(row, space-around, center);
+    width: 100%;
+    @include gridItem(3, 4, 1, 2);
+    align-self: center;
+
+    form {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    a,
+    a:active {
+      align-self: center;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: $secondary-color;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+
+      i {
+        color: $secondary-color;
+        margin: 0.25em;
+      }
+    }
+
+    form {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      @include defineSize(auto, auto, 0 1em, 0.75em 0.5em);
+      @include buttonDesign(white, $secondary-color, none, 0.25em);
+      font-size: 0.98em;
+      font-weight: map-get($map: $font-weights, $key: bold);
+      outline: none;
+      text-decoration: none;
+    }
+  }
+}
+
+.login-btn {
+  i {
+    transform: rotateX(360deg);
+  }
+}
+
+.container {
+  z-index: 1;
+  width: 90%;
+  height: auto;
+  padding: 2.5em 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  iframe {
+    width: 100%;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      margin: 0.15em 0;
+      color: $primary-color;
+    }
+
+    p:first-of-type {
+      color: grey;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    p:last-of-type {
+      margin: 0.75em 0;
+    }
+  }
+
+  .interaction-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: .5em 0;
+
+    .info {
+      display: flex;
+      p {
+        margin-right: 3.75em;
+        color: grey;
+        font-weight: bold;
+      }     
+    }
+  }
+}
+
+  .pop-up{
+    display: none;
+  }
+
+  .active-pop-up{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50em;
+    height: 10em;
+    background: $secondary-color;
+    border-radius: .25em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p{
+      color: white;
+      font-weight: bold;
+      font-size: 1.15em;
+    }
+    
+    #close{
+      position: absolute;
+      right: 2.5%;
+      top: 3.5%;
+      background-color: white;
+      color: red;
+      padding: .5em;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    input{
+      width: 90%;
+      background-color: white;
+      padding: .5em .75em;
+      border-radius: .15em;
+      font-size: 1.15em;
+      border: none;
+    }
+  }
+
+  
+
+.like-btn {
+  color: $secondary-color;
+  font-weight: 600;
+  padding: 0.5em 1.25em;
+  background-color: transparent;
+  border: 0.15em solid $secondary-color;
+  border-radius: 0.25em;
+  font-size: 0.98em;
+  font-family: $font-type;
+  margin-right: 1.5em;
+  cursor: pointer;
+
+  i {
+    margin-right: 0.75em;
+  }
+}
+
+.video-interaction form{
+  height:100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.unlike-btn {
+  font-weight: 600;
+  padding: 0.5em 1.25em;
+  background-color: $secondary-color;
+  border: 0.15em solid $secondary-color;
+  color: white;
+  border-radius: 0.25em;
+  font-size: 0.98em;
+  font-family: $font-type;
+  cursor: pointer;
+
+  i {
+    margin-right: 0.75em;
+  }
+}
+
+.share-btn {
+  font-weight: 600;
+  padding: 0.5em 1.25em;
+  height: auto;
+  background-color: $primary-color;
+  border: 0.15em solid $primary-color;
+  color: white;
+  border-radius: 0.25em;
+  font-size: 0.98em;
+  font-family: $font-type;
+  margin-left: 1.5em;
+  cursor: pointer;
+
+  i {
+    margin-right: 0.75em;
+  }
+}
+
+
+
+.comment-section{
+  margin: 1.5em 0;
+  display: flex;
+  align-items: center;
+  overflow-y:hidden;
+  input{
+    padding: .5em .15em;
+    font-size: 1.15em;
+    border: none;
+    width: 30em;
+    border-bottom: .1em solid $tertiary-color;
+    outline: none;
+ }
+ button{
+  background-color: $tertiary-color;
+  color: white;
+  border: none;
+  border-radius: 0.25em;
+  font-size: 0.98em;
+  font-family: $font-type;
+  padding: 0.5em 1.25em;  
+ }
+}
+
+.display-comments{
+  direction: flex;
+  flex-direction: column;
+
+  #comment-box{
+    width: 50em;
+    padding: .15em;
+    border-radius: .25em;
+    display: flex;
+    align-items: center;
+    
+
+    &:nth-of-type(even){
+      background-color: rgb(238, 238, 238);
+    }
+
+    #username{
+      color: $tertiary-color;
+      font-size: 1.1em;
+    }
+
+    #comment{
+      font-weight: bold;
+      font-size: .98em;
+    }
+  }
+
+}

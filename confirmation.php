@@ -1,33 +1,54 @@
 <?php
+include('./auth.php');
+include('./functions.php');
+echo "<link rel='stylesheet' href='./style/confirmation.css'>";
 
 
-    include('./auth.php');
-    include('./functions.php');
-    echo "<link rel='stylesheet' href='./style/confirmation.css'>";
-    
 
+$confirmation_code = $_SESSION['code'];
+$fullName = $_SESSION['fullname'];
+$email = $_SESSION['email'];
+$country = $_SESSION['country'];
+$phoneNumber = $_SESSION['phone'];
+$password = $_SESSION['password'];
 
-    $confirmation_code = $_SESSION['code'];
-    $fullName = $_SESSION['fullname'];
-    $email = $_SESSION['email'];
-    $country = $_SESSION['country'];
-    $phoneNumber = $_SESSION['phone'];
-    $password = $_SESSION['password'];
+if (isset($_POST['confirm'])) {
+    $input_code = (int) $_POST['input-code'];
+    $security_question = $_POST['question'];
+    $answer = $_POST['answer'];
+    $security_pin = $_POST['pin'];
 
-    if (isset($_POST['confirm'])) {
-        $input_code = (int) $_POST['input-code'];
-        $security_question = $_POST['question'];
-        $answer = $_POST['answer'];
-        $security_pin = $_POST['pin'];
+    $erorr = [
+        'empty' => '',
+        'different_codes' => '',
+        'pin' => ''
+    ];
 
-        if ($confirmation_code == $input_code) {
-            echo $security_pin.$answer.$security_question;
-            registerUser($fullName, $email, $country, $phoneNumber, $password, $security_question, $answer, $security_pin);
-        }
-        else{
+    if ($input_code || $answer || $security_pin) {
+        $erorr['empty'] = "<script>alert('No fields can be empty!')</script>";
+        echo $erorr['empty'];
+    } else if ($input_code != $confirmation_code) {
+        $erorr['different_codes'] = "<script>alert('Wrong confirmation code !')</script>";
+        echo $erorr['different_codes'];
+    } else if (strlen($security_pin) > 4) {
+        $error['pin'] = "<script>alert('Pin must be 4 characters long!')<script>";
+        $erorr['pin'];
+    }
 
+    foreach ($error as $key => $value) {
+        if (empty($value)) {
+            unset($error[$key]);
         }
     }
+
+    if (empty($error)) {
+        if (registerUser($fullName, $email, $country, $phoneNumber, $password, $security_question, $answer, $security_pin)) {
+            $success_message = "<script>alert('Account Registration Successful !')</script>";
+            $_SESSION['success_message'] = $success_message;
+            return header('Location:home.php');
+        }
+    }
+}
 
 ?>
 
@@ -38,26 +59,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--css file-->
-    <!-- <link rel="stylesheet" href="./style/confirmation.css"> -->
     <title>Confirm</title>
 </head>
 
 <body>
-    <?php echo
-    $_SESSION['code']
-        . $_SESSION['fullname']
-        . $_SESSION['email']
-        . $_SESSION['country']
-        . $_SESSION['phone']
-        . $_SESSION['password'];
-    ?>
-    <?php echo $security_question?>
     <form action="" method="post">
         <h2>Confirm your registration !</h2>
         <p>Check your email for confirmation code</p>
         <input type="text" placeholder="Confirmation code" name="input-code">
-        <p name='resend_confirmation' id="resend-confirmation">Resend confirmation code</p>
         <!--security question block-->
         <div class="question-block" style="display:flex; flex-direction:column">
             <select name="question" id="">

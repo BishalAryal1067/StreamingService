@@ -57,12 +57,18 @@ body {
         @include flexDisplay(row, flex-end, center);
         width: 100%;
 
-        button {
+        a:first-of-type{
+            margin-right: 2.5em;
+            font-size: 1.1em
+        }
+
+        a {
             @include defineSize(auto, auto, 0 1em, 0.75em 0);
             @include buttonDesign(white, $secondary-color, none, 0.25em);
             font-size: 0.98em;
             font-weight: map-get($map: $font-weights, $key: bold);
             outline: none;
+            text-decoration: none;
         }
     }
 }
@@ -187,6 +193,27 @@ body {
 
                 tr:nth-of-type(odd) {
                     background-color: #eeeeee;
+                }
+
+                td:last-of-type {
+                    display: flex;
+                    justify-content: space-between;
+
+                    #block-btn,
+                    #delete-btn {
+                        text-decoration: none;
+                        color: white;
+                        padding: 0.75em 1.5em;
+                        border: none;
+                        border-radius: 0.25em;
+                    }
+
+                    #block-btn {
+                        background-color: $tertiary-color;
+                    }
+                    #delete-btn {
+                        background-color: red;
+                    }
                 }
             }
         }
@@ -431,7 +458,7 @@ body {
                 .card-header {
                     @include defineSize(100%, 75%, 0, 0);
                     @include flexDisplay(column, center, center);
-                    img{
+                    img {
                         height: 90%;
                     }
                     h4,
@@ -450,8 +477,6 @@ body {
                     @include defineSize(100%, 20%, 0, 0);
                     @include flexDisplay(row, center, center);
                     background-color: $tertiary-color;
-
-                    
 
                     a {
                         @include defineSize(auto, auto, 0 0.75em, 0.5em);
@@ -482,24 +507,20 @@ body {
 
             .video-card {
                 @include defineSize(18em, 18em, 0, 0);
-                @include flexDisplay(column,flex-start, center);
+                @include flexDisplay(column, flex-start, center);
                 border-radius: 0.25em;
                 overflow: hidden;
                 box-shadow: 0.1em 0.1em 0.75em #e2e2e2, -0.1em -0.1em 0.75em #e2e2e2;
-
-                
 
                 .card-header {
                     @include defineSize(100%, 85%, 0, 0);
                     @include flexDisplay(column, flex-start, center);
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    h4
-                    {
-                        font-size: .9em;
+                    h4 {
+                        font-size: 0.9em;
                         font-weight: light;
-                        margin: .15em 0 0 0;
-                        
+                        margin: 0.15em 0 0 0;
                     }
                 }
 
@@ -509,8 +530,8 @@ body {
                     background-color: $tertiary-color;
 
                     a {
-                        font-size: .85em;
-                        @include defineSize(auto, auto, .5em, 0.25em .4em );
+                        font-size: 0.85em;
+                        @include defineSize(auto, auto, 0.5em, 0.25em 0.4em);
                         text-decoration: none;
                         color: black;
                         background-color: white;

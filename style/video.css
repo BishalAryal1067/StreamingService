@@ -68,127 +68,107 @@ body {
   color: #B52666;
   margin-bottom: 0.3em;
 }
-.navbar .profile {
-  box-sizing: border-box;
-  width: auto;
-  height: auto;
-  margin: 0;
-  padding: 0.75em;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  justify-self: center;
-}
-.navbar .profile a,
-.navbar .profile a:active {
-  text-decoration: none;
-  cursor: pointer;
-  color: #16A6F1;
-  font-weight: 800;
-  margin-right: 0.25em;
-  font-size: 0.95em;
-}
-.navbar .profile i {
-  color: rgb(41, 202, 41);
-  font-size: 0.95em;
-}
 .navbar .nav-btns {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
 }
-.navbar .nav-btns button {
-  box-sizing: border-box;
-  width: auto;
-  height: auto;
-  margin: 0 1em;
-  padding: 0.75em 0;
-  background-color: white;
-  color: #16A6F1;
-  border: none;
-  border-radius: 0.25em;
-  cursor: pointer;
-  font-size: 0.98em;
-  font-weight: 800;
-  outline: none;
+.navbar .nav-btns a:first-of-type {
+  margin-right: 2.5em;
+  font-size: 1.1em;
+}
+.navbar .nav-btns a:first-of-type i {
+  color: rgba(0, 128, 0, 0.736);
+}
+.navbar .nav-btns a {
+  align-self: center;
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  color: #16A6F1;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+.navbar .nav-btns a:first-of-type i {
+  margin: 0.25em;
+}
+.navbar .nav-btns a:last-of-type i {
+  color: #16A6F1;
+}
+.navbar .nav-btns form {
+  margin: 0;
+  padding: 0;
 }
 
-.container {
+.login-btn i {
+  transform: rotateX(360deg);
+}
+
+.main-section {
   box-sizing: border-box;
-  width: 100%;
-  height: 85vh;
-  margin: 0;
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
   padding: 2.5em;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  border: 2px solid black;
+  align-items: flex-start;
   overflow: hidden;
 }
-.container .recent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  box-sizing: border-box;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  padding: 0.75em;
-}
-.container .recent .heading {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-bottom: 0.35em;
-}
-.container .recent .heading div {
-  box-sizing: border-box;
-  width: 0.45em;
-  height: 1.2em;
-  margin: 0;
-  padding: 0;
-  background-color: #672BDF;
-  margin-right: 0.85em;
-}
-.container .recent .heading h5 {
-  margin: 0;
-  margin-bottom: 0.25em;
-  font-size: 1.15em;
-  color: #672BDF;
-}
-.container .recent .video-section {
+.main-section .video-section {
   box-sizing: border-box;
   width: 100%;
   height: auto;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(26em, 30em));
+  grid-template-rows: repeat(auto-fit, minmax(25em, 30em));
+  -moz-column-gap: 2.5em;
+       column-gap: 2.5em;
+  row-gap: 2.5em;
 }
-.container .recent iframe {
-  display: inline-block;
+.main-section .video-section .video-card {
   box-sizing: border-box;
-  width: 26em;
-  height: 18em;
+  width: 20em;
+  height: 20em;
   margin: 0;
   padding: 0;
-  border: none;
-  border-radius: 0.15em;
+  border-radius: 0.25em;
+  overflow: hidden;
+  box-shadow: 0.1em 0.1em 0.75em grey, -0.1em -0.1em 0.75em grey;
+}
+.main-section .video-section .video-card iframe {
+  width: 100% !important;
+  width: 20em !important;
+}
+.main-section .video-section .video-card p,
+.main-section .video-section .video-card a {
+  margin: 0.5em 0 0 0.25em;
+}
+.main-section .video-section .video-card p:first-of-type {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.main-section .video-section .video-card p:last-of-type {
+  color: grey;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin: 0.15em 0.25em;
+}
+.main-section .video-section .video-card .footer {
+  padding: 0.75em 0;
+}
+.main-section .video-section .video-card .footer #view {
+  text-decoration: none;
+  border: 0.15em solid #16A6F1;
+  border-radius: 0.25em;
+  padding: 0.25em 0.75em;
+  background-color: #16A6F1;
+  color: white;
+  font-weight: bold;
 }/*# sourceMappingURL=video.css.map */

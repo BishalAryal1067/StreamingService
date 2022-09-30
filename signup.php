@@ -1,29 +1,70 @@
 <?php
 
-include('./auth.php');
-include('./functions.php');
+try {
+    include('./database.php');
+    include('./auth.php');
+    include('./functions.php');
+    echo "<link rel='stylesheet' href='./style/signup.css'>";
 
-if (isset($_POST['signup'])) {
-    $email = $_POST['email'];
-    $code = random_int(1000, 9999);
-    if (signUpConfirmation($email, $code)) {
-        $_SESSION['code'] = $code;
-        $_SESSION['fullname'] = $_POST['fullname'];
-        $_SESSION['email'] = $_POST['email'];
-        $_SESSION['country'] = $_POST['country'];
-        $_SESSION['phone'] = $_POST['phone-number'];
-        $_SESSION['password'] = $_POST['password'];
 
-        return header('Location: confirmation.php', true);
-        exit();
+    $strongRegex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/";
+
+
+    if (isset($_POST['signup'])) {
+        $fullname = $_POST['fullname'];
+        $email = $_POST['email'];
+        $country = $_POST['country'];
+        $phone_number = $_POST['phone-number'];
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm-password'];
+        $code = random_int(1000, 9999);
+
+        $error = [
+            'empty_error' => '',
+            'password_strength' => '',
+            'different_passwords' => ''
+        ];
+
+        if (empty($fullname) || empty($email) || empty($country) || empty($phone_number) || empty($password) || empty($confirm_password)) {
+            $error['empty_error'] = "<script>alert('No feild can be empty')</script>";
+            echo $error['empty_error'];
+        } else if ($password != $confirm_password) {
+            $error['different_passwords'] = "<script>alert('Passwords don't match !')</script>";
+            echo $error['different_passwords'];
+        } 
+        
+        
+        else if (!preg_match($strongRegex, $password)) {
+            $error['password_strength'] = "<script>alert('Password is not strong enough')</script>";
+            echo $error['password_strength'];
+        }
+
+        foreach ($error as $key => $value) {
+            if (empty($value)) {
+                unset($error[$key]);
+            }
+        }
+
+        echo $error[$key];
+
+        if (empty($error)) {
+            if (signUpConfirmation($email, $code)) {
+                $_SESSION['code'] = $code;
+                $_SESSION['fullname'] = $fullname;
+                $_SESSION['email'] = $email;
+                $_SESSION['country'] = $country;
+                $_SESSION['phone'] = $phone_number;
+                $_SESSION['password'] = $password;
+                return header('Location: confirmation.php', true);
+                exit();
+            }
+        }
     }
+} catch (\Throwable $th) {
+    throw $th;
 }
 
-// try {
 
-// } catch (\Throwable $th) {
-//     echo $th;
-// }
 ?>
 
 
@@ -35,11 +76,9 @@ if (isset($_POST['signup'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/signup.css">
+
     <title>FunOlympic</title>
 </head>
-
-
 
 <body>
     <div class="container">
@@ -51,16 +90,14 @@ if (isset($_POST['signup'])) {
             <!--Registration form-->
             <form action="" method="post">
                 <input type="text" name="fullname" id="" placeholder="Full Name">
-                <input type="text" name="email" id="email" placeholder="Email">
+                <input type="email" name="email" id="email" placeholder="Email" required>
                 <select name="country" id="country-dropdown">
                     <option value="default">Select a country</option>
                 </select>
-                <!-- <div class="phone-number"> -->
-                <!-- <span class="country-code"></span> -->
                 <input type="text" name="phone-number" id="phone-number" placeholder="Phone Number">
-                <!-- </div> -->
                 <input type="password" name="password" id="password" placeholder="Password">
-                <input type="submit" name="signup" value="Sign In">
+                <input type="password" name="confirm-password" placeholder="Confirm password">
+                <input type="submit" name="signup" value="Sign Up">
             </form>
             <a href="login.php">Sign in with your account</a>
         </div>

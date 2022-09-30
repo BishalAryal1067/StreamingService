@@ -9,6 +9,7 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 form {
@@ -37,7 +38,7 @@ form p {
   font-weight: 500;
   font-size: 0.85em;
 }
-form input:not([type=submit]) {
+form input:not([type=submit]), form select {
   box-sizing: border-box;
   width: 20em;
   height: 2.75em;
@@ -48,15 +49,6 @@ form input:not([type=submit]) {
   font-size: 1em;
   background-color: rgb(240, 240, 240);
   outline: none;
-}
-form #resend-confirmation {
-  color: #B52666;
-  margin: 0.75em 0 1em 0.5em;
-  font-size: 0.75em;
-}
-form #resend-confirmation:hover {
-  text-decoration: underline;
-  cursor: pointer;
 }
 form input[type=submit] {
   box-sizing: border-box;

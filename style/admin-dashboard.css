@@ -75,7 +75,11 @@ body {
   align-items: center;
   width: 100%;
 }
-.navbar .nav-btns button {
+.navbar .nav-btns a:first-of-type {
+  margin-right: 2.5em;
+  font-size: 1.1em;
+}
+.navbar .nav-btns a {
   box-sizing: border-box;
   width: auto;
   height: auto;
@@ -89,6 +93,7 @@ body {
   font-size: 0.98em;
   font-weight: 800;
   outline: none;
+  text-decoration: none;
 }
 
 .login-btn i {
@@ -370,6 +375,59 @@ body {
 .bottom-section .news-section .table-section table tr:nth-of-type(odd),
 .bottom-section .live-section .table-section table tr:nth-of-type(odd) {
   background-color: #eeeeee;
+}
+.bottom-section .users-section .table-section table td:last-of-type,
+.bottom-section .video-section .table-section table td:last-of-type,
+.bottom-section .images-section .table-section table td:last-of-type,
+.bottom-section .video-section .table-section table td:last-of-type,
+.bottom-section .fixture-section .table-section table td:last-of-type,
+.bottom-section .category-section .table-section table td:last-of-type,
+.bottom-section .news-section .table-section table td:last-of-type,
+.bottom-section .live-section .table-section table td:last-of-type {
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-section .users-section .table-section table td:last-of-type #block-btn,
+.bottom-section .users-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .video-section .table-section table td:last-of-type #block-btn,
+.bottom-section .video-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .images-section .table-section table td:last-of-type #block-btn,
+.bottom-section .images-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .video-section .table-section table td:last-of-type #block-btn,
+.bottom-section .video-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .fixture-section .table-section table td:last-of-type #block-btn,
+.bottom-section .fixture-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .category-section .table-section table td:last-of-type #block-btn,
+.bottom-section .category-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .news-section .table-section table td:last-of-type #block-btn,
+.bottom-section .news-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .live-section .table-section table td:last-of-type #block-btn,
+.bottom-section .live-section .table-section table td:last-of-type #delete-btn {
+  text-decoration: none;
+  color: white;
+  padding: 0.75em 1.5em;
+  border: none;
+  border-radius: 0.25em;
+}
+.bottom-section .users-section .table-section table td:last-of-type #block-btn,
+.bottom-section .video-section .table-section table td:last-of-type #block-btn,
+.bottom-section .images-section .table-section table td:last-of-type #block-btn,
+.bottom-section .video-section .table-section table td:last-of-type #block-btn,
+.bottom-section .fixture-section .table-section table td:last-of-type #block-btn,
+.bottom-section .category-section .table-section table td:last-of-type #block-btn,
+.bottom-section .news-section .table-section table td:last-of-type #block-btn,
+.bottom-section .live-section .table-section table td:last-of-type #block-btn {
+  background-color: #B52666;
+}
+.bottom-section .users-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .video-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .images-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .video-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .fixture-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .category-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .news-section .table-section table td:last-of-type #delete-btn,
+.bottom-section .live-section .table-section table td:last-of-type #delete-btn {
+  background-color: red;
 }
 .bottom-section .users-section .fixture-card-section,
 .bottom-section .video-section .fixture-card-section,

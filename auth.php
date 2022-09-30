@@ -11,19 +11,25 @@ function confirm_query($result)
     }
 }
 
+function is_blocked($email){
+    global $db_connection;
+    $query = "SELECT * FROM user_information WHERE email='$email' AND status='blocked'";
+    $result =mysqli_query($db_connection, $query);
+    if(mysqli_num_rows($result)>0){
+       return true;
+    }
+}
 
 //function to check if user exists
-function check_user($email){
-    global $connection;
-    $query = "SELECT username FROM user_information WHERE email = '$email'";
-    $result = mysqli_query($connection, $query);
-    confirm_Query($result);
+function check_user($email)
+{
+    global $db_connection;
+    $query = "SELECT * FROM user_information WHERE email = '$email'";
+    $result = mysqli_query($db_connection, $query);
     $row = mysqli_num_rows($result);
-    
-    if ($row > 0){
+    if ($row > 0) {
         return true;
-    }
-    else{
+    } else {
         return false;
     }
 }
@@ -33,7 +39,7 @@ function signUpConfirmation($email, $confirmationCode)
 
     //setting up email subject and body
     $emailSubject = "Dear User, Confirm you registration !";
-    $emailBody = "The confirmation code is: $confirmationCode";
+    $emailBody = "<html><body><h2>The confirmation code is: $confirmationCode</h2></body></html>";
 
     if (sendMail($email, $emailSubject, $emailBody)) {
         return true;
@@ -80,37 +86,14 @@ function registerUser(
 }
 
 
-//a function to login user
-function loginUser($email, $password)
-{
-    global $db_connection;
 
-    $query = "SELECT * FROM user_information WHERE email = '{$email}'  AND status = 'active'";
-    $selectUser = mysqli_query($db_connection, $query);
 
-    while ($row = mysqli_fetch_array($selectUser)) {
-        $registeredEmail = $row['email'];
-        $db_password = $row['password'];
-        $role = strtolower($row['role']);
-        if (password_verify($password, $db_password)) {
-            $_SESSION['email'] = $registeredEmail;
-            return true;
-        }
-    }
-}
 
-//function to log user out of the system
-function logoutUser()
-{
-    session_start();
-    session_destroy();
-    header("Location:login.php");
-}
 
 function fetch_users()
 {
     global $db_connection;
-    $query = "SELECT * FROM user_information";
+    $query = "SELECT * FROM user_information WHERE role='user'";
     $result = mysqli_query($db_connection, $query);
     if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
@@ -126,9 +109,46 @@ function fetch_users()
                <td> $email</td>
                <td> $country</td>
                <td> $phone_number</td>
-               <td> $status</td>
+               <td> $status</td>";
+               if($status== 'active'){
+                echo "<td><a href='admin-dashboard.php?action=block&email=$email' id='block-btn'>Block</a>";
+               }
+               else{
+                echo "<td><a href='admin-dashboard.php?action=unblock&email=$email' id='unblock-btn'>Unblock</a>";
+               }
+               
+              echo" <a href='admin-dashboard.php?action=delete&email=$email' id='delete-btn'>Delete</a></td>
            </tr>
           ";
         }
+    }
+}
+
+//function to block user
+function block_user($email){
+   global $db_connection;
+   $block_query = "UPDATE user_information SET status='blocked' WHERE email='$email'";
+   $block_result = mysqli_query($db_connection, $block_query);
+   if($block_result){
+    return true;
+   }
+}
+
+//function to unblock user
+function unblock_user($email){
+    global $db_connection;
+    $query = "UPDATE user_information SET status='active' WHERE email='$email'";
+    $result = mysqli_query($db_connection, $query);
+    if($result){
+     return true;
+    } 
+}
+//function to delete user
+function delete_user($email){
+    global $db_connection;
+    $query = "DELETE FROM user_information WHERE email='$email'";
+    $result = mysqli_query($db_connection, $query);
+    if($result){
+        return true;
     }
 }

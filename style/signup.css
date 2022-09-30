@@ -14,7 +14,7 @@ body {
 .container {
   box-sizing: border-box;
   width: 45%;
-  height: 60vh;
+  height: 70vh;
   margin: 0;
   padding: 0;
   position: relative;
@@ -43,8 +43,8 @@ body {
   align-items: center;
 }
 .container .left-section > img {
-  width: 20em;
-  height: 20em;
+  width: 16em;
+  height: 16em;
   border-radius: 50%;
 }
 .container .right-section {
@@ -91,7 +91,7 @@ body {
 .container .right-section form:hover, .container .right-section form:active {
   outline: none;
 }
-.container .right-section form input:nth-child(6) {
+.container .right-section form input[type=submit] {
   box-sizing: border-box;
   width: 35%;
   height: 2.75em;
@@ -106,7 +106,7 @@ body {
 }
 .container .right-section a {
   position: absolute;
-  bottom: 5%;
+  bottom: 2.5%;
   left: 50%;
   transform: translateX(-50%);
   text-decoration: none;
@@ -116,4 +116,36 @@ body {
 .container .right-section a:hover {
   color: #16A6F1;
   text-decoration: underline;
+}
+
+/*---------------------tablet view-----------------------*/
+@media screen and (max-width: 840px) {
+  .container {
+    width: 85%;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .container .left-section {
+    display: none;
+  }
+  .container .right-section {
+    width: 90%;
+    margin: auto;
+  }
+}
+/*---------------------tablet view-----------------------*/
+@media screen and (max-width: 480px) {
+  .container {
+    width: 100%;
+    background-color: transparent;
+    box-shadow: none;
+    font-size: 0.85em;
+  }
+  .container .left-section {
+    display: none;
+  }
+  .container .right-section {
+    width: 90%;
+    margin: auto;
+  }
 }/*# sourceMappingURL=signup.css.map */

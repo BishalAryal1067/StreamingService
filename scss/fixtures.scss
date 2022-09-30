@@ -1,0 +1,144 @@
+@import "./variables";
+
+* {
+  font-family: $font-type;
+}
+
+body {
+  @include defineSize(100%, 100vh, 0, 0);
+}
+
+.navbar {
+  @include defineSize(90%, 12.5vh, auto auto, 0);
+  @include gridDisplay(25% 50% 25%, 100%, center, center);
+
+  .logo {
+    width: 100%;
+    @include flexDisplay(row, flex-start, center);
+    img {
+      height: 5em;
+      border-radius: 50%;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .nav-items {
+    @include flexDisplay(row, center, center);
+
+    .nav-link {
+      @include flexDisplay(column, center, center);
+      margin: 0 1.5em;
+
+      &:hover {
+        a,
+        i {
+          color: $secondary-color;
+        }
+
+        opacity: 0.85;
+        cursor: pointer;
+      }
+
+      a {
+        font-size: 0.98em;
+        text-decoration: none;
+        color: $tertiary-color;
+        font-weight: map-get($map: $font-weights, $key: medium);
+      }
+
+      i {
+        color: $tertiary-color;
+        margin-bottom: 0.3em;
+      }
+    }
+  }
+
+  .nav-btns {
+    @include flexDisplay(row, space-around, center);
+    width: 100%;
+    @include gridItem(3, 4, 1, 2);
+
+    a {
+      align-self: center;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: $secondary-color;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+
+      i {
+        margin: 0.25em;
+      }
+    }
+
+    form {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      @include defineSize(auto, auto, 0 1em, 0.75em 0.5em);
+      @include buttonDesign(white, $secondary-color, none, 0.25em);
+      font-size: 0.98em;
+      font-weight: map-get($map: $font-weights, $key: bold);
+      outline: none;
+      text-decoration: none;
+    }
+  }
+}
+
+.login-btn {
+  i {
+    transform: rotateX(360deg);
+  }
+}
+
+.main-section {
+  width: 90%;
+  margin: 5em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+
+  h2 {
+    width: 100%;
+    color: $primary-color;
+    margin: 0.5em;
+  }
+
+  .card-section{
+    width: 100%;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-start;
+     align-items: center;
+    
+
+    .card{
+        border: .1em solid grey;
+        width: 50%;
+        height: 5em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: .25em;
+        margin: .25em;
+
+        h4{
+            margin: .1em 0;
+        }
+
+        p{
+            margin: .1em 0;
+            color: grey;
+            font-weight: bold;
+        }
+    }
+}
+}

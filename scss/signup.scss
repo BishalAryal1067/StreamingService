@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    @include defineSize(45%, 60vh, 0, 0);
+    @include defineSize(45%, 70vh, 0, 0);
     @include positionElement(relative, 50%, 50%, 50%, 50%);
     background-color: $primary-color;
     border-radius: 0.75em;
@@ -26,8 +26,8 @@ body {
         @include flexDisplay(column, center, center);
     }
     .left-section > img {
-        width: 20em;
-        height: 20em;
+        width: 16em;
+        height: 16em;
         border-radius: 50%;
     }
     .right-section {
@@ -59,7 +59,7 @@ body {
             &:active {
                 outline: none;
             }
-            input:nth-child(6) {
+            input[type=submit] {
                 @include defineSize(35%, 2.75em, 0.75em 0, 0);
                 @include buttonDesign($secondary-color, white, none, 1.75em);
                 font-weight: map-get($font-weights, medium);
@@ -68,7 +68,7 @@ body {
 
         a {
             position: absolute;
-            bottom: 5%;
+            bottom: 2.5%;
             left: 50%;
             transform: translateX(-50%);
             text-decoration: none;
@@ -83,3 +83,40 @@ body {
     }
 }
 
+/*---------------------tablet view-----------------------*/
+@media screen and (max-width:840px) {
+    .container{
+        width: 85%;
+        background-color: transparent;
+        box-shadow: none;
+
+        .left-section{
+            display: none;
+        }
+
+        .right-section{
+            width: 90%;
+            margin: auto;
+        }
+    }
+}
+
+
+/*---------------------tablet view-----------------------*/
+@media screen and (max-width:480px) {
+    .container{
+        width: 100%;
+        background-color: transparent;
+        box-shadow: none;
+        font-size: .85em;
+
+        .left-section{
+            display: none;
+        }
+
+        .right-section{
+            width: 90%;
+            margin: auto;
+        }
+    }
+}

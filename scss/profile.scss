@@ -1,0 +1,156 @@
+@import "./variables";
+
+* {
+    font-family: $font-type;
+}
+
+body {
+    @include defineSize(100%, 100vh, 0, 0);
+}
+
+.navbar {
+    @include defineSize(90%, 12.5vh, auto auto, 0);
+    @include gridDisplay(25% 50% 25%, 100%, center, center);
+
+    .logo {
+        width: 100%;
+        @include flexDisplay(row, flex-start, center);
+        img {
+            height: 5em;
+            border-radius: 50%;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .nav-items {
+        @include flexDisplay(row, center, center);
+
+        .nav-link {
+            @include flexDisplay(column, center, center);
+            margin: 0 1.5em;
+
+            &:hover {
+                a,
+                i {
+                    color: $secondary-color;
+                }
+
+                opacity: 0.85;
+                cursor: pointer;
+            }
+
+            a {
+                font-size: 0.98em;
+                text-decoration: none;
+                color: $tertiary-color;
+                font-weight: map-get($map: $font-weights, $key: medium);
+            }
+
+            i {
+                color: $tertiary-color;
+                margin-bottom: 0.3em;
+            }
+        }
+    }
+
+    .nav-btns {
+        @include flexDisplay(row, space-around, center);
+        width: 100%;
+        @include gridItem(3, 4, 1, 2);
+        align-self: center;
+
+        form {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        a,
+        a:active {
+            align-self: center;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: $secondary-color;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+
+            i{
+                margin: 0.25em;
+            }
+
+            a:first-of-type {
+                i {
+                    color: green;
+                }
+            }
+        }
+
+        form {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            @include defineSize(auto, auto, 0 1em, 0.75em 0.5em);
+            @include buttonDesign(white, $secondary-color, none, 0.25em);
+            font-size: 0.98em;
+            font-weight: map-get($map: $font-weights, $key: bold);
+            outline: none;
+            text-decoration: none;
+        }
+    }
+}
+
+.login-btn {
+    i {
+        transform: rotateX(360deg);
+    }
+}
+
+.container {
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    h2 {
+        color: $secondary-color;
+    }
+
+    .display-block {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+
+        p:first-of-type {
+            font-weight: bold;
+            color: grey;
+            font-size: 1.15em;
+        }
+
+        p:last-of-type {
+            font-weight: bold;
+            color: $primary-color;
+            font-size: 0.98em;
+        }
+    }
+
+    button {
+        background-color: red;
+        color: white;
+        font-weight: bold;
+        padding: .75em 1.5em;
+        border: none;
+        border-radius: 0.15em;
+        cursor: pointer;
+        font-size: 1em;
+    }
+}

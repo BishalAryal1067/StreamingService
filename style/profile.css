@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@all&display=swap");
+* {
+  font-family: "Rubik", sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  box-sizing: border-box;
+  width: 90%;
+  height: 12.5vh;
+  margin: auto auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 100%;
+  justify-items: center;
+  align-items: center;
+}
+.navbar .logo {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navbar .logo img {
+  height: 5em;
+  border-radius: 50%;
+}
+.navbar .logo:hover {
+  cursor: pointer;
+}
+.navbar .nav-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.navbar .nav-items .nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1.5em;
+}
+.navbar .nav-items .nav-link:hover {
+  opacity: 0.85;
+  cursor: pointer;
+}
+.navbar .nav-items .nav-link:hover a,
+.navbar .nav-items .nav-link:hover i {
+  color: #16A6F1;
+}
+.navbar .nav-items .nav-link a {
+  font-size: 0.98em;
+  text-decoration: none;
+  color: #B52666;
+  font-weight: 500;
+}
+.navbar .nav-items .nav-link i {
+  color: #B52666;
+  margin-bottom: 0.3em;
+}
+.navbar .nav-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  align-self: center;
+}
+.navbar .nav-btns form {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.navbar .nav-btns a,
+.navbar .nav-btns a:active {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #16A6F1;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+.navbar .nav-btns a i,
+.navbar .nav-btns a:active i {
+  margin: 0.25em;
+}
+.navbar .nav-btns a a:first-of-type i,
+.navbar .nav-btns a:active a:first-of-type i {
+  color: green;
+}
+.navbar .nav-btns form {
+  margin: 0;
+  padding: 0;
+}
+.navbar .nav-btns a {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0 1em;
+  padding: 0.75em 0.5em;
+  background-color: white;
+  color: #16A6F1;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  font-size: 0.98em;
+  font-weight: 800;
+  outline: none;
+  text-decoration: none;
+}
+
+.login-btn i {
+  transform: rotateX(360deg);
+}
+
+.container {
+  width: 40%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container h2 {
+  color: #16A6F1;
+}
+.container .display-block {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+.container .display-block p:first-of-type {
+  font-weight: bold;
+  color: grey;
+  font-size: 1.15em;
+}
+.container .display-block p:last-of-type {
+  font-weight: bold;
+  color: #672BDF;
+  font-size: 0.98em;
+}
+.container button {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  padding: 0.75em 1.5em;
+  border: none;
+  border-radius: 0.15em;
+  cursor: pointer;
+  font-size: 1em;
+}/*# sourceMappingURL=profile.css.map */

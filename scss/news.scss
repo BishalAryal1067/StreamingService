@@ -54,37 +54,41 @@ body {
     }
   }
 
-  .profile {
-    @include defineSize(auto, auto, 0, 0.75em);
-    @include flexDisplay(row, center, center);
-    @include gridItem(3, 4, 1, 2);
-    justify-self: center;
-
-    a{
-      text-decoration: none;
-      cursor: pointer;
-      color: $secondary-color;
-      font-weight: map-get($map: $font-weights, $key: bold);
-      margin-right: .25em;
-      font-size: .95em;
-      
-    }
-
-    i{
-      color: rgb(41, 202, 41);
-      font-size: .95em;
-    }
-
-  
-  }
-
   .nav-btns {
-    @include flexDisplay(row, flex-end, center);
+    @include flexDisplay(row, space-around, center);
     width: 100%;
     @include gridItem(3, 4, 1, 2);
+    align-self: center;
+
+    a {
+      align-self: center;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: $secondary-color;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+
+      i{
+        margin: 0.25em;
+      }
+
+      a:first-of-type  {
+        i{
+          color: rgba(0, 128, 0, 0.736);
+        }        
+      }
+
+    }
+
+    form {
+      margin: 0;
+      padding: 0;
+    }
 
     button {
-      @include defineSize(auto, auto, 0 1em, 0.75em 0);
+      @include defineSize(auto, auto, 0 1em, 0.75em 0.5em);
       @include buttonDesign(white, $secondary-color, none, 0.25em);
       font-size: 0.98em;
       font-weight: map-get($map: $font-weights, $key: bold);
@@ -95,19 +99,80 @@ body {
 }
 
 .login-btn {
-    i {
-      transform: rotateX(360deg);
-    }
+  i {
+    transform: rotateX(360deg);
+  }
+}
+
+.main-section {
+  @include defineSize(90%, auto, 0.75em auto, 5em);
+  @include flexDisplay(column, flex-start, flex-start);
+
+  h3 {
+    color: $primary-color;
+    text-decoration: underline;
   }
 
-.main-section{
-    @include defineSize(100%, auto, .75em 0, 5em);
-    @include flexDisplay(column, flex-start, flex-start);
+  .news-section {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25em, 30em));
+    grid-template-columns: repeat(auto-fit, minmax(25em, 30em));
+    column-gap: 2.5em;
+    row-gap: 2.5em;
 
-    h3{
-        color: $primary-color;
-        text-decoration: underline;
+    .news-card {
+      @include defineSize(25em, 25em, 0, 0);
+      border-radius: 0.25em;
+      overflow: hidden;
+      box-shadow: 0.1em 0.1em 0.75em grey, -0.1em -0.1em 0.75em grey;
+
+      img {
+        width: 100%;
+        height: 45%;
+        margin: 0;
+      }
+
+      h3 {
+        color: $tertiary-color;
+      }
+      h3,
+      p {
+        margin: 0.35em 0 0.25em 0.5em;
+        margin-left: 0.5em;
+      }
+
+      p {
+        text-overflow: ellipsis;
+
+        &:first-of-type {
+          color: grey;
+          font-size: 0.9em;
+          font-weight: bold;
+        }
+
+        &:last-of-type {
+          margin: 0.75em 0.5em;
+          color: rgb(11, 11, 11);
+          font-weight: 500;
+          letter-spacing: 0.75px;
+        }
+      }
+      .footer {
+        padding: 0.75em 0;
+
+        #view {
+          text-decoration: none;
+          border: 0.15em solid $secondary-color;
+          border-radius: 0.25em;
+          padding: 0.25em 0.75em;
+          background-color: $secondary-color;
+          color: white;
+          font-weight: bold;
+          margin-left: 0.5em;
+        }
+      }
     }
-
-
+  }
 }

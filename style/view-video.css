@@ -1,0 +1,321 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@all&display=swap");
+* {
+  font-family: "Rubik", sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.navbar {
+  box-sizing: border-box;
+  width: 90%;
+  height: 12.5vh;
+  margin: auto auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 100%;
+  justify-items: center;
+  align-items: center;
+}
+.navbar .logo {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navbar .logo img {
+  height: 5em;
+  border-radius: 50%;
+}
+.navbar .logo:hover {
+  cursor: pointer;
+}
+.navbar .nav-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.navbar .nav-items .nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1.5em;
+}
+.navbar .nav-items .nav-link:hover {
+  opacity: 0.85;
+  cursor: pointer;
+}
+.navbar .nav-items .nav-link:hover a,
+.navbar .nav-items .nav-link:hover i {
+  color: #16A6F1;
+}
+.navbar .nav-items .nav-link a {
+  font-size: 0.98em;
+  text-decoration: none;
+  color: #B52666;
+  font-weight: 500;
+}
+.navbar .nav-items .nav-link i {
+  color: #B52666;
+  margin-bottom: 0.3em;
+}
+.navbar .nav-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  align-self: center;
+}
+.navbar .nav-btns form {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.navbar .nav-btns a,
+.navbar .nav-btns a:active {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #16A6F1;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+.navbar .nav-btns a i,
+.navbar .nav-btns a:active i {
+  color: #16A6F1;
+  margin: 0.25em;
+}
+.navbar .nav-btns form {
+  margin: 0;
+  padding: 0;
+}
+.navbar .nav-btns a {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0 1em;
+  padding: 0.75em 0.5em;
+  background-color: white;
+  color: #16A6F1;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  font-size: 0.98em;
+  font-weight: 800;
+  outline: none;
+  text-decoration: none;
+}
+
+.login-btn i {
+  transform: rotateX(360deg);
+}
+
+.container {
+  z-index: 1;
+  width: 90%;
+  height: auto;
+  padding: 2.5em 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.container iframe {
+  width: 100%;
+}
+.container .description {
+  display: flex;
+  flex-direction: column;
+}
+.container .description h3 {
+  margin: 0.15em 0;
+  color: #672BDF;
+}
+.container .description p:first-of-type {
+  color: grey;
+  font-weight: bold;
+  margin: 0;
+}
+.container .description p:last-of-type {
+  margin: 0.75em 0;
+}
+.container .interaction-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.5em 0;
+}
+.container .interaction-section .info {
+  display: flex;
+}
+.container .interaction-section .info p {
+  margin-right: 3.75em;
+  color: grey;
+  font-weight: bold;
+}
+
+.pop-up {
+  display: none;
+}
+
+.active-pop-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50em;
+  height: 10em;
+  background: #16A6F1;
+  border-radius: 0.25em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.active-pop-up p {
+  color: white;
+  font-weight: bold;
+  font-size: 1.15em;
+}
+.active-pop-up #close {
+  position: absolute;
+  right: 2.5%;
+  top: 3.5%;
+  background-color: white;
+  color: red;
+  padding: 0.5em;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.active-pop-up input {
+  width: 90%;
+  background-color: white;
+  padding: 0.5em 0.75em;
+  border-radius: 0.15em;
+  font-size: 1.15em;
+  border: none;
+}
+
+.like-btn {
+  color: #16A6F1;
+  font-weight: 600;
+  padding: 0.5em 1.25em;
+  background-color: transparent;
+  border: 0.15em solid #16A6F1;
+  border-radius: 0.25em;
+  font-size: 0.98em;
+  font-family: "Rubik", sans-serif;
+  margin-right: 1.5em;
+  cursor: pointer;
+}
+.like-btn i {
+  margin-right: 0.75em;
+}
+
+.video-interaction form {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.unlike-btn {
+  font-weight: 600;
+  padding: 0.5em 1.25em;
+  background-color: #16A6F1;
+  border: 0.15em solid #16A6F1;
+  color: white;
+  border-radius: 0.25em;
+  font-size: 0.98em;
+  font-family: "Rubik", sans-serif;
+  cursor: pointer;
+}
+.unlike-btn i {
+  margin-right: 0.75em;
+}
+
+.share-btn {
+  font-weight: 600;
+  padding: 0.5em 1.25em;
+  height: auto;
+  background-color: #672BDF;
+  border: 0.15em solid #672BDF;
+  color: white;
+  border-radius: 0.25em;
+  font-size: 0.98em;
+  font-family: "Rubik", sans-serif;
+  margin-left: 1.5em;
+  cursor: pointer;
+}
+.share-btn i {
+  margin-right: 0.75em;
+}
+
+.comment-section {
+  margin: 1.5em 0;
+  display: flex;
+  align-items: center;
+  overflow-y: hidden;
+}
+.comment-section input {
+  padding: 0.5em 0.15em;
+  font-size: 1.15em;
+  border: none;
+  width: 30em;
+  border-bottom: 0.1em solid #B52666;
+  outline: none;
+}
+.comment-section button {
+  background-color: #B52666;
+  color: white;
+  border: none;
+  border-radius: 0.25em;
+  font-size: 0.98em;
+  font-family: "Rubik", sans-serif;
+  padding: 0.5em 1.25em;
+}
+
+.display-comments {
+  direction: flex;
+  flex-direction: column;
+}
+.display-comments #comment-box {
+  width: 50em;
+  padding: 0.15em;
+  border-radius: 0.25em;
+  display: flex;
+  align-items: center;
+}
+.display-comments #comment-box:nth-of-type(even) {
+  background-color: rgb(238, 238, 238);
+}
+.display-comments #comment-box #username {
+  color: #B52666;
+  font-size: 1.1em;
+}
+.display-comments #comment-box #comment {
+  font-weight: bold;
+  font-size: 0.98em;
+}/*# sourceMappingURL=view-video.css.map */

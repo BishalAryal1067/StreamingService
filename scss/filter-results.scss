@@ -1,0 +1,237 @@
+@import "./variables";
+
+* {
+    font-family: $font-type;
+}
+
+body {
+    @include defineSize(100%, 100vh, 0, 0);
+}
+
+.navbar {
+    @include defineSize(90%, 12.5vh, auto auto, 0);
+    @include gridDisplay(25% 50% 25%, 100%, center, center);
+
+    .logo {
+        width: 100%;
+        @include flexDisplay(row, flex-start, center);
+        img {
+            height: 5em;
+            border-radius: 50%;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .nav-items {
+        @include flexDisplay(row, center, center);
+
+        .nav-link {
+            @include flexDisplay(column, center, center);
+            margin: 0 1.5em;
+
+            &:hover {
+                a,
+                i {
+                    color: $secondary-color;
+                }
+
+                opacity: 0.85;
+                cursor: pointer;
+            }
+
+            a {
+                font-size: 0.98em;
+                text-decoration: none;
+                color: $tertiary-color;
+                font-weight: map-get($map: $font-weights, $key: medium);
+            }
+
+            i {
+                color: $tertiary-color;
+                margin-bottom: 0.3em;
+            }
+        }
+    }
+    .nav-btns {
+        @include flexDisplay(row, flex-end, center);
+        width: 100%;
+
+        a:first-of-type {
+            margin-right: 2.5em;
+            font-size: 1.1em;
+        }
+
+        a {
+            @include defineSize(auto, auto, 0 1em, 0.75em 0);
+            @include buttonDesign(white, $secondary-color, none, 0.25em);
+            font-size: 0.98em;
+            font-weight: map-get($map: $font-weights, $key: bold);
+            outline: none;
+            text-decoration: none;
+        }
+    }
+}
+
+.login-btn {
+    i {
+        transform: rotateX(360deg);
+    }
+}
+
+.video-section{
+    width: 90%;
+    margin: 1.5em auto;
+    display: flex;
+    flex-direction: column;
+
+    h2{
+        color: $primary-color;
+    }
+
+    .card-section{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20em, 25em));
+        grid-template-rows: repeat(auto-fit, minmax(auto,auto));
+        column-gap: 2.5em;
+        row-gap: 2.5em;
+        padding-bottom: 1em;
+
+        .video-card{
+            width: 20em;
+            height: 17em;
+            box-shadow: .1em .1em .25em grey,-.1em -.1em .25em grey;
+            p,a,h4{
+                margin: .25em 0;
+                margin-left: .75em;
+            }
+
+            h4{
+                margin-top: .25em;
+            }
+
+            p{
+                color: grey;
+                font-weight: bold;
+                font-size: .95em;
+                margin-bottom: 1.5em;
+            }
+
+            a{
+             background-color: $secondary-color;
+             color: white;
+             text-decoration: none;
+             border-radius: .15em;
+             padding: .5em 1em;
+             margin: 1.5em .75em;
+            }
+           
+            iframe{
+                width: 100%;
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+}
+
+.news-section{
+    width: 90%;
+    margin: 1.5em auto;
+    display: flex;
+    flex-direction: column;
+
+    h2{
+        color: $primary-color;
+    }
+
+    .card-section{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20em, 25em));
+        grid-template-rows: repeat(auto-fit, minmax(auto,auto));
+        column-gap: 2.5em;
+        row-gap: 2.5em;
+        padding-bottom: 1em;
+
+        .news-card{
+            width: 20em;
+            height: 25em;
+            box-shadow: .1em .1em .25em grey,-.1em -.1em .25em grey;
+
+           
+            img{
+                width: 100%;
+                height: 50%;
+            }
+
+
+            p,a,h4{
+                margin: .25em 0;
+                margin-left: .75em;
+            }
+
+            h4{
+                margin-top: .25em;
+            }
+
+            p{
+                color: grey;
+                font-weight: bold;
+                font-size: .95em;
+                margin-bottom: 1.5em;
+            }
+
+            a{
+             background-color: $secondary-color;
+             color: white;
+             text-decoration: none;
+             border-radius: .15em;
+             padding: .5em 1em;
+             margin: 1.5em .75em;
+            }
+           
+        }
+    }
+}
+
+.fixture-section{
+    width: 90%;
+    margin: 1.5em auto;
+    display: flex;
+    flex-direction: column;
+
+
+    h2{
+        color: $primary-color;
+    }
+
+    .card-section{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15em, 20em));
+        grid-template-rows: repeat(auto-fit, minmax(auto,auto));
+        column-gap: 2.5em;
+        row-gap: 2.5em;
+        padding-bottom: 1em;
+
+        .fixture-card{
+            border: .1em solid grey;
+            width: 18em;
+            height: 5em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: .25em;
+
+            h4{
+                margin: .1em 0;
+            }
+
+            p{
+                margin: .1em 0;
+                color: grey;
+                font-weight: bold;
+            }
+        }
+    }
+}

@@ -9,6 +9,90 @@ body {
     overflow: hidden;
 }
 
+.navbar {
+    @include defineSize(90%, 12.5vh, auto auto, 0);
+    @include gridDisplay(25% 50% 25%, 100%, center, center);
+  
+    .logo {
+      width: 100%;
+      @include flexDisplay(row, flex-start, center);
+      img {
+        height: 5em;
+        border-radius: 50%;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .nav-items {
+      @include flexDisplay(row, center, center);
+  
+      .nav-link {
+        @include flexDisplay(column, center, center);
+        margin: 0 1.5em;
+  
+        &:hover {
+          a,
+          i {
+            color: $secondary-color;
+          }
+  
+          opacity: 0.85;
+          cursor: pointer;
+        }
+  
+        a {
+          font-size: 0.98em;
+          text-decoration: none;
+          color: $tertiary-color;
+          font-weight: map-get($map: $font-weights, $key: medium);
+        }
+  
+        i {
+          color: $tertiary-color;
+          margin-bottom: 0.3em;
+        }
+      }
+    }
+  
+    .nav-btns {
+      @include flexDisplay(row, space-around, center);
+      width: 100%;
+      @include gridItem(3, 4, 1, 2);
+      align-self: center;
+  
+      a {
+        align-self: center;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: $secondary-color;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+  
+        i {
+          color: rgba(0, 128, 0, 0.736);
+          margin: 0.25em;
+        }
+      }
+  
+      form {
+        margin: 0;
+        padding: 0;
+      }
+  
+      button {
+        @include defineSize(auto, auto, 0 1em, 0.75em 0.5em);
+        @include buttonDesign(white, $secondary-color, none, 0.25em);
+        font-size: 0.98em;
+        font-weight: map-get($map: $font-weights, $key: bold);
+        outline: none;
+        text-decoration: none;
+      }
+    }
+  }
+
 form {
     @include flexDisplay(column, center, center);
     @include defineSize(auto, auto, 0, 2.5em 6em);
@@ -52,17 +136,6 @@ form {
     }
 }
 
-.video-form,
-.fixture-form,
-.image-form,
-.category-form,
-.live-form,
-.news-form {
-    display: none;
-}
 
-.active-form{
-  display: block;
-}
 
 

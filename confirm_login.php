@@ -11,15 +11,15 @@ while ($row = mysqli_fetch_assoc($result)) {
     $db_answer = $row['answer'];
 }
 
-echo $email;
-echo "<p>$question</p>";
+
+
 
 
 
 if (isset($_POST['confirm'])) {
     $answer = strtolower($_POST['answer']);
     if ($answer == strtolower($db_answer)) {
-        return header('Location: user-dashboard.php');
+        return header('Location: home.php');
         exit();
     } else {
         echo "Wrong answer! Try again";
@@ -41,7 +41,8 @@ if (isset($_POST['confirm'])) {
 <body>
     <form action="" method="post">
         <h3>Enter your answer to login !</h3>
-        <input type="text" name="answer" id="" placeholder="Answer..">
+        <?php echo "<p>$question</p>"?>
+        <input type="text" name="answer" id="" placeholder="Answer.." autocomplete="off">
         <input type="submit" value="Confirm" name="confirm">
     </form>
 </body>

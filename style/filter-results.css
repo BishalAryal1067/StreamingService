@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@all&display=swap");
+* {
+  font-family: "Rubik", sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  box-sizing: border-box;
+  width: 90%;
+  height: 12.5vh;
+  margin: auto auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 100%;
+  justify-items: center;
+  align-items: center;
+}
+.navbar .logo {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navbar .logo img {
+  height: 5em;
+  border-radius: 50%;
+}
+.navbar .logo:hover {
+  cursor: pointer;
+}
+.navbar .nav-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.navbar .nav-items .nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1.5em;
+}
+.navbar .nav-items .nav-link:hover {
+  opacity: 0.85;
+  cursor: pointer;
+}
+.navbar .nav-items .nav-link:hover a,
+.navbar .nav-items .nav-link:hover i {
+  color: #16A6F1;
+}
+.navbar .nav-items .nav-link a {
+  font-size: 0.98em;
+  text-decoration: none;
+  color: #B52666;
+  font-weight: 500;
+}
+.navbar .nav-items .nav-link i {
+  color: #B52666;
+  margin-bottom: 0.3em;
+}
+.navbar .nav-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+.navbar .nav-btns a:first-of-type {
+  margin-right: 2.5em;
+  font-size: 1.1em;
+}
+.navbar .nav-btns a {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0 1em;
+  padding: 0.75em 0;
+  background-color: white;
+  color: #16A6F1;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  font-size: 0.98em;
+  font-weight: 800;
+  outline: none;
+  text-decoration: none;
+}
+
+.login-btn i {
+  transform: rotateX(360deg);
+}
+
+.video-section {
+  width: 90%;
+  margin: 1.5em auto;
+  display: flex;
+  flex-direction: column;
+}
+.video-section h2 {
+  color: #672BDF;
+}
+.video-section .card-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 25em));
+  grid-template-rows: repeat(auto-fit, minmax(auto, auto));
+  -moz-column-gap: 2.5em;
+       column-gap: 2.5em;
+  row-gap: 2.5em;
+  padding-bottom: 1em;
+}
+.video-section .card-section .video-card {
+  width: 20em;
+  height: 17em;
+  box-shadow: 0.1em 0.1em 0.25em grey, -0.1em -0.1em 0.25em grey;
+}
+.video-section .card-section .video-card p, .video-section .card-section .video-card a, .video-section .card-section .video-card h4 {
+  margin: 0.25em 0;
+  margin-left: 0.75em;
+}
+.video-section .card-section .video-card h4 {
+  margin-top: 0.25em;
+}
+.video-section .card-section .video-card p {
+  color: grey;
+  font-weight: bold;
+  font-size: 0.95em;
+  margin-bottom: 1.5em;
+}
+.video-section .card-section .video-card a {
+  background-color: #16A6F1;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.15em;
+  padding: 0.5em 1em;
+  margin: 1.5em 0.75em;
+}
+.video-section .card-section .video-card iframe {
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+.news-section {
+  width: 90%;
+  margin: 1.5em auto;
+  display: flex;
+  flex-direction: column;
+}
+.news-section h2 {
+  color: #672BDF;
+}
+.news-section .card-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 25em));
+  grid-template-rows: repeat(auto-fit, minmax(auto, auto));
+  -moz-column-gap: 2.5em;
+       column-gap: 2.5em;
+  row-gap: 2.5em;
+  padding-bottom: 1em;
+}
+.news-section .card-section .news-card {
+  width: 20em;
+  height: 25em;
+  box-shadow: 0.1em 0.1em 0.25em grey, -0.1em -0.1em 0.25em grey;
+}
+.news-section .card-section .news-card img {
+  width: 100%;
+  height: 50%;
+}
+.news-section .card-section .news-card p, .news-section .card-section .news-card a, .news-section .card-section .news-card h4 {
+  margin: 0.25em 0;
+  margin-left: 0.75em;
+}
+.news-section .card-section .news-card h4 {
+  margin-top: 0.25em;
+}
+.news-section .card-section .news-card p {
+  color: grey;
+  font-weight: bold;
+  font-size: 0.95em;
+  margin-bottom: 1.5em;
+}
+.news-section .card-section .news-card a {
+  background-color: #16A6F1;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.15em;
+  padding: 0.5em 1em;
+  margin: 1.5em 0.75em;
+}
+
+.fixture-section {
+  width: 90%;
+  margin: 1.5em auto;
+  display: flex;
+  flex-direction: column;
+}
+.fixture-section h2 {
+  color: #672BDF;
+}
+.fixture-section .card-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 20em));
+  grid-template-rows: repeat(auto-fit, minmax(auto, auto));
+  -moz-column-gap: 2.5em;
+       column-gap: 2.5em;
+  row-gap: 2.5em;
+  padding-bottom: 1em;
+}
+.fixture-section .card-section .fixture-card {
+  border: 0.1em solid grey;
+  width: 18em;
+  height: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25em;
+}
+.fixture-section .card-section .fixture-card h4 {
+  margin: 0.1em 0;
+}
+.fixture-section .card-section .fixture-card p {
+  margin: 0.1em 0;
+  color: grey;
+  font-weight: bold;
+}/*# sourceMappingURL=filter-results.css.map */

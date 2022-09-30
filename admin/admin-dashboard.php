@@ -8,6 +8,31 @@ try {
     //throw $th;
 }
 
+//blocking, unblocking user or deleting user
+try {
+    if (isset($_GET['action'])) {
+        $email = $_GET['email'];
+        $action = strtolower($_GET['action']);
+        if ($action == 'block') {
+            if (block_user($email)) {
+                echo "<script>alert('User has been blocked')</script>";
+            }
+        } elseif ($action == 'delete') {
+            if (delete_user($email)) {
+                echo "<script>('User has been deleted')</script>";
+            }
+        } elseif ($action == 'unblock') {
+            if (unblock_user($email)) {
+                echo "<script>('User has been unblocked')</script>";
+            }
+        }
+    }
+} catch (\Throwable $th) {
+    throw $th;
+}
+
+
+
 //adding video from modal-------------------------------------------
 try {
     if (isset($_POST['add-video'])) {
@@ -84,10 +109,10 @@ try {
 try {
     if (isset($_POST['add-fixture'])) {
         $fixtureTitle = $_POST['fixture-title'];
-        $fixtureDate = $_POST['fixture-date'] . ' '. $_POST['fixture-time'];
+        $fixtureDate = $_POST['fixture-date'] . ' ' . $_POST['fixture-time'];
         $category = $_POST['fixture-category'];
-         
-        
+
+
 
         if (add_fixtures($fixtureTitle, $fixtureDate, $category)) {
             echo "
@@ -241,7 +266,7 @@ try {
         if (empty($live_title) || empty($live_url) || empty($live_category)) {
             echo "<script>alert('if checked')</script>";
             $message['empty_error'] = "<script language='javascript' type='text/javascript'>
-            alert('File format not supported! Supported Files(jpg, jpeg, png)');
+            alert('No field can be empty');
                 </script> ";
             echo $message['empty_error'];
         }
@@ -255,7 +280,7 @@ try {
             if (add_live($live_title, $live_url, $live_category)) {
                 echo "
                 <script language='javascript' type='text/javascript'>
-                  alert('Image successfully added');
+                  alert('Live video successfully added');
                 </script>
               ";
             } else {
@@ -299,34 +324,35 @@ try {
         <div class="nav-items">
             <div class="nav-link">
                 <i class="fa-solid fa-house"></i>
-                <a href="#Home">Home</a>
+                <a href="../home.php" target='_blank'>Home</a>
             </div>
             <div class="nav-link">
                 <i class="fa-solid fa-radio"></i>
-                <a href="News">News</a>
+                <a href="../news.php" target='_blank'>News</a>
             </div>
             <div class="nav-link">
                 <i class="fa-solid fa-tv"></i>
-                <a href="">Videos</a>
+                <a href="../videos.php" target='_blank'>Videos</a>
             </div>
             <div class="nav-link">
                 <i class="fa-solid fa-images"></i>
-                <a href="">Gallery</a>
+                <a href="../gallery.php" target='_blank'>Gallery</a>
             </div>
             <div class="nav-link">
-                <i class="fa-solid fa-circle-info"></i>
-                <a href="">About Us</a>
+                <i class="fa-solid fa-ranking-star"></i>
+                <a href="../fixtures.php" target='_blank'>Fixtures</a>
             </div>
             <div class="nav-link">
-                <i class="fa-solid fa-mobile"></i>
-                <a href="">Contact</a>
+                <i class="fa-solid fa-tower-broadcast"></i>
+                <a href="../live.php" target='_blank'>Live</a>
             </div>
         </div>
         <div class="nav-btns">
-            <button class="login-btn">
+            <a href="../requests.php" target='_blank'><i class="fa-solid fa-bell"></i></a>
+            <a href='../logout.php' class="login-btn">
                 Sign Out
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </button>
+            </a>
         </div>
     </div>
     <!--mid-section------------------------------------------------------------------>
@@ -476,7 +502,9 @@ try {
                     if (isset($_GET['data'])) {
                         if ($_GET['data'] == 'fixture') {
                             $fixture_id = $_GET['delete'];
-                            delete_videos($video_id);
+                            if (delete_fixtures($fixture_id)) {
+                                echo "<script>alert('Fixture deleted successfully')</script>";
+                            }
                         }
                     }
                 } catch (\Throwable $th) {
@@ -505,6 +533,20 @@ try {
             <div class="category-card-section">
                 <?php
                 try {
+                    if (isset($_GET['data'])) {
+                        if ($_GET['data'] == 'category') {
+                            $category_id = $_GET['delete'];
+                            if (delete_category($category_id)) {
+                                echo "<script>alert('Category deleted successfully')</script>";
+                            }
+                        }
+                    }
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+                ?>
+                <?php
+                try {
                     fetch_category();
                 } catch (\Throwable $th) {
                     throw $th;
@@ -524,20 +566,47 @@ try {
             </div>
             <!--list of news-->
             <div class="news-card-section">
+                <?php
+                try {
+                    if (isset($_GET['data'])) {
+                        if ($_GET['data'] == 'news') {
+                            $news_id = $_GET['delete'];
+                            if (delete_news($news_id)) {
+                                echo "<script>alert('News deleted successfully')</script>";
+                            }
+                        }
+                    }
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+                ?>
                 <?php fetch_news(); ?>
             </div>
 
         </div>
-
+        <!--news section------------------------------------------------------>
         <div class="live-section">
             <div class="top-section">
-                <input type="search" name="search-news" id="" placeholder="Search news...">
                 <button class="add-live-btn">
                     <i class="fa-solid fa-plus"></i>
                     Add
                 </button>
             </div>
             <div class="live-card-section">
+                <?php
+                try {
+                    if (isset($_GET['data'])) {
+                        if ($_GET['data'] == 'live') {
+                            $live_id = $_GET['delete'];
+                            if (delete_live($live_id)) {
+                                echo "<script>alert('Live video deleted successfully')</script>";
+                            }
+                        }
+                    }
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+                ?>
                 <?php fetch_live(); ?>
             </div>
         </div>
@@ -612,7 +681,7 @@ try {
             <h3>Add Video</h3>
             <input type="text" name="fixture-title" placeholder="Fixture Title...">
             <input type="date" name="fixture-date">
-            <input type="time" name="fixture-time" >
+            <input type="time" name="fixture-time">
             <select name="fixture-category" id="">
                 <?php
                 try {
@@ -637,9 +706,9 @@ try {
             <textarea name="news-description" id="" cols="36" rows="7" placeholder="News description..."></textarea>
             <input type="file" name="news-image" id="" placeholder="Choose image">
             <select name="news-category" id="">
-            <?php
+                <?php
                 try {
-                   fetch_options();
+                    fetch_options();
                 } catch (\Throwable $th) {
                     throw $th;
                 }
