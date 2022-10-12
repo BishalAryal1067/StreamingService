@@ -3,7 +3,7 @@
 try {
     include('../functions.php');
     include('../database.php');
-    echo "<link rel='stylesheet' href='./style/edit-page.css'>";
+    echo "<link rel='stylesheet' href='../style/edit-page.css'>";
 
     if (isset($_GET['data'])) {
         global $db_connection;
@@ -52,14 +52,14 @@ try {
 
         if (empty($message)) {
 
-            if (update_news($news_id,$news_title, $news_path, $news_description, $news_date, $news_category)) {
+            if (update_news($news_id, $news_title, $news_path, $news_description, $news_date, $news_category)) {
                 move_uploaded_file($path_temp_news, 'uploads/' . $path_temp_news);
                 echo "
                 <script language='javascript' type='text/javascript'>
                   alert('News successfully added');
                 </script>
               ";
-              header("Location:admin-dashboard.php");
+                header("Location:admin-dashboard.php");
             } else {
                 echo "
                 <script language='javascript' type='text/javascript'>
@@ -81,19 +81,21 @@ try {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Edit News</title>
 </head>
 
 <body>
-     <!--navigation bar-->
-     <div class="navbar">
+    <!--navigation bar-->
+    <!--navigation bar-->
+    <div class="navbar">
         <div class="logo">
             <img src="./images/medals.jpg" alt="">
         </div>
         <div class="nav-items">
             <div class="nav-link">
                 <i class="fa-solid fa-house"></i>
-                <a href="./home.php">Home</a>
+                <a href="admin-dashboard.php">Home</a>
             </div>
             <div class="nav-link">
                 <i class="fa-solid fa-radio"></i>
@@ -132,30 +134,32 @@ try {
             </form>
         </div>
     </div>
-<form action="" method="post" enctype="multipart/form-data">
-            <h3>Edit News</h3>
-            <input type="text" name="news-title" id="" placeholder="News title.." value="<?php echo $news_title?>">
-            <textarea name="news-description" id="" cols="36" rows="7" placeholder="News description..." id="news-description"></textarea>
-            <?php 
-            echo "
+
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <h3>Edit News</h3>
+        <input type="text" name="news-title" id="" placeholder="News title.." value="<?php echo $news_title ?>">
+        <textarea name="news-description" id="" cols="36" rows="7" placeholder="News description..." id="news-description"></textarea>
+        <?php
+        echo "
                <script>
                 let description = document.querySelector('#news-description');
                 description.value = $description;
                </script>
             ";
+        ?>
+        <input type="file" name="news-image" id="" placeholder="Choose image">
+        <select name="news-category" id="">
+            <?php
+            try {
+                fetch_options();
+            } catch (\Throwable $th) {
+                throw $th;
+            }
             ?>
-            <input type="file" name="news-image" id="" placeholder="Choose image">
-            <select name="news-category" id="">
-                <?php
-                try {
-                    fetch_options();
-                } catch (\Throwable $th) {
-                    throw $th;
-                }
-                ?>
-            </select>
-            <button type="submit" name="update-news">Update</button>
-        </form>
+        </select>
+        <button type="submit" name="update-news">Update</button>
+    </form>
 </body>
 
 </html>

@@ -297,7 +297,7 @@ body {
       @include flexDisplay(row, space-between, center);
 
       .news-card {
-        @include defineSize(20%, 25em, 0, 0);
+        @include defineSize(20%, auto, 0, 0 0 2.5em 0);
         border-radius: 0.25em;
         overflow: hidden;
         box-shadow: 0.1em 0.1em 0.75em grey, -0.1em -0.1em 0.75em grey;

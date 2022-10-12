@@ -368,20 +368,6 @@ try {
     <div class="bottom-section">
         <!--users section----------------------------------------------------------->
         <div class="users-section">
-            <!--user search and filter section-->
-            <div class="top-section">
-                <input type="search" name="search-users" id="" placeholder="Search users...">
-                <div class="filter-section">
-                    <i class="fa-solid fa-filter"></i>
-                    <p>Filter users :</p>
-                    <select name="users-select" id="">
-                        <option value="default">Select</option>
-                        <option value="">Active</option>
-                        <option value="">Blocked</option>
-                        <option value="">Admin</option>
-                    </select>
-                </div>
-            </div>
             <!--list /table of users-->
             <div class="table-section">
                 <table class="users-table">
@@ -399,17 +385,6 @@ try {
         <div class="images-section">
             <!--image search and filter options-->
             <div class="top-section">
-                <input type="search" name="search-images" id="" placeholder="Search images...">
-                <div class="filter-section">
-                    <i class="fa-solid fa-filter"></i>
-                    <p>Filter images :</p>
-                    <select name="users-select" id="">
-                        <option value="default">Select</option>
-                        <option value="">Active</option>
-                        <option value="">Blocked</option>
-                        <option value="">Admin</option>
-                    </select>
-                </div>
                 <!--add images-->
                 <button class="add-image-btn">
                     <i class="fa-solid fa-plus"></i>
@@ -439,17 +414,6 @@ try {
         <div class="video-section">
             <!--video searcha and filter options-->
             <div class="top-section">
-                <input type="search" name="search-videos" id="" placeholder="Search videos...">
-                <div class="filter-section">
-                    <i class="fa-solid fa-filter"></i>
-                    <p>Filter videos:</p>
-                    <select name="users-select" id="">
-                        <option value="default">Select</option>
-                        <option value="">Active</option>
-                        <option value="">Blocked</option>
-                        <option value="">Admin</option>
-                    </select>
-                </div>
                 <!--add fixtures-->
                 <button class="add-video-btn">
                     <i class="fa-solid fa-plus"></i>
@@ -477,17 +441,6 @@ try {
         <div class="fixture-section">
             <!--fixture search and filter section-->
             <div class="top-section">
-                <input type="search" name="search-fixtures" id="" placeholder="Search fixtures...">
-                <div class="filter-section">
-                    <i class="fa-solid fa-filter"></i>
-                    <p>Filter fixtures:</p>
-                    <select name="users-select" id="">
-                        <option value="default">Select</option>
-                        <option value="">Active</option>
-                        <option value="">Blocked</option>
-                        <option value="">Admin</option>
-                    </select>
-                </div>
                 <!--add fixtures-->
                 <button class="add-fixture-btn">
                     <i class="fa-solid fa-plus"></i>
@@ -524,7 +477,6 @@ try {
         <!--category section-->
         <div class="category-section">
             <div class="top-section">
-                <input type="search" name="search-category" id="" placeholder="Search category...">
                 <button class="add-category-btn">
                     <i class="fa-solid fa-plus"></i>
                     Add
@@ -558,7 +510,6 @@ try {
         <!--news section------------------------------------------------------>
         <div class="news-section">
             <div class="top-section">
-                <input type="search" name="search-news" id="" placeholder="Search news...">
                 <button class="add-news-btn">
                     <i class="fa-solid fa-plus"></i>
                     Add

@@ -4,6 +4,7 @@ include('./database.php');
 include('./functions.php');
 $id = $_GET['data'];
 $email = $_SESSION['email'];
+$fullname = $_SESSION['fullname'];
 echo "<link rel='stylesheet' href='./style/view-news.css'>";
 ?>
 
@@ -14,6 +15,9 @@ echo "<link rel='stylesheet' href='./style/view-news.css'>";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='./style/view-news.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>View News</title>
 </head>
 
@@ -46,8 +50,8 @@ echo "<link rel='stylesheet' href='./style/view-news.css'>";
                 <a href="./fixtures.php">Fixtures</a>
             </div>
             <div class="nav-link">
-                <i class="fa-solid fa-circle-info"></i>
-                <a href="./about.php">About Us</a>
+                <i class="fa-solid fa-tower-broadcast"></i>
+                <a href="live.php" target='_blank'>Live</a>
             </div>
         </div>
 
@@ -66,6 +70,7 @@ echo "<link rel='stylesheet' href='./style/view-news.css'>";
             </form>
         </div>
     </div>
+    
 
 
     <div class="container">

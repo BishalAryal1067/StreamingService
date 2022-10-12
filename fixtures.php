@@ -80,7 +80,7 @@ try {
         <div class="card-section">
         <?php 
           global $db_connection;
-           $query ="SELECT * FROM fixtures ORDER BY fixture_id";
+           $query ="SELECT * FROM fixtures ORDER BY fixture_id DESC";
            $result = mysqli_query($db_connection, $query);
            while($row=mysqli_fetch_assoc($result)){
               $fixture_title = $row['fixture_title'];

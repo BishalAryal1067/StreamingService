@@ -9,6 +9,8 @@ $email = $_SESSION['email'];
 try {
     echo $_SESSION['success_message'];
     unset($_SESSION['success_message']);
+
+    
 } catch (\Throwable $th) {
     throw $th;
 }
@@ -57,7 +59,7 @@ try {
             </div>
             <div class="nav-link">
                 <i class="fa-solid fa-tower-broadcast"></i>
-                <a href="live.php" target='_blank'>Live</a>
+                <a href="live.php">Live</a>
             </div>
         </div>
 
@@ -103,7 +105,7 @@ try {
             <div class="card-section">
                 <?php
                 global $db_connection;
-                $result = mysqli_query($db_connection, "SELECT * FROM videos limit 3");
+                $result = mysqli_query($db_connection, "SELECT * FROM videos ORDER BY video_id DESC limit 4 ");
                 while ($row = mysqli_fetch_assoc($result)) {
                     $id = $row['video_id'];
                     $path = $row['video_path'];
@@ -112,7 +114,7 @@ try {
 
                     echo "
                    <div class= 'video-card'>
-                      <iframe src='$path' frameborder=0 allowfullscreen></iframe>
+                      <iframe src='$path' frameborder=0 allowfullscreen title='$title'></iframe>
                       <div class='card-heading'>
                          <p>$title</p>
                          <p>Uploaded on: $upload_date</p>

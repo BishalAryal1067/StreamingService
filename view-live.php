@@ -5,6 +5,7 @@ try {
     echo "<link rel='stylesheet' href='./style/view-video.css'>";
     $id = $_GET['data'];
     $email = $_SESSION['email'];
+    $fullname = $_SESSION['fullname'];
 
 
     if (isset($_POST['like'])) {
@@ -27,10 +28,12 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>View Live</title>
 </head>
 
 <body>
+
     <div class="navbar">
         <div class="logo">
             <img src="./images/medals.jpg" alt="">
@@ -58,7 +61,7 @@ try {
             </div>
             <div class="nav-link">
                 <i class="fa-solid fa-tower-broadcast"></i>
-                <a href="live.php" target='_blank'>Live</a>
+                <a href="live.php">Live</a>
             </div>
         </div>
 
@@ -84,9 +87,10 @@ try {
         $query =  "SELECT * FROM live WHERE live_id=$id";
         $result = mysqli_query($db_connection, $query);
         while ($row = mysqli_fetch_assoc($result)) {
+            $title = $row['title'];
             $url = $row['url'];
             $title = $row['live_title'];
-            echo "<iframe src='$url?modestbranding=1&showinfo=0&fs=0&autoplay=1&controls=0' frameborder=0 allowfullscreen style='width:100%; height:60vh;' autoplay></iframe>";
+            echo "<iframe src='$url?modestbranding=1&showinfo=0&fs=0&autoplay=1&controls=0' title='$title'  frameborder=0 allowfullscreen style='width:100%; height:80vh;' autoplay></iframe>";
         }
         ?>
     </div>

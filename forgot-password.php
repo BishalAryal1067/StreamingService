@@ -6,7 +6,7 @@
     global $db_connection;
     $email = $_POST['email'];
     $pin = $_POST['pin'];
-    $password = $_PSOT['password'];
+    $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
     $check_email = "SELECT * FROM user_information WHERE email = '$email'";
@@ -32,6 +32,10 @@
                 }, 2500);
                 </script>";
             }
+        }
+
+        else{
+            echo "<script>alert('Incorrect Pin!')</script>";
         }
     }
     else{

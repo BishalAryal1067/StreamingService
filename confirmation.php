@@ -3,7 +3,7 @@ include('./auth.php');
 include('./functions.php');
 echo "<link rel='stylesheet' href='./style/confirmation.css'>";
 
-
+echo  "<script>alert('Confirmation code is sent to your email !')</script>";
 
 $confirmation_code = $_SESSION['code'];
 $fullName = $_SESSION['fullname'];

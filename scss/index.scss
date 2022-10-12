@@ -61,20 +61,20 @@ body {
         @include flexDisplay(row, flex-end, center);
         width: 100%;
 
-        a, a:active {
+        a,
+        a:active {
             color: $secondary-color;
             text-decoration: none;
             font-weight: bold;
-            
-            i{
-                margin: 0 .25em;
+
+            i {
+                margin: 0 0.25em;
             }
         }
 
-        a:first-of-type{
+        a:first-of-type {
             margin-right: 1.5em;
         }
-        
     }
 }
 
@@ -134,14 +134,46 @@ body {
     }
 }
 
-.news-container {
+.offer {
     @include defineSize(100%, 100vh, 0, 0);
     @include flexDisplay(column, center, center);
-    position: relative;
 
     h1 {
         color: $primary-color;
         margin: 0;
+    }
+
+    .offer-section{
+        margin: 5em 0;
+        width: 90%;
+        display: flex;
+        justify-content: space-around;
+
+        .card{
+            width: auto;
+            height:auto;
+            box-shadow: .1em .1em .25em grey;
+            font-size: 1.75em;
+            padding: .5em 1em;
+            border-radius: .5em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: $secondary-color;
+        }
+    }
+}
+
+.news-container {
+    @include defineSize(100%, 100vh, 0, 0);
+    @include flexDisplay(column, center, center);
+    position: relative;
+    background-color: rgba(217, 217, 217, 0.397);
+
+    h1 {
+        color: $primary-color;
+        margin-bottom: 2.5em;
     }
 
     #more-news {

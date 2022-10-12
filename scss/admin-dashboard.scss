@@ -253,17 +253,20 @@ body {
                 }
 
                 .card-footer {
-                    @include defineSize(100%, 35%, 0, 0);
+                    @include defineSize(100%, 25%, 0, 0);
                     @include flexDisplay(row, center, center);
                     background-color: $tertiary-color;
 
-                    button {
-                        @include defineSize(auto, auto, 0 0.75em, 0.5em);
+                    a {
+                        font-size: 0.85em;
+                        @include defineSize(auto, auto, 0.5em, 0.25em 0.4em);
+                        text-decoration: none;
+                        color: black;
                         background-color: white;
                         @include buttonDesign(white, black, none, 50%);
                     }
 
-                    button:nth-of-type(even) {
+                    a:nth-of-type(even) {
                         color: red;
                     }
                 }
@@ -305,17 +308,20 @@ body {
                 }
 
                 .card-footer {
-                    @include defineSize(100%, 35%, 0, 0);
+                    @include defineSize(100%, 25%, 0, 0);
                     @include flexDisplay(row, center, center);
                     background-color: $tertiary-color;
 
-                    button {
-                        @include defineSize(auto, auto, 0 0.75em, 0.5em);
+                    a {
+                        font-size: 0.85em;
+                        @include defineSize(auto, auto, 0.5em, 0.25em 0.4em);
+                        text-decoration: none;
+                        color: black;
                         background-color: white;
                         @include buttonDesign(white, black, none, 50%);
                     }
 
-                    button:nth-of-type(even) {
+                    a:nth-of-type(even) {
                         color: red;
                     }
                 }
@@ -361,17 +367,20 @@ body {
                 }
 
                 .card-footer {
-                    @include defineSize(100%, 20%, 0, 0);
+                    @include defineSize(100%, 15%, 0, 0);
                     @include flexDisplay(row, center, center);
                     background-color: $tertiary-color;
 
-                    button {
-                        @include defineSize(auto, auto, 0 0.75em, 0.5em);
+                    a {
+                        font-size: 0.85em;
+                        @include defineSize(auto, auto, 0.5em, 0.25em 0.4em);
+                        text-decoration: none;
+                        color: black;
                         background-color: white;
                         @include buttonDesign(white, black, none, 50%);
                     }
 
-                    button:nth-of-type(even) {
+                    a:nth-of-type(even) {
                         color: red;
                     }
                 }
@@ -414,17 +423,20 @@ body {
                 }
 
                 .card-footer {
-                    @include defineSize(100%, 35%, 0, 0);
+                    @include defineSize(100%, 25%, 0, .25em 0);
                     @include flexDisplay(row, center, center);
                     background-color: $tertiary-color;
 
-                    button {
-                        @include defineSize(auto, auto, 0 0.75em, 0.5em);
+                    a {
+                        font-size: 0.85em;
+                        @include defineSize(auto, auto, 0.5em, 0.25em 0.4em);
+                        text-decoration: none;
+                        color: black;
                         background-color: white;
                         @include buttonDesign(white, black, none, 50%);
                     }
 
-                    button:nth-of-type(even) {
+                    a:nth-of-type(even) {
                         color: red;
                     }
                 }
@@ -474,12 +486,13 @@ body {
                 }
 
                 .card-footer {
-                    @include defineSize(100%, 20%, 0, 0);
+                    @include defineSize(100%, 15%, 0, 0);
                     @include flexDisplay(row, center, center);
                     background-color: $tertiary-color;
 
                     a {
-                        @include defineSize(auto, auto, 0 0.75em, 0.5em);
+                        font-size: 0.85em;
+                        @include defineSize(auto, auto, 0.5em, 0.25em 0.4em);
                         text-decoration: none;
                         color: black;
                         background-color: white;

@@ -21,7 +21,7 @@ function sendMail($email_address, $email_subject, $email_body)
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'bslbsal10@gmail.com';
-        $mail->Password = 'wkuskukbptfzmhhn';
+        $mail->Password = 'rilmthoenegdrctf';
         $mail->SMTPSecure = 'tls'; //enabling tls encryption
         $mail->Port = 587;
 
@@ -37,6 +37,7 @@ function sendMail($email_address, $email_subject, $email_body)
         $mail->Body = $email_body;
 
         $mail->send();
+        return true;
     } catch (Exception $ex) {
         echo $ex;
     }

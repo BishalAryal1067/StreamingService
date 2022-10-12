@@ -136,7 +136,6 @@ try {
             <div class="info">
                 <p><?php echo $views . ' ' ?> Views</p>
                 <p><?php echo $likes_count . ' ' ?>Likes</p>
-                <p><?php echo $comments . ' ' ?>Comments</p>
             </div>
 
             <?php

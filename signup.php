@@ -6,6 +6,9 @@ try {
     include('./functions.php');
     echo "<link rel='stylesheet' href='./style/signup.css'>";
 
+    echo $_SESSION['index'];
+    unset($_SESSION['index']);
+
 
     $strongRegex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/";
 
@@ -19,25 +22,36 @@ try {
         $confirm_password = $_POST['confirm-password'];
         $code = random_int(1000, 9999);
 
+        
+
         $error = [
             'empty_error' => '',
             'password_strength' => '',
-            'different_passwords' => ''
+            'pw_error' => '', 
+            'user_exists' => ''
         ];
 
         if (empty($fullname) || empty($email) || empty($country) || empty($phone_number) || empty($password) || empty($confirm_password)) {
-            $error['empty_error'] = "<script>alert('No feild can be empty')</script>";
+            $error['empty_error'] = "<script>alert('Registration Failed! No feild can be empty')</script>";
             echo $error['empty_error'];
-        } else if ($password != $confirm_password) {
-            $error['different_passwords'] = "<script>alert('Passwords don't match !')</script>";
-            echo $error['different_passwords'];
         } 
+        else if (!empty($password) && !empty($confirm_password) && $password != $confirm_password) {
+            $error['pw_error'] = "<script>alert('Registration Failed! Passwords do not match')</script>";
+            echo $error['pw_error'];
+        } 
+        $result = mysqli_query($db_connection, "SELECT * FROM user_information WHERE email='$email'");
+        $user_exists = mysqli_num_rows($result);
+        if($user_exists>0){
+            $error['user_exists'] = "<script>alert('Registration Failed! User Already Exists!')</script>";
+            echo $error['different_passwords'];
+        }
         
-        
-        else if (!preg_match($strongRegex, $password)) {
-            $error['password_strength'] = "<script>alert('Password is not strong enough')</script>";
+        else if (!empty($password) && !empty($confirm_password) && !preg_match($strongRegex, $password)) {
+            $error['password_strength'] = "<script>alert('Registration Failed! Password is not strong enough')</script>";
             echo $error['password_strength'];
         }
+
+       
 
         foreach ($error as $key => $value) {
             if (empty($value)) {
@@ -90,7 +104,7 @@ try {
             <!--Registration form-->
             <form action="" method="post">
                 <input type="text" name="fullname" id="" placeholder="Full Name">
-                <input type="email" name="email" id="email" placeholder="Email" required>
+                <input type="text" name="email" id="email" placeholder="Email">
                 <select name="country" id="country-dropdown">
                     <option value="default">Select a country</option>
                 </select>

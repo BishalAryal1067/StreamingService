@@ -9,7 +9,6 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  overflow-y: scroll;
 }
 
 .navbar {
@@ -72,41 +71,20 @@ body {
 .navbar .nav-btns {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  align-self: center;
+}
+.navbar .nav-btns a:first-of-type {
+  margin-right: 2.5em;
+  font-size: 1.1em;
 }
 .navbar .nav-btns a {
-  align-self: center;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #16A6F1;
-  font-weight: bold;
-  margin: 0;
-  padding: 0;
-}
-.navbar .nav-btns a i {
-  margin: 0.25em;
-}
-.navbar .nav-btns a a:first-of-type i {
-  color: rgba(0, 128, 0, 0.736);
-}
-.navbar .nav-btns form {
-  margin: 0;
-  padding: 0;
-}
-.navbar .nav-btns button {
   box-sizing: border-box;
   width: auto;
   height: auto;
   margin: 0 1em;
-  padding: 0.75em 0.5em;
+  padding: 0.75em 0;
   background-color: white;
   color: #16A6F1;
   border: none;
@@ -123,13 +101,54 @@ body {
 }
 
 .container {
-  width: 80%;
-  margin: 5em auto;
+  width: 70%;
+  margin: 2.5em auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.container img {
-  border-radius: 2.5em;
-}/*# sourceMappingURL=view-news.css.map */
+
+table {
+  width: 70em;
+  min-width: 25em;
+  border-collapse: collapse;
+  box-shadow: 0.1em 0.1em 0.5em grey;
+  border-radius: 0.25em;
+  overflow: hidden;
+  font-size: 0.9em;
+}
+table table,
+table th,
+table td {
+  text-align: left;
+  padding: 0.95em;
+}
+table th {
+  background-color: #B52666;
+  color: white;
+}
+table tr td {
+  font-weight: 500;
+}
+table tr:nth-of-type(odd) {
+  background-color: #eeeeee;
+}
+table td:last-of-type {
+  display: flex;
+  justify-content: space-between;
+}
+table td:last-of-type #block-btn,
+table td:last-of-type #delete-btn {
+  text-decoration: none;
+  color: white;
+  padding: 0.75em 1.5em;
+  border: none;
+  border-radius: 0.25em;
+}
+table td:last-of-type #block-btn {
+  background-color: #B52666;
+}
+table td:last-of-type #delete-btn {
+  background-color: red;
+}/*# sourceMappingURL=requests.css.map */

@@ -1,5 +1,3 @@
-console.log("hello");
-
 let userButton = document.querySelector('.user-btn');
 let imageButton = document.querySelector('.image-btn');
 let videoButton = document.querySelector('.video-btn');
@@ -19,9 +17,6 @@ let newsSection = document.querySelector('.news-section');
 let liveSection = document.querySelector('.live-section');
 
 
-
-
-
 //funcion to display and hide elements;
 let hideAndDisplay = (
   hideElement1,
@@ -30,7 +25,7 @@ let hideAndDisplay = (
   hideElement4,
   hideElement5,
   hideElement6,
-  displayElement
+  showElement
 ) => {
   hideElement1.classList.remove('active-section');
   hideElement2.classList.remove('active-section');
@@ -38,7 +33,7 @@ let hideAndDisplay = (
   hideElement4.classList.remove('active-section');
   hideElement5.classList.remove('active-section');
   hideElement6.classList.remove('active-section');
-  displayElement.classList.add('active-section');
+  showElement.classList.add('active-section');
 }
 
 
@@ -63,12 +58,11 @@ let buttonToggle = (inactiveBtn1,
 document.addEventListener('DOMContentLoaded', () => {
   userButton.classList.add('active-button');
   userSection.classList.add('active-section');
-  console.log("Hello");
 });
 
 userButton.addEventListener('click', () => {
   buttonToggle(imageButton, videoButton, fixtureButton, categoryButton, newsButton, liveButton, userButton);
-  hideAndDisplay(imageSection, videoSection, fixtureSection, categorySection, newsSection,  requestSection, userSection);
+  hideAndDisplay(imageSection, videoSection, fixtureSection, categorySection, newsSection,liveSection, userSection);
   
 });
 

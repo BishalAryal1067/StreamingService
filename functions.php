@@ -29,7 +29,7 @@ function add_fixtures($fixtureTitle, $fixtureDate, $category)
 function fetch_fixtures()
 {
   global $db_connection;
-  $query = "SELECT * FROM fixtures";
+  $query = "SELECT * FROM fixtures ORDER BY fixture_id DESC";
   $query_result = mysqli_query($db_connection, $query);
   while ($row = mysqli_fetch_assoc($query_result)) {
     $fixture_id = $row['fixture_id'];
@@ -109,7 +109,7 @@ function add_videos($path, $video_title, $video_description, $video_date, $video
 function fetch_videos()
 {
   global $db_connection;
-  $query = "SELECT * FROM videos";
+  $query = "SELECT * FROM videos ORDER BY video_id DESC";
   $result = mysqli_query($db_connection, $query);
   if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
@@ -195,7 +195,7 @@ function add_images($path, $image_caption, $category, $upload_date)
 function fetch_images()
 {
   global $db_connection;
-  $query = "SELECT * FROM images";
+  $query = "SELECT * FROM images ORDER BY image_id DESC";
   $result = mysqli_query($db_connection, $query);
   if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
@@ -272,7 +272,7 @@ function add_category($title)
 function fetch_category()
 {
   global $db_connection;
-  $query = "SELECT * FROM category";
+  $query = "SELECT * FROM category ORDER BY category_id DESC";
   $result = mysqli_query($db_connection, $query);
   while ($row = mysqli_fetch_assoc($result)) {
     $category_id = $row['category_id'];
@@ -350,7 +350,7 @@ function add_news($title, $path, $description, $date, $category)
 function fetch_news()
 {
   global $db_connection;
-  $query = "SELECT * FROM news";
+  $query = "SELECT * FROM news ORDER BY news_id DESC";
   $result = mysqli_query($db_connection, $query);
   while ($row = mysqli_fetch_assoc($result)) {
     $news_id = $row['news_id'];
@@ -426,7 +426,7 @@ function add_live($title, $url, $category)
 function fetch_live()
 {
   global $db_connection;
-  $query = "SELECT * FROM live";
+  $query = "SELECT * FROM live ORDER BY live_id DESC";
   $result = mysqli_query($db_connection, $query);
   while ($row = mysqli_fetch_assoc($result)) {
     $live_id = $row['live_id'];

@@ -21,18 +21,63 @@ if (isset($_POST['change'])) {
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reset Password</title>
+
+
+  <style>
+    body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      width: 15em;
+      height: 2.75em;
+      margin: 0.75em 0;
+      padding: 0 1.75em;
+      border: none;
+      border-radius: 1.75em;
+      font-size: 1em;
+      background-color: rgb(240, 240, 240);
+      outline: none;
+    }
+    h2{
+      color: #16A6F1;
+    }
+
+    input[type=submit] {
+      width: 7.5em;
+      height: 2.75em;
+      background:#16A6F1;
+      color:white;
+      border:none;
+      border-radius: 1.75em;
+      font-weight: 500;
+    }
+  </style>
 </head>
 
 <body>
   <form action="" method="post">
     <h2>Create a new password</h2>
     <input type="password" placeholder="New Password..." name="password">
-    <input type="password" name="Confirm new password" id="" name='confirm-password'>
+    <input type="password" name="Confirm new password" id="" name='confirm-password' placeholder="Confirm New Password..">
     <input type="submit" value="Submit" name="change">
   </form>
 </body>

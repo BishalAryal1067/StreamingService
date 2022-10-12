@@ -1,74 +1,119 @@
 @import "./variables";
 
 * {
-    font-family: $font-type;
+  font-family: $font-type;
 }
 
 body {
-    @include defineSize(100%, 100vh, 0, 0);
+  @include defineSize(100%, 100vh, 0, 0);
+  overflow-y: scroll;
 }
 
 .navbar {
-    @include defineSize(90%, 12.5vh, auto auto, 0);
-    @include gridDisplay(25% 50% 25%, 100%, center, center);
+  @include defineSize(90%, 12.5vh, auto auto, 0);
+  @include gridDisplay(25% 50% 25%, 100%, center, center);
 
-    .logo {
-        width: 100%;
-        @include flexDisplay(row, flex-start, center);
-        img {
-            height: 5em;
-            border-radius: 50%;
-        }
-        &:hover {
-            cursor: pointer;
-        }
+  .logo {
+    width: 100%;
+    @include flexDisplay(row, flex-start, center);
+    img {
+      height: 5em;
+      border-radius: 50%;
     }
-    .nav-items {
-        @include flexDisplay(row, center, center);
-
-        .nav-link {
-            @include flexDisplay(column, center, center);
-            margin: 0 1.5em;
-
-            &:hover {
-                a,
-                i {
-                    color: $secondary-color;
-                }
-
-                opacity: 0.85;
-                cursor: pointer;
-            }
-
-            a {
-                font-size: 0.98em;
-                text-decoration: none;
-                color: $tertiary-color;
-                font-weight: map-get($map: $font-weights, $key: medium);
-            }
-
-            i {
-                color: $tertiary-color;
-                margin-bottom: 0.3em;
-            }
-        }
+    &:hover {
+      cursor: pointer;
     }
-    .nav-btns {
-        @include flexDisplay(row, flex-end, center);
-        width: 100%;
+  }
+  .nav-items {
+    @include flexDisplay(row, center, center);
 
-        button {
-            @include defineSize(auto, auto, 0 1em, 0.75em 0);
-            @include buttonDesign(white, $secondary-color, none, 0.25em);
-            font-size: 0.98em;
-            font-weight: map-get($map: $font-weights, $key: bold);
-            outline: none;
+    .nav-link {
+      @include flexDisplay(column, center, center);
+      margin: 0 1.5em;
+
+      &:hover {
+        a,
+        i {
+          color: $secondary-color;
         }
+
+        opacity: 0.85;
+        cursor: pointer;
+      }
+
+      a {
+        font-size: 0.98em;
+        text-decoration: none;
+        color: $tertiary-color;
+        font-weight: map-get($map: $font-weights, $key: medium);
+      }
+
+      i {
+        color: $tertiary-color;
+        margin-bottom: 0.3em;
+      }
     }
+  }
+
+  .nav-btns {
+    @include flexDisplay(row, space-around, center);
+    width: 100%;
+    @include gridItem(3, 4, 1, 2);
+    align-self: center;
+
+    a {
+      align-self: center;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: $secondary-color;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+
+      i{
+        margin: 0.25em;
+      }
+
+      a:first-of-type  {
+        i{
+          color: rgba(0, 128, 0, 0.736);
+        }        
+      }
+
+    }
+
+    form {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      @include defineSize(auto, auto, 0 1em, 0.75em 0.5em);
+      @include buttonDesign(white, $secondary-color, none, 0.25em);
+      font-size: 0.98em;
+      font-weight: map-get($map: $font-weights, $key: bold);
+      outline: none;
+      text-decoration: none;
+    }
+  }
 }
 
 .login-btn {
-    i {
-        transform: rotateX(360deg);
+  i {
+    transform: rotateX(360deg);
+  }
+}
+
+.container{
+    width: 80%;
+    margin:5em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        border-radius: 2.5em;
     }
 }

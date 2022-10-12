@@ -22,7 +22,7 @@ if (isset($_POST['confirm'])) {
         return header('Location: home.php');
         exit();
     } else {
-        echo "Wrong answer! Try again";
+        echo "<script>alert('Wrong answer! Try again')</script>";
     }
 }
 ?>

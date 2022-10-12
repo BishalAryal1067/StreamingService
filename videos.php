@@ -79,7 +79,7 @@ $email = $_SESSION['email'];
         <div class="video-section">
             <?php
             global $db_connection;
-            $result = mysqli_query($db_connection, "SELECT * FROM videos ORDER BY video_id");
+            $result = mysqli_query($db_connection, "SELECT * FROM videos ORDER BY video_id DESC");
             while ($row = mysqli_fetch_assoc($result)) {
                 $id = $row['video_id'];
                 $path = $row['video_path'];

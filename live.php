@@ -11,12 +11,16 @@ echo "<link rel='stylesheet' href='./style/live.css'>";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/live.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Live</title>
+
+    <style>
+
+    </style>
 </head>
 
 <body>
-    <!--navigation bar-->
     <div class="navbar">
         <div class="logo">
             <img src="./images/medals.jpg" alt="">
@@ -43,8 +47,8 @@ echo "<link rel='stylesheet' href='./style/live.css'>";
                 <a href="./fixtures.php">Fixtures</a>
             </div>
             <div class="nav-link">
-                <i class="fa-solid fa-circle-info"></i>
-                <a href="./about.php">About Us</a>
+                <i class="fa-solid fa-tower-broadcast"></i>
+                <a href="live.php">Live</a>
             </div>
         </div>
 
@@ -63,13 +67,13 @@ echo "<link rel='stylesheet' href='./style/live.css'>";
             </form>
         </div>
     </div>
-
+    
     <div class="container">
         <h3>Live Video</h3>
         <div class="card-section">
             <?php
             global $db_connection;
-            $query = "SELECT * FROM live";
+            $query = "SELECT * FROM live ORDER BY live_id DESC";
             $result = mysqli_query($db_connection, $query);
             while ($row = mysqli_fetch_assoc($result)) {
                 $live_id = $row['live_id'];
@@ -80,8 +84,7 @@ echo "<link rel='stylesheet' href='./style/live.css'>";
                 <div class= 'video-card'>
                    <iframe src='$url?autoplay=1&controls=0' frameborder=0 allowfullscreen autoplay></iframe>
                    <div class='card-heading'>
-                      <p>$title</p>
-                      <p>Uploaded on: $upload_date</p>
+                      <p>$live_title</p>
                    </div>
                    <div class='footer'>
                      <a href='./view-live.php?data=$live_id&title=$live_title' id='view'>View</a>

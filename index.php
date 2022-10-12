@@ -3,6 +3,7 @@ try {
     include('./database.php');
     include('./functions.php');
     echo "<link rel='stylesheet' href='../StreamingService/style/index.css'>";
+    $_SESSION['index'] = "<script>alert('Please register/ login to procced')</script>";
 } catch (\Throwable $th) {
     throw $th;
 }
@@ -69,9 +70,37 @@ try {
         <div class="redirect">
             <h1>Bayjing FunOlympic</h1>
             <p>A streaming service for Bajiyang FunOlympic games 2022</p>
-            <a href="#latest-container">Explore</a>
+            <a href="#offer">Explore</a>
         </div>
     </div>
+
+    <!--offer-->
+    <div class="offer" id="offer">
+        <h1>What do we offer ?</h5>
+            <div class="offer-section">
+                <div class="card">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+                    <h3>Live Stream</h3>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-tv"></i>
+                    <h3>Videos</h3>
+                </div>
+                <div class="card">
+                <i class="fa-solid fa-ranking-star"></i>
+                    <h3>Fixtures</h3>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-radio"></i>
+                    <h3>News</h3>
+                </div>
+                <div class="card">
+                <i class="fa-solid fa-radio"></i>
+                    <h3>Gallery</h3>
+                </div>
+            </div>
+    </div>
+
     <!--news section-->
     <div class="news-container" id="latest-container">
         <h1>Latest about FunOlympic 2022</h1>
@@ -118,7 +147,7 @@ try {
             ?>
         </div>
 
-        <a href="./news.html" id="more-news">More News</a>
+        <a href="./signup.php" id="more-news">More News</a>
     </div>
     <div class="contact-us">
         <!--social media-->

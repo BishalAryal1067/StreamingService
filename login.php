@@ -18,43 +18,51 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
     $remember = $_POST['remember'];
     global $db_connection;
-    $result = mysqli_query($db_connection, "SELECT * FROM user_information WHERE email='$email'");
-    $user_exists = mysqli_num_rows($result);
-    if($user_exists>0){
-        while ($row = mysqli_fetch_assoc($result)) {
-            $role = strtolower($row['role']);
-            $db_password = $row['password'];
-            if (!is_blocked($email)) {
-                $match_password = password_verify($password, $db_password);
-                if ($match_password) {
-                    $_SESSION['fullname'] = $row['full_name'];
-                    $_SESSION['email'] = $row['email'];
-                    if ($role == 'user') {
-                        echo $role;
-                        if (!empty($remember)) {
-                            setcookie('email', $_POST['email'], time() + 86400);
-                            setcookie('password', $_POST['password'], time() + 86400);
+
+    //user or admin login 
+    if (!empty($email) && !empty($password)){
+        $result = mysqli_query($db_connection, "SELECT * FROM user_information WHERE email='$email'");
+        $user_exists = mysqli_num_rows($result);
+        if($user_exists>0){
+            while ($row = mysqli_fetch_assoc($result)) {
+                $role = strtolower($row['role']);
+                $db_password = $row['password'];
+                if (!is_blocked($email)) {
+                    $match_password = password_verify($password, $db_password);
+                    if ($match_password) {
+                        $_SESSION['fullname'] = $row['full_name'];
+                        $_SESSION['email'] = $row['email'];
+                        if ($role == 'user') {
+                            echo $role;
+                            if (!empty($remember)) {
+                                setcookie('email', $_POST['email'], time() + 86400);
+                                setcookie('password', $_POST['password'], time() + 86400);
+                            }
+                            if (empty($remember)) {
+                                setcookie('email', '', time() - 86400);
+                                setcookie('password', '', time() - 86400);
+                            }
+                            $_SESSION['email'] = $email;
+                            return header('Location: confirm_login.php');
+                        } elseif ($role == 'admin') {
+                            return header('Location: admin/admin-dashboard.php');
                         }
-                        if (empty($remember)) {
-                            setcookie('email', '', time() - 86400);
-                            setcookie('password', '', time() - 86400);
-                        }
-                        $_SESSION['email'] = $email;
-                        return header('Location: confirm_login.php');
-                    } elseif ($role == 'admin') {
-                        return header('Location: admin/admin-dashboard.php');
+                    } else {
+                        echo "<script>alert('Invalid email or password')</script>";
                     }
                 } else {
-                    echo "<script>alert('Invalid email or password')</script>";
+                    echo "<script>alert('Your account is blocked !')</script>";
                 }
-            } else {
-                echo "<script>alert('Your account is blocked !')</script>";
             }
+        }
+        else{
+            echo "<script>alert('User does not exist')</script>";
         }
     }
     else{
-        echo "<script>alert('User does not exist')</script>";
+        echo "<script>alert('Login Failed! Username or password is empty')</script>";
     }
+    
    
 }
 

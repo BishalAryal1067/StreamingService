@@ -353,9 +353,9 @@ body {
 .landing-section .news-section .card-section .news-card {
   box-sizing: border-box;
   width: 20%;
-  height: 25em;
+  height: auto;
   margin: 0;
-  padding: 0;
+  padding: 0 0 2.5em 0;
   border-radius: 0.25em;
   overflow: hidden;
   box-shadow: 0.1em 0.1em 0.75em grey, -0.1em -0.1em 0.75em grey;

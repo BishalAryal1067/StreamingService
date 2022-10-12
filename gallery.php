@@ -79,7 +79,7 @@ try {
         <div class="images-section">
             <?php
             global $db_connection;
-            $query = "SELECT * FROM images";
+            $query = "SELECT * FROM images ORDER BY image_id DESC";
             $result = mysqli_query($db_connection, $query);
             if ($result) {
                 while ($row = mysqli_fetch_assoc($result)) {

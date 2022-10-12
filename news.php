@@ -29,8 +29,9 @@ $fullname = $_SESSION['fullname'];
 
 <body>
 
- <!--navigation bar-->
- <div class="navbar">
+   
+    <!--navigation bar-->
+    <div class="navbar">
         <div class="logo">
             <img src="./images/medals.jpg" alt="">
         </div>
@@ -76,6 +77,7 @@ $fullname = $_SESSION['fullname'];
             </form>
         </div>
     </div>
+
 
     <!--main section-->
     <div class="main-section">
