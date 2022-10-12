@@ -427,7 +427,9 @@ try {
                     if (isset($_GET['data'])) {
                         if ($_GET['data'] == 'video') {
                             $video_id = $_GET['delete'];
-                            delete_videos($video_id);
+                            if(delete_videos($video_id)){
+                                echo "<script>alert('Video deleted successfully');</script>";
+                            }
                         }
                     }
                 } catch (\Throwable $th) {
@@ -629,7 +631,7 @@ try {
             <div class="close-btn" id="close-fixture-modal">
                 <i class="fa-solid fa-circle-xmark"></i>
             </div>
-            <h3>Add Video</h3>
+            <h3>Add Fixture</h3>
             <input type="text" name="fixture-title" placeholder="Fixture Title...">
             <input type="date" name="fixture-date">
             <input type="time" name="fixture-time">

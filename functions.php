@@ -510,7 +510,6 @@ function fetch_requests(){
   while($row=mysqli_fetch_assoc($result)){
     $requested_by = $row['requested_by'];
     $date = $row['request_date'];
-
     echo "
      
     ";

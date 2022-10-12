@@ -112,54 +112,10 @@ try {
             </form>
         </div>
     </div>
-        <div class="logo">
-            <img src="./images/medals.jpg" alt="">
-        </div>
-        <div class="nav-items">
-            <div class="nav-link">
-                <i class="fa-solid fa-house"></i>
-                <a href="./home.php">Home</a>
-            </div>
-            <div class="nav-link">
-                <i class="fa-solid fa-radio"></i>
-                <a href="./news.php">News</a>
-            </div>
-            <div class="nav-link">
-                <i class="fa-solid fa-tv"></i>
-                <a href="./videos.php">Videos</a>
-            </div>
-            <div class="nav-link">
-                <i class="fa-solid fa-images"></i>
-                <a href="./gallery.php">Gallery</a>
-            </div>
-            <div class="nav-link">
-                <i class="fa-solid fa-ranking-star"></i>
-                <a href="./fixtures.php">Fixtures</a>
-            </div>
-            <div class="nav-link">
-                <i class="fa-solid fa-circle-info"></i>
-                <a href="./about.php">About Us</a>
-            </div>
-        </div>
-
-        <!--btns-->
-        <div class="nav-btns">
-            <!--profile-->
-            <a href="profile.php" id='profile'><?php echo $fullname ?>
-                <i class="fa-solid fa-circle"></i>
-            </a>
-
-            <form action="" method="post" style="align-self: center;">
-                <a href="./logout.php" class="login-btn" type="submit" name="sign-out">
-                    Sign Out
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                </a>
-            </form>
-        </div>
-    </div>
+ 
 
     <form action="" method="post">
-        <h3>Add Fixture</h3>
+        <h3>Edit Fixture</h3>
         <input type="text" name="fixture-title" placeholder="Fixture Title..." value="<?php echo $fixture_title ?>">
         <input type="date" name="fixture-date">
         <input type="time" name="fixture-time">
